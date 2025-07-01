@@ -48,7 +48,7 @@ public class ContactUsPage extends PageBase{
 	//enetr the discussion subject
 	public void enterContactSubject(String contact_Subject) {
 
-		sendKeysToField(contactSubject, contact_Subject);
+		sendKeysToField(contactSubject, contact_Subject); 
 
 	}
 	
