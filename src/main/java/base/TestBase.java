@@ -5,18 +5,22 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.BeforeTest;
 
+import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase {
 
-	WebDriver driver;
+	protected WebDriver driver;
 
-	String browserName = "";
+	String browserName = ConfigReader.getConfigValue("browser_Name");
 
-	String portalEndPoint = "";
+	String portalEndPoint = ConfigReader.getConfigValue("baseURL");;
 
 
+	
+	@BeforeTest
 	//open the required browser & get the portal url
 	public void openBrowser() {
 
@@ -48,6 +52,11 @@ public class TestBase {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 			break;
+			
+			
+			default :
+			
+			throw new RuntimeException("Unsupported browser: " + browserName);
 
 		}
 

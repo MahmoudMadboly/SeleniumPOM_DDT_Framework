@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-07-04T21:32:22 AST" name="Default suite" finished-at="2025-07-04T21:32:33 AST" duration-ms="10904">
+    <groups>
+    </groups>
+    <test started-at="2025-07-04T21:32:22 AST" name="Default test" finished-at="2025-07-04T21:32:33 AST" duration-ms="10904">
+      <class name="tests.RegisterTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-04T21:32:22 AST" name="openBrowser" finished-at="2025-07-04T21:32:28 AST" duration-ms="5636" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method signature="signUp()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-04T21:32:28 AST" name="signUp" finished-at="2025-07-04T21:32:33 AST" duration-ms="5242" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- signUp -->
+      </class> <!-- tests.RegisterTC -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

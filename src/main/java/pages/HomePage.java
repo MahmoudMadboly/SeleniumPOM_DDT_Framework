@@ -21,5 +21,14 @@ public class HomePage extends PageBase{
 	
 	By productsCaseButton = By.linkText("/products");
 	
+	By signUpButton = By.partialLinkText("Signup");
+	
+	
+	public void openSignUpScreen() {
+		
+		navigateToScreen(signUpButton);
+		
+	}
+	
 	
 }

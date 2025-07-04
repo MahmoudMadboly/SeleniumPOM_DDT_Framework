@@ -26,4 +26,15 @@ public class PageBase {
 		driver.findElement(element).sendKeys(text);
 		
 	}	
+	
+	
+	public void navigateToScreen(By element) {
+		
+		clickOnElement(element);
+		
+		//wait mechanism here
+		
+		
+		
+	}
 }
