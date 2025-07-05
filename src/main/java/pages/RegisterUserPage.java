@@ -19,8 +19,8 @@ public class RegisterUserPage extends PageBase{
 		super(driver);
 
 	}
-	
-	
+
+
 
 	//locate webelements
 	public static By signUpScreenHeader = By.xpath("//h2 [text() = 'New User Signup!']");
@@ -30,18 +30,27 @@ public class RegisterUserPage extends PageBase{
 	By email = By.xpath("//input[@data-qa='signup-email']");
 
 	By signUpButton = By.xpath("//button [text() = 'Signup']");
-	
-	
-	
+
+	public By mailDublicationMessage = By.xpath("//p [text() = 'Email Address already exist!']");
+
+
+
+	public String getMailDublicationMessageText() {
+
+		return getWebElemnt(mailDublicationMessage).getText();
+
+	}
+
+
 	//wait till DOM be loaded & the required elements be present 
 	public void wait(Duration timeDuration) {
-		
+
 		WaitUtuls.waitExplicily(driver, timeDuration, 
 				ExpectedConditions.presenceOfElementLocated(name));
-		
+
 	}
-	
-	
+
+
 
 	//enter username to signup
 	public void enterUserName(String userName) {
@@ -49,8 +58,8 @@ public class RegisterUserPage extends PageBase{
 		sendKeysToField(name, userName);
 
 	}
-	
-	
+
+
 	//enter user mail to signup
 	public void enterEmailAdress(String userMail) {
 
@@ -62,6 +71,6 @@ public class RegisterUserPage extends PageBase{
 	public void clickSignUp() {
 
 		clickOnElement(signUpButton);		
-		
+
 	}
 }

@@ -67,4 +67,11 @@ public class PageBase {
 	}
 
 
+	public WebElement getWebElemnt(By element) {
+
+		return driver.findElement(element);
+
+	}	
+
+
 }

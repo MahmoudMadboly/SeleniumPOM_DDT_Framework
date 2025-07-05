@@ -60,14 +60,17 @@ public class SignUp_AccountInformationPage extends PageBase{
 	By createAccountButton = By.xpath("//button [text() = 'Create Account']");
 
 	public By accountCreationSuccess = By.xpath("//b [text() = 'Account Created!']");
+	
 
 
-	public WebElement getWebElement() {
 
-		return driver.findElement(accountCreationSuccess);
+	public String getSuccessMessageText() {
+
+		return getWebElemnt(accountCreationSuccess).getText();
 
 	}
-
+	
+	
 
 	public void waitTillAccountInfoLoaded(Duration time) {
 

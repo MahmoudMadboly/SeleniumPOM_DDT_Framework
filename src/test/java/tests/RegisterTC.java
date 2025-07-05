@@ -52,11 +52,14 @@ public class RegisterTC extends TestBase{
 
 			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
 
-			accountInfoObject.selectDayOfBirth("value", "1");
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("day"));
 
-			accountInfoObject.selectMonthOfBirth("value", "3");
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("month"));
 
-			accountInfoObject.selectYearOfBirth("value", "2000");
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("year"));
 
 			accountInfoObject.checkNewsLetterOption();
 
@@ -86,7 +89,7 @@ public class RegisterTC extends TestBase{
 			
 			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
 
-			assertEquals(accountInfoObject.getWebElement().getText(), ConfigReader.getConfigValue("accountCreationSuccessMessage"));
+			assertEquals(accountInfoObject.getSuccessMessageText(), ConfigReader.getConfigValue("accountCreationSuccessMessage"));
 
 			
 		}catch(Exception e) {
