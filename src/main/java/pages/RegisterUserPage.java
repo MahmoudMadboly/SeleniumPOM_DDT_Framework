@@ -20,12 +20,6 @@ public class RegisterUserPage extends PageBase{
 
 	}
 	
-	//wait sometimes till an element be availabele in DOM
-	public void wait(By element) {
-		
-		WaitUtuls.waitExplicily(driver, null, ExpectedConditions.elementToBeClickable(element));
-		
-	}
 	
 
 	//locate webelements
@@ -36,6 +30,7 @@ public class RegisterUserPage extends PageBase{
 	By email = By.xpath("//input[@data-qa='signup-email']");
 
 	By signUpButton = By.xpath("//button [text() = 'Signup']");
+	
 	
 	
 	//wait till DOM be loaded & the required elements be present 

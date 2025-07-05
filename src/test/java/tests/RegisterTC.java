@@ -1,5 +1,7 @@
 package tests;
 
+import static org.testng.Assert.assertEquals;
+
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -10,6 +12,7 @@ import base.TestBase;
 import config.ConfigReader;
 import pages.HomePage;
 import pages.RegisterUserPage;
+import pages.SignUp_AccountInformationPage;
 import utilities.WaitUtuls;
 
 public class RegisterTC extends TestBase{
@@ -18,25 +21,82 @@ public class RegisterTC extends TestBase{
 	PageBase pageBaseObject;
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
+	SignUp_AccountInformationPage accountInfoObject;
 	int time = 7;	
+
 
 	@Test
 	public void signUp() throws InterruptedException{
-
-		homePageObject = new HomePage(driver);
-
-		homePageObject.openSignUpScreen();
-
-		signUpObject = new RegisterUserPage(driver);
-
-		signUpObject.wait(Duration.ofSeconds(time));
 		
-		signUpObject.enterUserName(ConfigReader.getConfigValue("signUpUserName"));
+		try {
+	
+			homePageObject = new HomePage(driver);
 
-		signUpObject.enterEmailAdress(ConfigReader.getConfigValue("signUpMail"));
+			homePageObject.openSignUpScreen();
 
-		signUpObject.clickSignUp();
+			signUpObject = new RegisterUserPage(driver);
 
+			signUpObject.wait(Duration.ofSeconds(time));
+
+			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
+
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("accountMail"));
+
+			signUpObject.clickSignUp();
+
+			accountInfoObject = new SignUp_AccountInformationPage(driver);
+
+			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
+
+			accountInfoObject.selectTitle();
+
+			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
+
+			accountInfoObject.selectDayOfBirth("value", "1");
+
+			accountInfoObject.selectMonthOfBirth("value", "3");
+
+			accountInfoObject.selectYearOfBirth("value", "2000");
+
+			accountInfoObject.checkNewsLetterOption();
+
+			accountInfoObject.checkSpecialOferOption();
+
+			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
+
+			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
+
+			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
+
+			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
+
+			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
+
+			accountInfoObject.selectAccountCountry("value", "India");
+
+			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
+
+			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
+
+			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
+
+			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
+
+			accountInfoObject.clickCreateAccountButton();
+			
+			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
+
+			assertEquals(accountInfoObject.getWebElement().getText(), ConfigReader.getConfigValue("accountCreationSuccessMessage"));
+
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+			System.out.println("Error message/   " + e.getMessage());
+			
+			System.out.println("it seems some issues happened during account creation! ");
+			
+		}
 	}
-
 }
