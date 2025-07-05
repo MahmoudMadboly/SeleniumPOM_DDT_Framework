@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-04T21:32:22 AST" name="Default suite" finished-at="2025-07-04T21:32:33 AST" duration-ms="10904">
+  <suite started-at="2025-07-05T02:54:51 AST" name="Default suite" finished-at="2025-07-05T02:55:06 AST" duration-ms="14183">
     <groups>
     </groups>
-    <test started-at="2025-07-04T21:32:22 AST" name="Default test" finished-at="2025-07-04T21:32:33 AST" duration-ms="10904">
+    <test started-at="2025-07-05T02:54:51 AST" name="Default test" finished-at="2025-07-05T02:55:06 AST" duration-ms="14183">
       <class name="tests.RegisterTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-04T21:32:22 AST" name="openBrowser" finished-at="2025-07-04T21:32:28 AST" duration-ms="5636" status="PASS">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-05T02:54:51 AST" name="openBrowser" finished-at="2025-07-05T02:55:04 AST" duration-ms="12380" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method signature="signUp()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-04T21:32:28 AST" name="signUp" finished-at="2025-07-04T21:32:33 AST" duration-ms="5242" status="PASS">
+        <test-method signature="signUp()[pri:0, instance:tests.RegisterTC@51399530]" started-at="2025-07-05T02:55:04 AST" name="signUp" finished-at="2025-07-05T02:55:06 AST" duration-ms="1780" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- signUp -->
