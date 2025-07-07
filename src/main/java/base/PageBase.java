@@ -1,9 +1,14 @@
 package base;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
+
+import utilities.WaitUtuls;
 
 public class PageBase {
 
@@ -71,7 +76,12 @@ public class PageBase {
 
 		return driver.findElement(element);
 
-	}	
+	}
 
 
+	public <T> void waitForElemnt(Duration durationTime , ExpectedCondition<T> condition) {
+
+		WaitUtuls.waitExplicily(driver, durationTime, condition);		
+
+	}
 }

@@ -71,10 +71,20 @@ public class SignUp_AccountInformationPage extends PageBase{
 	}
 	
 	
+	public boolean verifyEnterAccountInfoHeaderVisible() {
+
+		return super.getWebElemnt(accountInformationHeader).isDisplayed();
+		
+
+	}
+	
+	
 
 	public void waitTillAccountInfoLoaded(Duration time) {
-
-		WaitUtuls.waitExplicily(driver, time, ExpectedConditions.visibilityOfElementLocated(accountInformationHeader));		
+		
+		
+		super.waitForElemnt(time,
+				ExpectedConditions.visibilityOfElementLocated(accountInformationHeader));		
 
 	}
 
@@ -237,11 +247,11 @@ public class SignUp_AccountInformationPage extends PageBase{
 	
 	
 	public void waitTillSuccessMessageAppear(Duration time) {
+		
+		
+		super.waitForElemnt(time,
+				ExpectedConditions.presenceOfElementLocated(accountCreationSuccess));	
 
-
-		WaitUtuls.waitExplicily(driver, time, ExpectedConditions.presenceOfElementLocated(accountCreationSuccess));
 
 	}
-	
-	
 }

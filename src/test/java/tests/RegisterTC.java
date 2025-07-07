@@ -1,6 +1,7 @@
 package tests;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
@@ -31,12 +32,16 @@ public class RegisterTC extends TestBase{
 		try {
 	
 			homePageObject = new HomePage(driver);
+			
+			assertTrue(homePageObject.verifytHomePageHeaderVisible(), ConfigReader.getConfigValue("homePageHeading"));
 
 			homePageObject.openSignUpScreen();
 
 			signUpObject = new RegisterUserPage(driver);
 
-			signUpObject.wait(Duration.ofSeconds(time));
+			signUpObject.waitTillSignUpScreenLoaded(Duration.ofSeconds(time));
+			
+			assertTrue(signUpObject.verifySignUpPageHeaderVisible(), ConfigReader.getConfigValue("signUpPageHeading"));
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
 
@@ -47,6 +52,9 @@ public class RegisterTC extends TestBase{
 			accountInfoObject = new SignUp_AccountInformationPage(driver);
 
 			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
+			
+			assertTrue(accountInfoObject.verifyEnterAccountInfoHeaderVisible(), 
+					ConfigReader.getConfigValue("enterAccountInfoPageHeading"));
 
 			accountInfoObject.selectTitle();
 

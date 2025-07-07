@@ -15,13 +15,32 @@ public class HomePage extends PageBase{
 
 	
 	//locate webelements
-	By automationExcersieHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
+	public By automationExcersieHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
 	
 	By testCaseButton = By.linkText("/test_cases");
 	
 	By productsCaseButton = By.linkText("/products");
 	
 	By signUpButton = By.partialLinkText("Signup");
+	
+	public By SuccessfulLoginHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
+	
+	
+	
+	public boolean verifytHomePageHeaderVisible() {
+
+		return super.getWebElemnt(automationExcersieHeader).isDisplayed();
+		
+
+	}
+	
+	
+	public boolean verifytSuccessfulLoginHeaderVisible() {
+
+		return super.getWebElemnt(SuccessfulLoginHeader).isDisplayed();
+		
+
+	}
 	
 	
 	public void openSignUpScreen() {

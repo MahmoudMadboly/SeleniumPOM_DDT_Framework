@@ -40,16 +40,25 @@ public class RegisterUserPage extends PageBase{
 		return getWebElemnt(mailDublicationMessage).getText();
 
 	}
+	
+	
+	public boolean verifySignUpPageHeaderVisible() {
 
-
-	//wait till DOM be loaded & the required elements be present 
-	public void wait(Duration timeDuration) {
-
-		WaitUtuls.waitExplicily(driver, timeDuration, 
-				ExpectedConditions.presenceOfElementLocated(name));
+		return super.getWebElemnt(signUpScreenHeader).isDisplayed();
+		
 
 	}
 
+
+	//wait till DOM be loaded & the required elements be present 
+	public void waitTillSignUpScreenLoaded(Duration timeDuration) {
+		
+		
+		super.waitForElemnt(timeDuration,
+				ExpectedConditions.presenceOfElementLocated(signUpScreenHeader));
+
+
+	}
 
 
 	//enter username to signup
@@ -70,7 +79,19 @@ public class RegisterUserPage extends PageBase{
 	//hit sign up button
 	public void clickSignUp() {
 
-		clickOnElement(signUpButton);		
+		super.clickOnElement(signUpButton);	
 
 	}
+
+
+	//wait till DOM be loaded & the required elements be present 
+	public void waitDublicationMessage(Duration timeDuration ) {
+
+
+		super.waitForElemnt(timeDuration,
+				ExpectedConditions.presenceOfElementLocated(mailDublicationMessage));
+
+
+	}
+
 }

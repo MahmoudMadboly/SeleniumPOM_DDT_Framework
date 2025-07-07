@@ -1,14 +1,17 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
 
-public class LoginClass extends PageBase{
+public class LoginPage extends PageBase{
 
 
-	public LoginClass(WebDriver driver) {
+	public LoginPage(WebDriver driver) {
 
 		super(driver);
 
@@ -24,8 +27,19 @@ public class LoginClass extends PageBase{
 	By loginButton = By.xpath("//button [text() = 'Login']");
 
 
+
+	public void waitTillLoginScreenLoaded(Duration timeDuration) {
+
+
+		super.waitForElemnt(timeDuration,
+				ExpectedConditions.presenceOfElementLocated(loginAccountHeader));
+
+
+	}
+
+
 	//enter mail to login
-	public void userMail(String mailAddress) {
+	public void enterUserMail(String mailAddress) {
 
 		sendKeysToField(email, mailAddress);
 

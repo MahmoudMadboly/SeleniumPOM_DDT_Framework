@@ -1,6 +1,7 @@
 package tests;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
@@ -14,8 +15,8 @@ import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
 public class RegisterWithExistingMailTC extends TestBase{
+
 	
-	PageBase pageBaseObject;
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
 	SignUp_AccountInformationPage accountInfoObject;
@@ -24,44 +25,41 @@ public class RegisterWithExistingMailTC extends TestBase{
 
 	@Test
 	public void signUp() throws InterruptedException{
-		
+
 		try {
-	
-			homePageObject = new HomePage(driver);
+
+homePageObject = new HomePage(driver);
+			
+			assertTrue(homePageObject.verifytHomePageHeaderVisible(), ConfigReader.getConfigValue("homePageHeading"));
 
 			homePageObject.openSignUpScreen();
 
 			signUpObject = new RegisterUserPage(driver);
 
-			signUpObject.wait(Duration.ofSeconds(time));
+			signUpObject.waitTillSignUpScreenLoaded(Duration.ofSeconds(time));
+			
+			assertTrue(signUpObject.verifySignUpPageHeaderVisible(), ConfigReader.getConfigValue("signUpPageHeading"));
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
 
 			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("accountMail"));
 
 			signUpObject.clickSignUp();
-			
+
 			//add wait logic 
-			
-			if(signUpObject.getMailDublicationMessageText().equals(ConfigReader.getConfigValue("emailDublicationMessage"))) {
-				
-				System.out.println("Email Address already exist!");
-				
-				return;
-			
-			} else
-				
-				System.out.println("It seems there is an issue as the dublication error did not displayed");
-			
-			
+			signUpObject.waitDublicationMessage(Duration.ofSeconds(time));
+
+			assertEquals(signUpObject.getMailDublicationMessageText(), ConfigReader.getConfigValue("emailDublicationMessage"));
+
+
 		}catch(Exception e) {
-			
+
 			e.printStackTrace();
-			
+
 			System.out.println("Error message/   " + e.getMessage());
-			
+
 			System.out.println("it seems some issues happened during account creation! ");
-			
+
 		}
 	}
 }

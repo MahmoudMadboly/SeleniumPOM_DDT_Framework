@@ -12,9 +12,7 @@ public class WaitUtuls {
 
 	public static void waitExplicily(WebDriver driver , Duration time , ExpectedCondition<?> condition) {
 
-		WebDriverWait waitExplicitly = new WebDriverWait(driver, time);
+		new WebDriverWait(driver, time).until(condition);
 		
-		waitExplicitly.until(condition);
-
 	}	
 }
