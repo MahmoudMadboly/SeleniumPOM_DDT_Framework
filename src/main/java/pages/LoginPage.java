@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
+import utilities.WaitUtuls;
 
 public class LoginPage extends PageBase{
 
@@ -22,9 +23,12 @@ public class LoginPage extends PageBase{
 
 	By email = By.name("email");
 
-	By password = By.name("password");
+	
+	By password = By.xpath("//input [@data-qa = 'login-password']");
 
 	By loginButton = By.xpath("//button [text() = 'Login']");
+	
+	By WrongLoginCredentialMessage = By.xpath("//p [text() = 'Your email or password is incorrect!']");
 
 
 
@@ -52,9 +56,21 @@ public class LoginPage extends PageBase{
 	}
 
 	//hit login button
-	public void clickLogin() {
+	public void clickLogin(Duration waitDuration) {
 
 		clickOnElement(loginButton);
+		
+	//	super.waitForElemnt(waitDuration, 
+				//ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
 
 	}
+	
+	
+	public boolean verifyWrongLoginCredentialMessageHeaderVisible() {
+
+		return super.getWebElemnt(WrongLoginCredentialMessage).isDisplayed();
+		
+
+	}
+	
 }

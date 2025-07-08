@@ -12,7 +12,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RegisterUserPage;
 
-public class LoginTC extends TestBase{
+public class LoginWithValidUserTC extends TestBase{
 	
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
@@ -39,11 +39,10 @@ public class LoginTC extends TestBase{
 		
 		loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
 		
-		loginPageObject.clickLogin();
+		loginPageObject.clickLogin(Duration.ofMinutes(time));
 		
-	/*	assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
-				ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));*/
-		
-		
+		assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
+				ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
+			
 	}
 }

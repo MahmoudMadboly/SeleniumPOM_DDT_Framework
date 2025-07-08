@@ -1,17 +1,24 @@
 package base;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pages.HomePage;
+import utilities.WaitUtuls;
 
 public class TestBase {
+	
+	int time = 10;
 
 	protected WebDriver driver;
 
@@ -64,11 +71,16 @@ public class TestBase {
 		driver.manage().window().maximize();
 
 		driver.get(portalEndPoint);
+		
+		WaitUtuls.waitExplicily(driver, Duration.ofSeconds(time),
+				ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
+		
+		
 	}
 
 
 
-	//@AfterTest
+	@AfterTest
 	//close the browser
 	public void closeBrowser() {
 

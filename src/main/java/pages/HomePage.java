@@ -23,7 +23,7 @@ public class HomePage extends PageBase{
 	
 	By signUpButton = By.partialLinkText("Signup");
 	
-	public By SuccessfulLoginHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
+	public static By SuccessfulLoginHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
 	
 	
 	
