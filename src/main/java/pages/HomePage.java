@@ -25,6 +25,8 @@ public class HomePage extends PageBase{
 	
 	public static By SuccessfulLoginHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
 	
+	By logOutButton = By.partialLinkText(" Logout");
+	
 	
 	
 	public boolean verifytHomePageHeaderVisible() {
@@ -46,6 +48,12 @@ public class HomePage extends PageBase{
 	public void openSignUpScreen() {
 		
 		navigateToScreen(signUpButton);
+		
+	}
+	
+public void clickLogOut() {
+		
+		clickOnElement(logOutButton);
 		
 	}
 	

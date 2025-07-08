@@ -12,7 +12,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RegisterUserPage;
 
-public class LoginWithInValidUserTC extends TestBase{
+public class LoginWithInValidUserScenario extends TestBase{
 	
 	
 	HomePage homePageObject;
@@ -35,6 +35,9 @@ public class LoginWithInValidUserTC extends TestBase{
 		loginPageObject = new LoginPage(driver);
 		
 		loginPageObject.waitTillLoginScreenLoaded(Duration.ofSeconds(time));
+		
+		assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
+				ConfigReader.getConfigValue("logInScreenHeader"));
 		
 		loginPageObject.enterUserMail(ConfigReader.getConfigValue("inValidAccountMail"));
 		

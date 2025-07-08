@@ -66,6 +66,13 @@ public class LoginPage extends PageBase{
 	}
 	
 	
+	public boolean verifyLoginToAccountHeaderVisible() {
+
+		return super.getWebElemnt(loginAccountHeader).isDisplayed();
+		
+
+	}
+	
 	public boolean verifyWrongLoginCredentialMessageHeaderVisible() {
 
 		return super.getWebElemnt(WrongLoginCredentialMessage).isDisplayed();

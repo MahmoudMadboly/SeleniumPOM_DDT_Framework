@@ -35,6 +35,10 @@ public class LoginWithValidUserTC extends TestBase{
 		
 		loginPageObject.waitTillLoginScreenLoaded(Duration.ofSeconds(time));
 		
+		assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
+				ConfigReader.getConfigValue("logInScreenHeader"));
+		
+		
 		loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
 		
 		loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
