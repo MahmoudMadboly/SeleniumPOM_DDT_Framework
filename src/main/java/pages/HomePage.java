@@ -1,7 +1,10 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
 
@@ -25,7 +28,7 @@ public class HomePage extends PageBase{
 	
 	public static By SuccessfulLoginHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
 	
-	By logOutButton = By.partialLinkText(" Logout");
+	By logOutButton = By.linkText(" Logout");
 	
 	
 	
@@ -51,9 +54,11 @@ public class HomePage extends PageBase{
 		
 	}
 	
-public void clickLogOut() {
+public void clickLogOut(Duration time) {
 		
 		clickOnElement(logOutButton);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(RegisterUserPage.signUpScreenHeader));
 		
 	}
 	

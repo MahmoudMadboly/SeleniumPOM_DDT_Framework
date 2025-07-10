@@ -5,7 +5,6 @@
     <classes>
       <class name="tests.LogOutTC">
         <methods>
-          <include name="closeBrowser"/>
           <include name="LogOUT"/>
           <include name="openBrowser"/>
         </methods>
