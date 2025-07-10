@@ -17,17 +17,17 @@ public class ContactUsPage extends PageBase{
 	//locate webelements
 	public static By contactUsHeader = By.xpath("//h2 [text() = 'Contact ']");
 
-	By contactName = By.name("email");
+	By contactName = By.name("name");
 
 	By contactEmail = By.name("email");
 
-	By contactSubject = By.name("email");
+	By contactSubject = By.name("subject");
 
-	By contactMessage = By.name("email");
+	By contactMessage = By.id("message");
 
-	By contactfile = By.name("email");
+	By contactfile = By.name("upload_file");
 
-	By contactSubmit = By.name("email");
+	By contactSubmit = By.name("submit");
 
 	
 //enter contact name
@@ -55,20 +55,17 @@ public class ContactUsPage extends PageBase{
 	//enetr the discussion message
 		public void enterContactMessage(String contact_Subject) {
 
-			sendKeysToField(contactSubject, contact_Subject);
+			sendKeysToField(contactMessage, contact_Subject);
 
 		}
 
-	//handle uploading file
-		/*
-		 * 
-		 * public void uploadContactFile() {
+	 public void uploadContactFile(String filePath) {
 
-		sendKeysToField(contactMessage	, contact_Message);
+		sendKeysToField(contactfile	, filePath);
 
 	}
 
-		 * */
+		
 	
 	//submit contact request
 	public void clickContactSubmit() {
