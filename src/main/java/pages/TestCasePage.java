@@ -14,8 +14,13 @@ public class TestCasePage extends PageBase{
 	}
 
 	//locate webelements
-	By testCasesHeader = By.xpath("//h2 [text() = 'Contact ']");
+	public static By testCasesHeader = By.xpath("//b [text() = 'Test Cases']");
+	
+	
+	public boolean verifyTestCasesHeaderVisible() {
 
+		return super.getWebElemnt(testCasesHeader).isDisplayed();
+		
 
-
+	}
 }

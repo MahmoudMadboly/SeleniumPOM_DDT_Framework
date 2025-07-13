@@ -31,7 +31,7 @@ public class ContactUsTC extends TestBase{
 				assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 						ConfigReader.getConfigValue("homePageHeading"));
 				
-				homePageObject.clickContactUs(Duration.ofSeconds(time));
+				homePageObject.navigateToContactUsScreen(Duration.ofSeconds(time));
 				
 				ContactUsPageObject = new ContactUsPage(driver);
 				
@@ -54,7 +54,7 @@ public class ContactUsTC extends TestBase{
 
 				System.out.println("Error message/   " + e.getMessage());
 
-				System.out.println("it seems some issues happened during account creation! ");
+				System.out.println("it seems some issues happened during contacting call service creation! ");
 				
 			}
 

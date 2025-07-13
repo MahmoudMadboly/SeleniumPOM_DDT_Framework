@@ -30,7 +30,9 @@ public class HomePage extends PageBase{
 
 	By logOutButton = By.linkText(" Logout");
 
-	By contactUsButton = By.partialLinkText(" Contact us");
+	By contactUsButton = By.partialLinkText("Contact us");
+	
+	By testCasesButton = By.partialLinkText("Test Cases");
 
 
 
@@ -56,7 +58,7 @@ public class HomePage extends PageBase{
 
 	}
 
-	public void clickLogOut(Duration time) {
+	public void navigateToLogOut(Duration time) {
 
 		navigateToScreen(logOutButton);	
 
@@ -65,13 +67,19 @@ public class HomePage extends PageBase{
 	}
 	
 
-	public void clickContactUs(Duration time) {
+	public void navigateToContactUsScreen(Duration time) {
 
 		navigateToScreen(contactUsButton);
 
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ContactUsPage.contactUsHeader));
 
 	}
+	
+	public void navigateToTestCasesScreen(Duration time) {
 
+		navigateToScreen(testCasesButton);
 
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(TestCasePage.testCasesHeader));
+
+	}
 }
