@@ -13,7 +13,9 @@ public class ExtentReportManger {
 		
 		if(extentReport == null) {
 			
-			String reportPath = "/Users/mahmoudmadboly/Automation/SeleniumPOM_DDT_Framework/SeleniumPOMDDTProject/test-output";
+			String reportPath = "/Users/mahmoudmadboly/Automation/SeleniumPOM_DDT_Framework/SeleniumPOMDDTProject/test-output/HtmlReport/ExtentReport.html";
+			
+			//String reportPath = System.getProperty("user.dir") + "test-output/HtmlReport/ExtentReport.html";
 
 			ExtentSparkReporter sparkReport = new ExtentSparkReporter(reportPath);
 			
