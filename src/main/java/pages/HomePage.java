@@ -33,6 +33,8 @@ public class HomePage extends PageBase{
 	By contactUsButton = By.partialLinkText("Contact us");
 	
 	By testCasesButton = By.partialLinkText("Test Cases");
+	
+	By ProductsButton = By.partialLinkText("Products");
 
 
 
@@ -52,7 +54,7 @@ public class HomePage extends PageBase{
 	}
 
 
-	public void openSignUpScreen() {
+	public void navigateToSignUpScreen() {
 
 		navigateToScreen(signUpButton);
 
@@ -80,6 +82,15 @@ public class HomePage extends PageBase{
 		navigateToScreen(testCasesButton);
 
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(TestCasePage.testCasesHeader));
+
+	}
+	
+	
+	public void navigateToAllProductsScreen(Duration time) {
+
+		navigateToScreen(ProductsButton);
+
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(AllProductsPage.allProductsHeader));
 
 	}
 }

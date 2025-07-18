@@ -16,7 +16,7 @@ import pages.SignUp_AccountInformationPage;
 
 public class RegisterWithExistingMailTC extends TestBase{
 
-	
+
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
 	SignUp_AccountInformationPage accountInfoObject;
@@ -28,16 +28,17 @@ public class RegisterWithExistingMailTC extends TestBase{
 
 		try {
 
-homePageObject = new HomePage(driver);
-			
-			assertTrue(homePageObject.verifytHomePageHeaderVisible(), ConfigReader.getConfigValue("homePageHeading"));
+			homePageObject = new HomePage(driver);
+
+			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
+					"Home page header is not visible.");
 
 			homePageObject.openSignUpScreen();
 
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.waitTillSignUpScreenLoaded(Duration.ofSeconds(time));
-			
+
 			assertTrue(signUpObject.verifySignUpPageHeaderVisible(), ConfigReader.getConfigValue("signUpPageHeading"));
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));

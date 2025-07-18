@@ -27,7 +27,7 @@ public class LoginWithValidUserTC extends TestBase{
 		homePageObject = new HomePage(driver);
 		
 		assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
-				ConfigReader.getConfigValue("homePageHeading"));
+				"Home page header is not visible.");
 		
 		homePageObject.openSignUpScreen();
 	

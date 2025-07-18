@@ -28,7 +28,7 @@ public class VerifyTestCasesTC extends TestBase{
 			homePageObject = new HomePage(driver);
 			
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
-					ConfigReader.getConfigValue("homePageHeading"));
+					"Home page header is not visible.");
 			
 			homePageObject.navigateToTestCasesScreen(Duration.ofSeconds(time));
 			

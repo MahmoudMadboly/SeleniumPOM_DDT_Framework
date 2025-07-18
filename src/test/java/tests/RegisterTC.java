@@ -33,7 +33,8 @@ public class RegisterTC extends TestBase{
 	
 			homePageObject = new HomePage(driver);
 			
-			assertTrue(homePageObject.verifytHomePageHeaderVisible(), ConfigReader.getConfigValue("homePageHeading"));
+			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
+					"Home page header is not visible.");
 
 			homePageObject.openSignUpScreen();
 
