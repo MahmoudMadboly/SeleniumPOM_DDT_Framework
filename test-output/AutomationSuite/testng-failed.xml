@@ -6,12 +6,12 @@
   </listeners>
   <test thread-count="5" name="RegressionTests(failed)">
     <classes>
-      <class name="tests.AllProductsTC">
+      <class name="tests.VerifySubscriptionTC">
         <methods>
-          <include name="verifyAllProductsAndProductDetailPageScenario"/>
+          <include name="SearchedProductScenario"/>
           <include name="openBrowser"/>
         </methods>
-      </class> <!-- tests.AllProductsTC -->
+      </class> <!-- tests.VerifySubscriptionTC -->
     </classes>
   </test> <!-- RegressionTests(failed) -->
 </suite> <!-- Failed suite [AutomationSuite] -->

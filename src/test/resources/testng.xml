@@ -6,7 +6,7 @@
 
     <test name="RegressionTests">
         <classes>
-            <class name="tests.SearchProductTC"/>
+            <class name="tests.VerifySubscriptionTC"/>
         </classes>
     </test>
 </suite>
