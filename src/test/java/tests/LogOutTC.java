@@ -27,7 +27,7 @@ public class LogOutTC extends TestBase{
 		assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 				"Home page header is not visible.");
 
-		homePageObject.openSignUpScreen();
+		homePageObject.navigateToSignUpScreen();
 
 		loginPageObject = new LoginPage(driver);
 

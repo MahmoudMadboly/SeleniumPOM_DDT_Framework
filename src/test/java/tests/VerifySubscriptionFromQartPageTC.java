@@ -56,7 +56,7 @@ public class VerifySubscriptionFromQartPageTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during verifying subscription test case! ");	
+			System.out.println("it seems some issues happened during verifying subscription from qart page test case! ");	
 
 		}
 	}

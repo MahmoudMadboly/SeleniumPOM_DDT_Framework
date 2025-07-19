@@ -41,7 +41,7 @@ public class HomePage extends PageBase{
 
 	By subscriptionMail = By.id("susbscribe_email");
 
-	By subscriptionScuccessMessage = By.xpath("//div [calss = 'alert-success alert']");
+	By subscriptionScuccessMessage = By.xpath("//div [@class = 'alert-success alert']");
 
 	By subscribeButton = By.id("subscribe");
 	
@@ -127,9 +127,9 @@ public class HomePage extends PageBase{
 	}
 
 
-	public void scrollToSubscribeField() {
+	public void scrollToSubscribeField(String pixel) {
 
-		browserUtils.scrollToElement(driver, getWebElemnt(subscriptionMail));
+		browserUtils.scrollByPixels(driver, pixel);
 
 	}
 

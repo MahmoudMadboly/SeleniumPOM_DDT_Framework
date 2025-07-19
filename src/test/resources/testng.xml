@@ -6,7 +6,7 @@
 
     <test name="RegressionTests">
         <classes>
-            <class name="tests.VerifySubscriptionTC"/>
+            <class name="tests.VerifySubscriptionFromHomePageTC"/>
         </classes>
     </test>
 </suite>

@@ -27,7 +27,7 @@ public class QartPage extends PageBase{
 	
 	public void scrollToFooter(String pixel) {
 		
-	browserUtils.scrollByPixels(driver, pixel);
+		browserUtils.scrollByPixels(driver, pixel);
 		
 	}
 	
