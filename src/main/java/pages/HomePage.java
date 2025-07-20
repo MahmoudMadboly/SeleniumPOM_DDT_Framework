@@ -142,7 +142,7 @@ public class HomePage extends PageBase{
 	public void navigateToQartScreen(Duration time) {
 
 		navigateToScreen(qartButton);
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.proceedToCheckoutButton));
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
 
 	}
 

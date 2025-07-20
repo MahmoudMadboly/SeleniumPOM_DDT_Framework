@@ -39,12 +39,15 @@ public class VerifySubscriptionFromQartPageTC extends TestBase{
 			
 			QartPageObject = new QartPage(driver);
 			
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(), 
+					"Shopping Cart page header is not visible.");
+			
 			QartPageObject.scrollToFooter(ConfigReader.getConfigValue("pixel"));
 			
 			
 			QartPageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("subscriptionMailID"));
 			
-			QartPageObject.clickOnSubscribeButton();
+			QartPageObject.clickOnSubscribeButton(Duration.ofSeconds(time));
 
 			assertEquals(QartPageObject.getWebElementOfSubscriptionSuccessMessage(), 
 					ConfigReader.getConfigValue("subscriptionSuccessfulMessage"));

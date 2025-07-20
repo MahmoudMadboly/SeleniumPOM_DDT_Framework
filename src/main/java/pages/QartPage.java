@@ -1,45 +1,53 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
+import utilities.WaitUtuls;
 import utilities.browserUtils;
 
 public class QartPage extends PageBase{
 
-	
+
 	public QartPage(WebDriver driver) {
 
 		super(driver);
 
 	}
-	
-	
-	public static By proceedToCheckoutButton = By.xpath("//a [@calss = 'btn btn-default check_out']");
-	
+
+
+	public static By shoppingCartHeader = By.xpath("//li [text() = 'Shopping Cart']");
+
 	By subscriptionMailField = By.id("susbscribe_email");
-	
+
 	By subscriptionButton = By.id("subscribe");
+
+	//By subscriptionScuccessMessage = By.xpath("//div[@class='alert-success alert']");
+
+	By subscriptionScuccessMessage = By.xpath("//div [text() = 'You have been successfully subscribed!']");
 	
-	By subscriptionScuccessMessage = By.xpath("//div [calss = 'alert-success alert']");
 	
-	
+
 	public void scrollToFooter(String pixel) {
-		
+
 		browserUtils.scrollByPixels(driver, pixel);
-		
+
 	}
-	
+
 	public void enteSubscriptionMailID(String subscrMail) {
 
 		sendKeysToField(subscriptionMailField, subscrMail);
 
 	}
 
-	public void clickOnSubscribeButton() {
+	public void clickOnSubscribeButton(Duration time) {
 
 		clickOnElement(subscriptionButton);
+		WaitUtuls.waitExplicily(driver, time, ExpectedConditions.visibilityOfAllElementsLocatedBy(subscriptionScuccessMessage));
 
 	}
 
@@ -48,10 +56,15 @@ public class QartPage extends PageBase{
 		getWebElemnt(subscriptionScuccessMessage);
 
 	}
-	
+
 	public String getWebElementOfSubscriptionSuccessMessage() {
 
 		return getWebElemnt(subscriptionScuccessMessage).getText();
 
+	}
+
+	public boolean verifyShoppingCartHeaderVisible() {
+
+		return super.getWebElemnt(shoppingCartHeader).isDisplayed();
 	}
 }
