@@ -1,10 +1,12 @@
 package base;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 
@@ -13,6 +15,8 @@ import utilities.WaitUtuls;
 public class PageBase {
 
 	protected WebDriver driver;
+	
+	Actions action;
 
 	public PageBase(WebDriver driver) {
 
@@ -72,10 +76,20 @@ public class PageBase {
 	}
 
 
+	//return a single element
 	public WebElement getWebElemnt(By element) {
 
 		return driver.findElement(element);
 
+	}
+	
+	
+	//return list of elements
+	public List<WebElement> getWebElementList(By element) {
+		
+		
+		return driver.findElements(element);
+		
 	}
 
 
@@ -83,5 +97,13 @@ public class PageBase {
 
 		WaitUtuls.waitExplicily(driver, durationTime, condition);		
 
+	}
+	
+	public void hoverOnElement(WebElement element) {
+		
+		action = new Actions(driver);
+		
+		action.moveToElement(element).perform();
+		
 	}
 }

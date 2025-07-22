@@ -25,8 +25,8 @@ public class QartPage extends PageBase{
 	By subscriptionMailField = By.id("susbscribe_email");
 
 	By subscriptionButton = By.id("subscribe");
-
-	//By subscriptionScuccessMessage = By.xpath("//div[@class='alert-success alert']");
+	
+	By cartTable = By.id("cart_info_table");
 
 	By subscriptionScuccessMessage = By.xpath("//div [text() = 'You have been successfully subscribed!']");
 	
@@ -66,5 +66,11 @@ public class QartPage extends PageBase{
 	public boolean verifyShoppingCartHeaderVisible() {
 
 		return super.getWebElemnt(shoppingCartHeader).isDisplayed();
+	}
+	
+	public int VerifyQartProducts() {
+		
+		return getWebElementList(cartTable).size();
+		
 	}
 }
