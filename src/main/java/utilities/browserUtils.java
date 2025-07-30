@@ -1,5 +1,8 @@
 package utilities;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,31 +11,15 @@ import org.openqa.selenium.interactions.Actions;
 public class browserUtils {
 
 
-
+	int time = 5;
 	static JavascriptExecutor js;
 	static Actions action;
 
-	public void scrollIntoView(WebDriver driver , WebElement element) {
+	public static void scrollIntoElement(WebDriver driver , WebElement element) {
 
 		js = (JavascriptExecutor) driver;
 
-		//js.executeScript(null, null)
-
-	}
-
-	public static void scrollByPixels(WebDriver driver, String pixels) {
-
-		js = (JavascriptExecutor) driver;
-
-		js.executeScript("window.scrollBy(0," + pixels + ")");
-	}
-
-
-	public static void scrollToElement(WebDriver driver , WebElement element) {
-
-		action = new Actions(driver);
-		
-		action.moveToElement(element).perform();
+		js.executeScript("arguments[0].scrollIntoView(true);", element);
 
 	}
 }

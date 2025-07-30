@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
 import utilities.WaitUtuls;
+import utilities.browserUtils;
 
 public class AllProductsPage extends PageBase{
 
@@ -24,7 +25,9 @@ public class AllProductsPage extends PageBase{
 
 	By viewSecondProduct = By.xpath("//a[@href='/product_details/2' and contains(text(), 'View Product')]");
 
-	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')]");
+	By addToCartButton_1 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
+	
+	By addToCartButton_2 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][2]");
 
 	By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
 
@@ -75,16 +78,34 @@ public class AllProductsPage extends PageBase{
 
 	}
 
+	public void scrollToFirstElement() {
+
+		browserUtils.scrollIntoElement(driver, getWebElemnt(viewFirstProduct));
+
+	}
+
+	public void scrollToSecondElement() {
+
+		browserUtils.scrollIntoElement(driver, getWebElemnt(viewSecondProduct));
+
+	}
+
 	public void hoverOnFirstElement() {
 
 		hoverOnElement(getWebElemnt(viewFirstProduct));
 
 	}
-	
-	public void waitSomeTimeTillProductsBeVisible(Duration time) {
-		
+
+	public void waitSomeTimeTillFirstProductsBeVisible(Duration time) {
+
 		waitForElemnt(time, ExpectedConditions.visibilityOfAllElementsLocatedBy(viewFirstProduct));
-		
+
+	}
+
+	public void waitSomeTimeTillSecondProductsBeVisible(Duration time) {
+
+		waitForElemnt(time, ExpectedConditions.visibilityOfAllElementsLocatedBy(viewSecondProduct));
+
 	}
 
 	public void hoverOnSecondElement() {	
@@ -93,9 +114,16 @@ public class AllProductsPage extends PageBase{
 
 	}
 
-	public void clickAddProductToCart(Duration time) {
+	public void clickAddProductToCart_1(Duration time) {
 
-		clickOnElement(addToCartButton);
+		clickOnElement(addToCartButton_1);
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
+
+	}	
+	
+	public void clickAddProductToCart_2(Duration time) {
+
+		clickOnElement(addToCartButton_2);
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
 
 	}	

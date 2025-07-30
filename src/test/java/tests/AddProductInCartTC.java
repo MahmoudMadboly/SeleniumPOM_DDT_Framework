@@ -12,6 +12,7 @@ import config.ConfigReader;
 import pages.AllProductsPage;
 import pages.HomePage;
 import pages.QartPage;
+import utilities.browserUtils;
 
 public class AddProductInCartTC extends TestBase{
 
@@ -21,7 +22,7 @@ public class AddProductInCartTC extends TestBase{
 	QartPage QartPageObject;
 	int time = 5;
 
-	
+
 
 	@Test
 	public void subscriptionFromQartPageScenario() {
@@ -32,37 +33,49 @@ public class AddProductInCartTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.navigateToAllProductsScreen(Duration.ofSeconds(time));
-			
+
 
 			allProductObject = new AllProductsPage(driver);
-			
-			allProductObject.waitSomeTimeTillProductsBeVisible(Duration.ofSeconds(time));
-			
+
+			allProductObject.scrollToFirstElement();
+
+			allProductObject.waitSomeTimeTillFirstProductsBeVisible(Duration.ofSeconds(time));
+
 			allProductObject.hoverOnFirstElement();
-			
-			allProductObject.clickAddProductToCart(Duration.ofSeconds(time));
-			
+
+			allProductObject.clickAddProductToCart_1(Duration.ofSeconds(time));
+
 			allProductObject.clickContinueShoppingButton();
-			
+
+
+
+
+
+			allProductObject.scrollToSecondElement();
+
+			allProductObject.waitSomeTimeTillSecondProductsBeVisible(Duration.ofSeconds(time));
+
+
+
+
+
+
 			allProductObject.hoverOnSecondElement();
-			
-			/*allProductObject.clickAddProductToCart(Duration.ofSeconds(time));
-			
+
+			allProductObject.clickAddProductToCart_2(Duration.ofSeconds(time));
+
 			allProductObject.clickViewCartButton(Duration.ofSeconds(time));
-			
+
 			QartPageObject = new QartPage(driver);
-			
+
 			//verify the products added to the cart
 			assertEquals(QartPageObject.VerifyQartProducts(), 2);
-			
-			
-			*/
-		
-			
-			
-			
+
+
+
+
 		}catch(Exception e) {
 
 			e.printStackTrace();
@@ -73,5 +86,5 @@ public class AddProductInCartTC extends TestBase{
 
 		}
 	}
-	
+
 }
