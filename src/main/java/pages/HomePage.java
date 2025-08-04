@@ -47,6 +47,10 @@ public class HomePage extends PageBase{
 	
 	By viewProductButton = By.xpath("//a [text() = 'View Product']");
 	
+	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
+	
+	By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
+	
 	
 
 
@@ -155,4 +159,13 @@ public class HomePage extends PageBase{
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.productCategory));	
 
 	}
+	
+	public void addProductToCart(Duration time) {
+
+		clickOnElement(addToCartButton);
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
+
+	}	
+	
+	
 }
