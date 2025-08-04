@@ -22,4 +22,15 @@ public class browserUtils {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 
 	}
+	
+	
+	public static void scrollIntoElementByPixel(WebDriver driver , String pixel) {
+
+		js = (JavascriptExecutor) driver;
+
+		 js.executeScript("window.scrollBy(0, arguments[0]);", Integer.parseInt(pixel));
+
+	}
+	
+	
 }

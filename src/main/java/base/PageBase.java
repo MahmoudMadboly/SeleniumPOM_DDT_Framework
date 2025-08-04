@@ -15,7 +15,7 @@ import utilities.WaitUtuls;
 public class PageBase {
 
 	protected WebDriver driver;
-	
+
 	Actions action;
 
 	public PageBase(WebDriver driver) {
@@ -82,14 +82,14 @@ public class PageBase {
 		return driver.findElement(element);
 
 	}
-	
-	
+
+
 	//return list of elements
 	public List<WebElement> getWebElementList(By element) {
-		
-		
+
+
 		return driver.findElements(element);
-		
+
 	}
 
 
@@ -98,13 +98,19 @@ public class PageBase {
 		WaitUtuls.waitExplicily(driver, durationTime, condition);		
 
 	}
-	
+
 	public void hoverOnElement(WebElement element) {
-		
+
 		action = new Actions(driver);
-		
+
 		action.moveToElement(element).perform();
-		
+
 	}
-	
+
+	public void clearField(By element) {
+
+		driver.findElement(element).clear();
+
+	}
+
 }

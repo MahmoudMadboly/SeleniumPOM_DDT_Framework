@@ -13,9 +13,10 @@ public class ProductDetailsPage extends PageBase{
 
 	}
 	
-	 By productName = By.xpath("//h2 [text() = 'Blue Top']");
+	//need to be enhanced to be more relative locator
+	By productName = By.xpath("//h2 [text() = 'Blue Top']");
 	
-	By productCategory = By.xpath("//p[contains(text(), 'Category:')]");
+	public static By productCategory = By.xpath("//p[contains(text(), 'Category:')]");
 	
 	By productPrice = By.xpath("//span[contains(text(), 'Rs.')]");
 	
@@ -24,6 +25,13 @@ public class ProductDetailsPage extends PageBase{
 	By productCondition = By.xpath("//b [text() = 'Condition:']");
 	
 	By productBrand = By.xpath("//b [text() = 'Brand:']");
+	
+	By quantityCounterButton = By.id("quantity");
+	
+	By addToCartButton = By.xpath("//button [text() = ' Add to cart ']");
+	
+	By viewCartButton = By.linkText("View Cart");
+	
 
 	
 	
@@ -67,6 +75,28 @@ public class ProductDetailsPage extends PageBase{
 		return super.getWebElemnt(productBrand).isDisplayed();
 
 
+	}
+	
+	public void increaseProductQuantuty(int quantity) {
+		
+		for(int i=0 ; i<quantity ;i++) {
+			
+			clickOnElement(quantityCounterButton);
+			
+		}
+		
+	}
+	
+	public void clearQuantityField() {
+		
+		clearField(quantityCounterButton);
+		
+	}
+	
+public void setProductQuantity(String productQuantity) {
+		
+		sendKeysToField(quantityCounterButton, productQuantity);
+		
 	}
 }
 

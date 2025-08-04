@@ -21,9 +21,9 @@ public class AllProductsPage extends PageBase{
 
 	public static By allProductsHeader = By.xpath("//h2 [text() = 'All Products']");
 
-	By viewFirstProduct = By.xpath("//a[@href='/product_details/1' and contains(text(), 'View Product')]");
+	By viewFirstProduct = By.xpath("//div[@class='features_items']//a[@href='/product_details/1' and contains(text(), 'View Product')]");
 
-	By viewSecondProduct = By.xpath("//a[@href='/product_details/2' and contains(text(), 'View Product')]");
+	By viewSecondProduct = By.xpath("//div[@class='features_items']//a[@href='/product_details/2' and contains(text(), 'View Product')]");
 
 	By addToCartButton_1 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
 	

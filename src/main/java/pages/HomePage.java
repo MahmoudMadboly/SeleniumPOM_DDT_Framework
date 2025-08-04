@@ -45,6 +45,8 @@ public class HomePage extends PageBase{
 
 	By subscribeButton = By.id("subscribe");
 	
+	By viewProductButton = By.xpath("//a [text() = 'View Product']");
+	
 	
 
 
@@ -127,9 +129,9 @@ public class HomePage extends PageBase{
 	}
 
 
-	public void scrollToSubscribeField(String pixel) {
+	public void scrollToSubscribeField() {
 
-		browserUtils.scrollByPixels(driver, pixel);
+		browserUtils.scrollIntoElement(driver, getWebElemnt(subscriptionMail));
 
 	}
 
@@ -145,5 +147,12 @@ public class HomePage extends PageBase{
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
 
 	}
+	
+	
+	public void clickOnViewProductButton(Duration time) {
 
+		clickOnElement(viewProductButton);
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.productCategory));	
+
+	}
 }
