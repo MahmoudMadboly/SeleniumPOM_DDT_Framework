@@ -25,12 +25,16 @@ public class QartPage extends PageBase{
 	By subscriptionMailField = By.id("susbscribe_email");
 
 	By subscriptionButton = By.id("subscribe");
-	
+
 	By cartTable = By.id("cart_info_table");
 
+	By tableRows = By.xpath("//table[@id='cart_info_table']//tbody/tr");
+
+	static By productQuantityInTable = By.xpath("//tr[@id='product-1']//td[@class='cart_quantity']/button");
+
 	By subscriptionScuccessMessage = By.xpath("//div [text() = 'You have been successfully subscribed!']");
-	
-	
+
+
 
 	public void scrollToFooter(String pixel) {
 
@@ -67,10 +71,17 @@ public class QartPage extends PageBase{
 
 		return super.getWebElemnt(shoppingCartHeader).isDisplayed();
 	}
-	
+
 	public int VerifyQartProducts() {
-		
+
 		return getWebElementList(cartTable).size();
-		
+
+	}
+
+	public String getActualProductQuantity() {
+
+		getWebElementList(tableRows);
+		return getWebElemnt(productQuantityInTable).getText();
+
 	}
 }

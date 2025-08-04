@@ -20,7 +20,7 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 	HomePage homePageObject;
 	ProductDetailsPage ProductDetailsObject;
 	QartPage QartPageObject; 
-	int time = 5;
+	int time = 10;
 
 
 
@@ -43,13 +43,22 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 			assertTrue(ProductDetailsObject.verifyproductPriceVisible(), 
 					"Product price is not visible.");
 			
-		
-			ProductDetailsObject.increaseProductQuantuty(Integer.parseInt(ConfigReader.getConfigValue("productQuantity")));
+			
+			ProductDetailsObject.clearQuantityField();
+			
+			ProductDetailsObject.setProductQuantity(
+					ConfigReader.getConfigValue("productQuantity"));
+			
+			
+			ProductDetailsObject.clickOnAddToCartButton();
+			
+			ProductDetailsObject.clickOnViewCartButton(Duration.ofSeconds(time));
+			
 			
 			QartPageObject = new QartPage(driver);
 			
 			
-			assertEquals(QartPageObject.VerifyQartProducts(), 
+			assertEquals(QartPageObject.getActualProductQuantity(), 
 					ConfigReader.getConfigValue("productQuantity"),
 					"It seems product quantity doesn not match the right quantity");
 			
