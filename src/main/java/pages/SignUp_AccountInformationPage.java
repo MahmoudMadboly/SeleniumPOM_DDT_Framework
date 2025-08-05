@@ -21,7 +21,7 @@ public class SignUp_AccountInformationPage extends PageBase{
 
 
 	//locate page elements
-	By accountInformationHeader = By.xpath("//b [text() = 'Enter Account Information']");
+	static By accountInformationHeader = By.xpath("//b [text() = 'Enter Account Information']");
 
 	By title = By.id("uniform-id_gender1");
 

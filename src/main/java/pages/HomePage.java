@@ -167,5 +167,11 @@ public class HomePage extends PageBase{
 
 	}	
 	
+	public void clickOnContinueShoppingButton() {
+
+		clickOnElement(continueShoppingButton);
+
+	}
+	
 	
 }
