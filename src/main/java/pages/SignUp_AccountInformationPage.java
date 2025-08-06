@@ -61,6 +61,8 @@ public class SignUp_AccountInformationPage extends PageBase{
 
 	public By accountCreationSuccess = By.xpath("//b [text() = 'Account Created!']");
 	
+	By continueButton = By.xpath("//a [text() = 'Continue']");
+	
 
 
 
@@ -246,12 +248,22 @@ public class SignUp_AccountInformationPage extends PageBase{
 	}
 	
 	
+	
+	
 	public void waitTillSuccessMessageAppear(Duration time) {
 		
 		
 		super.waitForElemnt(time,
 				ExpectedConditions.presenceOfElementLocated(accountCreationSuccess));	
 
+	}
+	
+	public void clickOnContinueButton(Duration time) {
+
+
+		clickOnElement(continueButton);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
 
 	}
 }

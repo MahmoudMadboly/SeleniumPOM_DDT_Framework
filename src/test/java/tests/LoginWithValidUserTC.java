@@ -1,5 +1,6 @@
 package tests;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
@@ -45,7 +46,7 @@ public class LoginWithValidUserTC extends TestBase{
 		
 		loginPageObject.clickLogin(Duration.ofMinutes(time));
 		
-		assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
+		assertEquals(homePageObject.verifyUserLoggedIn(), 
 				ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
 			
 	}

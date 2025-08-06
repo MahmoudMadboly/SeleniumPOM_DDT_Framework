@@ -43,8 +43,8 @@ public class LogOutTC extends TestBase{
 
 		loginPageObject.clickLogin(Duration.ofMinutes(time));
 
-	//	assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
-			//	ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
+	assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
+				ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
 
 
 		homePageObject.navigateToLogOut(Duration.ofSeconds(time));
