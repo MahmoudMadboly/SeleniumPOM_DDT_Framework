@@ -35,11 +35,11 @@ public class QartPage extends PageBase{
 	By subscriptionScuccessMessage = By.xpath("//div [text() = 'You have been successfully subscribed!']");
 
 	By proceedToCheckOutButton = By.xpath("//a [text() = 'Proceed To Checkout']");
-	
+
 	By checkOutPopUpHeader = By.xpath("//h4 [text() = 'Checkout']");
-	
+
 	By registerOrLoginButton = By.partialLinkText("Register / Login");
-	
+
 
 
 	public void scrollToFooter(String pixel) {
@@ -90,23 +90,23 @@ public class QartPage extends PageBase{
 		return getWebElemnt(productQuantityInTable).getText();
 
 	}
-	
+
 	public void clickOnproceedToCheckOutButton(Duration time) {
-		
-		clearField(proceedToCheckOutButton);
-		
+
+		clickOnElement(proceedToCheckOutButton);
+
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(checkOutPopUpHeader));
-		
+
 	}
-	
-public void clickRegisterOrLoginButton(Duration time) {
-		
-		clearField(registerOrLoginButton);
-		
+
+	public void clickRegisterOrLoginButton(Duration time) {
+
+		clickOnElement(registerOrLoginButton);
+
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(RegisterUserPage.signUpScreenHeader));
-		
+
 	}
 
 
-	
+
 }

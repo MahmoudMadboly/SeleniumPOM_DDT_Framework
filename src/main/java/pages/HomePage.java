@@ -29,7 +29,7 @@ public class HomePage extends PageBase{
 	
 	By qartButton = By.partialLinkText("Cart");
 
-	public static By SuccessfulLoginHeader = By.xpath("//i [text() = ' Logged in as ']");
+	public static By homePageHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
 
 	By logOutButton = By.linkText(" Logout");
 
@@ -49,9 +49,11 @@ public class HomePage extends PageBase{
 	
 	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
 	
-	By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
+	//By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
 	
-	//static By logedInAsUserName = By.xpath("//i [text() = ' Logged in as ']");
+	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
+	
+	static By logedInAsUserName = By.xpath("//i [text() = ' Logged in as ']");
 	
 	
 
@@ -67,7 +69,7 @@ public class HomePage extends PageBase{
 
 	public String verifyUserLoggedIn() {
 
-		return super.getWebElemnt(SuccessfulLoginHeader).getText();
+		return super.getWebElemnt(logedInAsUserName).getText();
 
 
 	}
@@ -81,9 +83,11 @@ public class HomePage extends PageBase{
 	}*/
 
 
-	public void navigateToSignUpScreen() {
+	public void navigateToSignUpScreen(Duration time) {
 
 		navigateToScreen(signUpButton);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(RegisterUserPage.signUpScreenHeader));
 
 	}
 
@@ -170,7 +174,7 @@ public class HomePage extends PageBase{
 	public void addProductToCart(Duration time) {
 
 		clickOnElement(addToCartButton);
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
+		waitForElemnt(time, ExpectedConditions.elementToBeClickable(continueShoppingButton));
 
 	}	
 	

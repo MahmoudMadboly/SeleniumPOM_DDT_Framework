@@ -5,7 +5,6 @@ import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import base.TestBase;
@@ -13,13 +12,12 @@ import config.ConfigReader;
 import pages.CheckoutPage;
 import pages.HomePage;
 import pages.PaymentPage;
-import pages.ProductDetailsPage;
 import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
-public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
-
+public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
+	
 	HomePage homePageObject;
 	QartPage QartPageObject;
 	RegisterUserPage signUpObject;
@@ -31,7 +29,7 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 
 	@Test
-	public void PlaceOrder_RegisterWhileCheckoutScenario() {
+	public void PlaceOrder_RegisterBeforeCheckoutScenario() {
 
 		try {
 
@@ -39,27 +37,17 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-
-			homePageObject.addProductToCart(Duration.ofSeconds(time));
-
-			homePageObject.clickOnContinueShoppingButton();
-
-			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
-
-			QartPageObject = new QartPage(driver);
-
-			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
-
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
-
+			
+			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
 			
 			
 			
 			
 			
 			
-			QartPageObject.clickRegisterOrLoginButton(Duration.ofSeconds(time));
-
+			
+			
+			
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
@@ -120,6 +108,7 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 			assertEquals(accountInfoObject.getSuccessMessageText(),
 					ConfigReader.getConfigValue("accountCreationSuccessMessage"));
 
+			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
 			
 			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
 
@@ -127,9 +116,15 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
 					"It seems login with user name is not matched");
 			
+			homePageObject.addProductToCart(Duration.ofSeconds(time));
+
+			homePageObject.clickOnContinueShoppingButton();
 
 			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
 
+			QartPageObject = new QartPage(driver);
+
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
 
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
 
@@ -146,14 +141,12 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems revie your order table is not displayed");
-
-
+			
 			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
 			
 			PaymentPageObject = new PaymentPage(driver);
-
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
 
@@ -169,22 +162,17 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			PaymentPageObject.clickPayAndConfirmButton();
 
-			
-			
-			
-			
 			assertEquals(PaymentPageObject.getplaceOrderSuccessMessageText(),
 					ConfigReader.getConfigValue("orderPlacedSuccessMessage"),
 					"It seems the place order success messgae is not matched");
-
-
+			
 			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
 
 			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
 					ConfigReader.getConfigValue("accountDeltedHeader"),
 					"It seems the account deleted header text is not matched");
-
-
+			
+			
 
 		}catch(Exception e) {
 
@@ -192,9 +180,8 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during place order-register while checkout test case! ");	
+			System.out.println("it seems some issues happened during place order-register before checkout test case! ");	
 
 		}
-
 	}
 }

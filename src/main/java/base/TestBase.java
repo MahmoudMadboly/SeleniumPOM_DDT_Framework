@@ -73,7 +73,7 @@ public class TestBase {
 		driver.get(portalEndPoint);
 		
 		WaitUtuls.waitExplicily(driver, Duration.ofSeconds(time),
-				ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
+				ExpectedConditions.presenceOfElementLocated(HomePage.homePageHeader));
 		
 		
 	}

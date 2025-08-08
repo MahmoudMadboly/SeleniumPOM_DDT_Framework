@@ -263,7 +263,7 @@ public class SignUp_AccountInformationPage extends PageBase{
 
 		clickOnElement(continueButton);
 		
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(HomePage.logedInAsUserName));
 
 	}
 }
