@@ -60,8 +60,8 @@ public class LoginPage extends PageBase{
 
 		clickOnElement(loginButton);
 		
-	//	super.waitForElemnt(waitDuration, 
-				//ExpectedConditions.presenceOfElementLocated(HomePage.SuccessfulLoginHeader));
+		super.waitForElemnt(waitDuration, 
+				ExpectedConditions.presenceOfElementLocated(HomePage.logedInAsUserName));
 
 	}
 	

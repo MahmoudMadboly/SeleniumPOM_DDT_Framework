@@ -39,6 +39,10 @@ public class QartPage extends PageBase{
 	By checkOutPopUpHeader = By.xpath("//h4 [text() = 'Checkout']");
 
 	By registerOrLoginButton = By.partialLinkText("Register / Login");
+	
+	By deletElementButton = By.xpath("//a[@data-product-id='1']");
+	
+	By cartEmptyMessage = By.xpath("//p[@class='text-center']/b[text()='Cart is empty!']");
 
 
 
@@ -107,6 +111,18 @@ public class QartPage extends PageBase{
 
 	}
 
-
-
+	
+	public void removeElementFromCart(Duration time) {
+		
+		clickOnElement(deletElementButton);
+		
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(cartEmptyMessage));
+		
+	}
+	
+	public String verifyCartEmpty() {
+		
+		return getWebElemnt(cartEmptyMessage).getText();
+		
+	}
 }

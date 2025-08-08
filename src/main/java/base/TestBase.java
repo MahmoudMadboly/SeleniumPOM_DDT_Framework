@@ -80,7 +80,7 @@ public class TestBase {
 
 
 
-	//@AfterTest
+	@AfterTest
 	//close the browser
 	public void closeBrowser() {
 

@@ -11,16 +11,18 @@ import base.TestBase;
 import config.ConfigReader;
 import pages.CheckoutPage;
 import pages.HomePage;
+import pages.LoginPage;
 import pages.PaymentPage;
 import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
-public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
-	
+public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
+
 	HomePage homePageObject;
 	QartPage QartPageObject;
 	RegisterUserPage signUpObject;
+	LoginPage LoginPageObject;
 	SignUp_AccountInformationPage accountInfoObject;
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
@@ -29,7 +31,7 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 
 	@Test
-	public void PlaceOrder_RegisterBeforeCheckoutScenario() {
+	public void PlaceOrder_LoginBeforeCheckoutScenario() {
 
 		try {
 
@@ -37,77 +39,15 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
-			
-			signUpObject = new RegisterUserPage(driver);
 
-			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
+			LoginPageObject.enterUserMail(ConfigReader.getConfigValue("validUserName"));
 
-			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("registerWhileCheckout_accountMail"));
+			LoginPageObject.enterAccountPass(ConfigReader.getConfigValue("validPassword"));
 
-			signUpObject.clickSignUp();
+			LoginPageObject.clickLogin(Duration.ofSeconds(time));
 
-
-			accountInfoObject = new SignUp_AccountInformationPage(driver);
-
-			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
-
-			assertTrue(accountInfoObject.verifyEnterAccountInfoHeaderVisible(), 
-					ConfigReader.getConfigValue("enterAccountInfoPageHeading"));
-
-			accountInfoObject.selectTitle();
-
-			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
-
-			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("day"));
-
-			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("month"));
-
-			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("year"));
-
-			accountInfoObject.checkNewsLetterOption();
-
-			accountInfoObject.checkSpecialOferOption();
-
-			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
-
-			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
-
-			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
-
-			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
-
-			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
-
-			accountInfoObject.selectAccountCountry("value", "India");
-
-			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
-
-			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
-
-			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
-
-			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
-
-			accountInfoObject.clickCreateAccountButton();
-
-			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
-
-			assertEquals(accountInfoObject.getSuccessMessageText(),
-					ConfigReader.getConfigValue("accountCreationSuccessMessage"));
-
-			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
-			
-
-			assertTrue(homePageObject.verifyUserLoggedIn()
-					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
-					"It seems login with user name is not matched");
-			
-		
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
 
 			homePageObject.clickOnContinueShoppingButton();
@@ -117,9 +57,10 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			QartPageObject = new QartPage(driver);
 
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
-			
+
 
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+
 
 			CheckoutPageObject = new CheckoutPage(driver);
 
@@ -134,11 +75,11 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems revie your order table is not displayed");
-			
+
 			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
-			
+
 			PaymentPageObject = new PaymentPage(driver);
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
@@ -158,14 +99,14 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			assertEquals(PaymentPageObject.getplaceOrderSuccessMessageText(),
 					ConfigReader.getConfigValue("orderPlacedSuccessMessage"),
 					"It seems the place order success messgae is not matched");
-			
+
 			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
 
 			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
 					ConfigReader.getConfigValue("accountDeltedHeader"),
 					"It seems the account deleted header text is not matched");
-			
-			
+
+
 
 		}catch(Exception e) {
 
@@ -173,7 +114,7 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during place order-register before checkout test case! ");	
+			System.out.println("it seems some issues happened during place order-Login before checkout test case! ");	
 
 		}
 	}

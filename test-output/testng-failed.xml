@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.PlaceOrder_RegisterWhileCheckoutTC">
+      <class name="tests.RemoveProductsFromCartTC">
         <methods>
-          <include name="PlaceOrder_RegisterWhileCheckoutScenario"/>
+          <include name="removeProductsFromCartScenario"/>
+          <include name="closeBrowser"/>
           <include name="openBrowser"/>
         </methods>
-      </class> <!-- tests.PlaceOrder_RegisterWhileCheckoutTC -->
+      </class> <!-- tests.RemoveProductsFromCartTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
