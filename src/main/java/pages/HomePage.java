@@ -1,9 +1,11 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
@@ -54,6 +56,12 @@ public class HomePage extends PageBase{
 	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
 	
 	static By logedInAsUserName = By.xpath("//i [text() = ' Logged in as ']");
+	
+	By category = By.xpath("//h2 [text() = 'Category']");
+	
+	By womenCategory = By.partialLinkText("Women");
+	
+	By womenCategoryChoices = By.xpath("//ul/li/a");
 	
 	
 
@@ -184,5 +192,35 @@ public class HomePage extends PageBase{
 
 	}
 	
+	public boolean verifyCategoryVisible() {
+
+		return super.getWebElemnt(category).isDisplayed();
+
+
+	}
+	
+	public void expandWomanCategory() {
+
+		clickOnElement(womenCategory);
+
+	}
+	
+	public void getAndLoopInsideWomanCategoryChoices(String targetChoice , Duration time) {
+
+		List<WebElement> choices = getWebElementList(womenCategoryChoices);
+		
+		for(WebElement choice : choices) {
+			
+			if(choice.getText().trim().equalsIgnoreCase(targetChoice)) {
+				
+				choice.click();
+				
+				waitForElemnt(time, null);
+				
+				break;
+				
+			}
+		}
+	}
 	
 }
