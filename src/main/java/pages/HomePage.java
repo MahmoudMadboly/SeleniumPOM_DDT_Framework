@@ -205,17 +205,17 @@ public class HomePage extends PageBase{
 
 	}
 	
-	public void getAndLoopInsideWomanCategoryChoices(String targetChoice , Duration time) {
+	public void getAndLoopInsideWomanCategoryChoices(String womentargetChoice , Duration time) {
 
 		List<WebElement> choices = getWebElementList(womenCategoryChoices);
 		
 		for(WebElement choice : choices) {
 			
-			if(choice.getText().trim().equalsIgnoreCase(targetChoice)) {
+			if(choice.getText().trim().equalsIgnoreCase(womentargetChoice)) {
 				
 				choice.click();
 				
-				waitForElemnt(time, null);
+				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(WomenCategoryScreenPage.womenCategoryHeader));
 				
 				break;
 				

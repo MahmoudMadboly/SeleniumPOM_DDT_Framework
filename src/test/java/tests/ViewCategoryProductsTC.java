@@ -15,10 +15,14 @@ import pages.PaymentPage;
 import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
+import pages.WomenCategoryScreenPage;
+import pages.menCategoryScreenPage;
 
 public class ViewCategoryProductsTC extends TestBase{
 
 	HomePage homePageObject;
+	WomenCategoryScreenPage WomenCategoryObject;
+	menCategoryScreenPage menCategoryObject;
 
 	int time = 10;
 
@@ -40,10 +44,20 @@ public class ViewCategoryProductsTC extends TestBase{
 			homePageObject.expandWomanCategory();
 			
 			homePageObject.getAndLoopInsideWomanCategoryChoices(
-					ConfigReader.getConfigValue("womancategoryListchoice"));
+					ConfigReader.getConfigValue("womancategoryListchoice") , Duration.ofSeconds(time));
 			
-
-
+			WomenCategoryObject = new WomenCategoryScreenPage(driver);
+			
+			WomenCategoryObject.verifytWomanPageHeaderVisible();
+			
+			WomenCategoryObject.getAndLoopInsideMenCategoryChoices(ConfigReader
+					.getConfigValue("womancategoryListchoice"), Duration.ofSeconds(time));
+			
+			menCategoryObject = new menCategoryScreenPage(driver);
+			
+			menCategoryObject.verifytMenPageHeaderVisible();
+			
+			
 		}catch(Exception e) {
 
 			e.printStackTrace();

@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-08T17:50:43 AST" name="Default suite" finished-at="2025-08-08T17:51:00 AST" duration-ms="16966">
+  <suite started-at="2025-08-11T05:57:25 AST" name="Default suite" finished-at="2025-08-11T05:57:42 AST" duration-ms="16620">
     <groups>
     </groups>
-    <test started-at="2025-08-08T17:50:43 AST" name="Default test" finished-at="2025-08-08T17:51:00 AST" duration-ms="16966">
-      <class name="tests.RemoveProductsFromCartTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.RemoveProductsFromCartTC@175c2241]" started-at="2025-08-08T17:50:43 AST" name="openBrowser" finished-at="2025-08-08T17:50:48 AST" duration-ms="4750" status="PASS">
+    <test started-at="2025-08-11T05:57:25 AST" name="Default test" finished-at="2025-08-11T05:57:42 AST" duration-ms="16620">
+      <class name="tests.ViewCategoryProductsTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.ViewCategoryProductsTC@175c2241]" started-at="2025-08-11T05:57:25 AST" name="openBrowser" finished-at="2025-08-11T05:57:31 AST" duration-ms="6337" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method signature="removeProductsFromCartScenario()[pri:0, instance:tests.RemoveProductsFromCartTC@175c2241]" started-at="2025-08-08T17:50:48 AST" name="removeProductsFromCartScenario" finished-at="2025-08-08T17:50:50 AST" duration-ms="2164" status="PASS">
+        <test-method signature="viewCategoryProductsScenario()[pri:0, instance:tests.ViewCategoryProductsTC@175c2241]" started-at="2025-08-11T05:57:31 AST" name="viewCategoryProductsScenario" finished-at="2025-08-11T05:57:31 AST" duration-ms="32" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- removeProductsFromCartScenario -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:tests.RemoveProductsFromCartTC@175c2241]" started-at="2025-08-08T17:50:50 AST" name="closeBrowser" finished-at="2025-08-08T17:51:00 AST" duration-ms="10034" status="PASS">
+        </test-method> <!-- viewCategoryProductsScenario -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:tests.ViewCategoryProductsTC@175c2241]" started-at="2025-08-11T05:57:31 AST" name="closeBrowser" finished-at="2025-08-11T05:57:42 AST" duration-ms="10235" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeBrowser -->
-      </class> <!-- tests.RemoveProductsFromCartTC -->
+      </class> <!-- tests.ViewCategoryProductsTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
