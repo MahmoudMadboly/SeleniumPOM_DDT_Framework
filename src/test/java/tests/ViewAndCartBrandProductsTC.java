@@ -41,12 +41,12 @@ public class ViewAndCartBrandProductsTC extends TestBase{
 			assertTrue(allProductObject.verifyBrandsVisible(), 
 					"It seems brand list is not visible.");
 			
-			allProductObject.getAndLoopInsideBrandsCategoryChoices(ConfigReader.getConfigValue("brandName"),
+			allProductObject.getAndLoopInsideBrandsCategoryChoices(ConfigReader.getConfigValue("firstBrandName"),
 					Duration.ofSeconds(time));
 			
 			brandPageObject = new BrandsPage(driver);
 			
-			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen().contains(ConfigReader.getConfigValue("brandName")), 
+			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen().contains(ConfigReader.getConfigValue("firstBrandName")), 
 					"It seems navigation to brand screen failed");
 			
 			assertTrue(brandPageObject.verifyBrandListSize() > 0, 

@@ -41,7 +41,7 @@ public class AllProductsPage extends PageBase{
 
 	By brandsSectionHeader = By.xpath("//h2 [text() = 'Brands']");
 	
-	By brandsCategoryChoices = By.xpath("//ul/li/a");
+	static By brandsCategoryChoices = By.xpath("//ul/li/a");
 	
 	
 	

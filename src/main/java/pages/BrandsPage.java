@@ -18,7 +18,9 @@ public class BrandsPage extends PageBase{
 
 	static By brandCategoryHeader = By.xpath("//h2 [contains(text(),'Brand')]");
 	
-	By brandList = By.xpath("//div [class = 'features_items']");
+	By brandProductList = By.xpath("//div [class = 'features_items']");
+	
+	By brandList = AllProductsPage.brandsCategoryChoices;
 
 
 	public String verifyNaviagtionToBrandScreen() {
@@ -29,9 +31,13 @@ public class BrandsPage extends PageBase{
 
 	public int verifyBrandListSize() {
 
-		return getWebElementList(brandList).size();
+		return getWebElementList(brandProductList).size();
 
 	}
-
-
+	
+	public void selectBrand() {
+		
+		
+		
+	}
 }
