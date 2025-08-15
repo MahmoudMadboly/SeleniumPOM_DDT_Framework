@@ -1,9 +1,11 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
@@ -37,7 +39,13 @@ public class AllProductsPage extends PageBase{
 
 	By searchFieldButton = By.id("submit_search");
 
-	//By searchedProduct = By.xpath("//h2 [text() = 'Searched Products']");
+	By brandsSectionHeader = By.xpath("//h2 [text() = 'Brands']");
+	
+	By brandsCategoryChoices = By.xpath("//ul/li/a");
+	
+	
+	
+	
 
 
 	public void enterSearchCriteria(String searchCriteria) {
@@ -141,4 +149,30 @@ public class AllProductsPage extends PageBase{
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
 
 	}
+	
+	public boolean verifyBrandsVisible() {
+
+		return super.getWebElemnt(brandsSectionHeader).isDisplayed();
+
+	}
+	
+	public void getAndLoopInsideBrandsCategoryChoices(String brandTargetChoice , Duration time) {
+
+		List<WebElement> choices = getWebElementList(brandsCategoryChoices);
+		
+		for(WebElement choice : choices) {
+			
+			if(choice.getText().trim().equalsIgnoreCase(brandTargetChoice)) {
+				
+				choice.click();
+				
+				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(BrandsPage.brandCategoryHeader));
+				
+				break;
+				
+			}
+		}
+	}	
+	
+	
 }

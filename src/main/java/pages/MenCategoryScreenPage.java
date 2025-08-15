@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
 
-public class menCategoryScreenPage extends PageBase{
+public class MenCategoryScreenPage extends PageBase{
 
-	public menCategoryScreenPage(WebDriver driver) {
+	public MenCategoryScreenPage(WebDriver driver) {
 
 		super(driver);	
 

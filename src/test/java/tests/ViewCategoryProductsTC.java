@@ -11,18 +11,19 @@ import config.ConfigReader;
 import pages.CheckoutPage;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MenCategoryScreenPage;
 import pages.PaymentPage;
 import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 import pages.WomenCategoryScreenPage;
-import pages.menCategoryScreenPage;
+import pages.MenCategoryScreenPage;
 
 public class ViewCategoryProductsTC extends TestBase{
 
 	HomePage homePageObject;
 	WomenCategoryScreenPage WomenCategoryObject;
-	menCategoryScreenPage menCategoryObject;
+	MenCategoryScreenPage menCategoryObject;
 
 	int time = 10;
 
@@ -53,7 +54,7 @@ public class ViewCategoryProductsTC extends TestBase{
 			WomenCategoryObject.getAndLoopInsideMenCategoryChoices(ConfigReader
 					.getConfigValue("womancategoryListchoice"), Duration.ofSeconds(time));
 			
-			menCategoryObject = new menCategoryScreenPage(driver);
+			menCategoryObject = new MenCategoryScreenPage(driver);
 			
 			menCategoryObject.verifytMenPageHeaderVisible();
 			
