@@ -25,6 +25,7 @@ public class ViewAndCartBrandProductsTC extends TestBase{
 
 
 	@Test
+	//this test case need to be fixed
 	public void vViewAndCartBrandProductsScenario() {
 
 		try {
@@ -46,21 +47,21 @@ public class ViewAndCartBrandProductsTC extends TestBase{
 			
 			brandPageObject = new BrandsPage(driver);
 			
+	
 			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen().contains(ConfigReader.getConfigValue("firstBrandName")), 
-					"It seems navigation to brand screen failed");
+					"It seems navigation to polo brand screen failed");
 			
 			assertTrue(brandPageObject.verifyBrandListSize() > 0, 
 					"It seems there is no relted-brand product");
 			
 			
+			brandPageObject.selectBrand(ConfigReader.getConfigValue("secondBrandName") , Duration.ofSeconds(time));
 			
+			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen().contains(ConfigReader.getConfigValue("secondBrandName")), 
+					"It seems navigation to H&M brand screen failed");
 			
-			
-			
-			
-			
-			
-
+			assertTrue(brandPageObject.verifyBrandListSize() > 0, 
+					"It seems there is no relted-brand product");
 			
 			
 			

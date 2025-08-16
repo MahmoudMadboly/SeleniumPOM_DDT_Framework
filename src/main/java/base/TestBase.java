@@ -17,7 +17,7 @@ import pages.HomePage;
 import utilities.WaitUtuls;
 
 public class TestBase {
-	
+
 	int time = 10;
 
 	protected WebDriver driver;
@@ -71,16 +71,16 @@ public class TestBase {
 		driver.manage().window().maximize();
 
 		driver.get(portalEndPoint);
-		
+
 		WaitUtuls.waitExplicily(driver, Duration.ofSeconds(time),
 				ExpectedConditions.presenceOfElementLocated(HomePage.homePageHeader));
-		
-		
+
+
 	}
 
 
 
-	@AfterTest
+	//@AfterTest
 	//close the browser
 	public void closeBrowser() {
 

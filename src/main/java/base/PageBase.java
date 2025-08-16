@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +18,8 @@ public class PageBase {
 	protected WebDriver driver;
 
 	Actions action;
+	
+	JavascriptExecutor js;
 
 	public PageBase(WebDriver driver) {
 
@@ -112,5 +115,12 @@ public class PageBase {
 		driver.findElement(element).clear();
 
 	}
-
+	
+	public void clickUsingJavaScript(WebElement element) {
+		
+		js = (JavascriptExecutor) driver;
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+		
+	}
 }

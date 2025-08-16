@@ -1,7 +1,10 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
 
@@ -16,6 +19,11 @@ public class SearchedProductPage extends PageBase{
 	By searchedProductHeader = By.id("submit_search");
 	
 	By searchedProductName =  By.xpath("//div[@class='productinfo text-center']/p");
+	
+	By addToCartButton =  ProductDetailsPage.addToCartButton;
+	
+	By viewCartButton =  By.partialLinkText("View Cart");
+	
 	
 	                  
 
@@ -33,7 +41,29 @@ public class SearchedProductPage extends PageBase{
 		
 	}
 	
+	public void addProductToCart() {
+		
+	clickOnElement(addToCartButton);	
+		
+	}	
 	
 	
-	
+	public void navigateToCartScreen(Duration time)
+	{
+		
+		clickOnElement(viewCartButton);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+

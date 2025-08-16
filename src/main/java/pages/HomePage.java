@@ -27,7 +27,7 @@ public class HomePage extends PageBase{
 
 	By productsCaseButton = By.linkText("/products");
 
-	By signUpButton = By.partialLinkText("Signup");
+	static By signUpButton = By.partialLinkText("Signup");
 	
 	By qartButton = By.partialLinkText("Cart");
 

@@ -31,9 +31,21 @@ public class ProductDetailsPage extends PageBase{
 
 	By quantityCounterButton = By.id("quantity");
 
-	By addToCartButton = By.xpath("//button[normalize-space()='Add to cart']");
+	static By addToCartButton = By.xpath("//button[normalize-space()='Add to cart']");
 
 	By viewCartButton = By.linkText("View Cart");
+
+	static By writeYourReview = By.partialLinkText("Write Your Review");
+
+	By name = By.id("name");
+
+	By email = By.id("email");
+
+	By myReview = By.id("review");
+	
+	By submitReview = By.id("button-review");
+	
+	By addReviewSuccessMessage = By.xpath("//span [text() = 'Thank you for your review.']");
 
 
 
@@ -108,14 +120,51 @@ public class ProductDetailsPage extends PageBase{
 		clickOnElement(addToCartButton);
 
 	}
-	
+
 	public void clickOnViewCartButton(Duration time) {
 
 
 		clickOnElement(viewCartButton);
-		
+
 		waitForElemnt(time, ExpectedConditions.presenceOfAllElementsLocatedBy(QartPage.productQuantityInTable));
 
+	}
+
+	public boolean verifyWriteYourReviewVisible() {
+
+		return super.getWebElemnt(writeYourReview).isDisplayed();
+
+
+	}
+
+	public void setReviewerName(String reviewerName) {
+
+		sendKeysToField(name, reviewerName);
+
+	}
+
+	public void setReviewerEmail(String reviewerEmail) {
+
+		sendKeysToField(email, reviewerEmail);
+
+	}
+
+	public void setReviewerComment(String reviewerComment) {
+
+		sendKeysToField(myReview, reviewerComment);
+
+	}
+
+	public void submitReview() {
+
+clickOnElement(submitReview);
+
+	}
+	
+	public String verifyAddReviewSuccessMessage() {
+		
+		return getWebElemnt(addReviewSuccessMessage).getText();
+		
 	}
 }
 

@@ -41,7 +41,7 @@ public class AllProductsPage extends PageBase{
 
 	By brandsSectionHeader = By.xpath("//h2 [text() = 'Brands']");
 	
-	static By brandsCategoryChoices = By.xpath("//ul/li/a");
+	static By brandsCategoryChoices = By.xpath("//div[@class='brands_products']//ul/li/a");
 	
 	
 	
@@ -68,9 +68,11 @@ public class AllProductsPage extends PageBase{
 	}
 
 
-	public void clickViewProduct() {
+	public void clickViewProduct(Duration time) {
 
 		clickOnElement(viewFirstProduct);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.writeYourReview));
 
 	}
 
@@ -159,16 +161,22 @@ public class AllProductsPage extends PageBase{
 	public void getAndLoopInsideBrandsCategoryChoices(String brandTargetChoice , Duration time) {
 
 		List<WebElement> choices = getWebElementList(brandsCategoryChoices);
-		
+	
 		for(WebElement choice : choices) {
+			
+			System.out.println("Mahmoud" + choice.getText());
 			
 			if(choice.getText().trim().equalsIgnoreCase(brandTargetChoice)) {
 				
-				choice.click();
+				browserUtils.scrollIntoElement(driver, choice);
 				
-				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(BrandsPage.brandCategoryHeader));
+				clickUsingJavaScript(choice);
 				
-				break;
+			//	choice.click();
+				
+				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(BrandsPage.brandHeader));
+				
+				return;
 				
 			}
 		}

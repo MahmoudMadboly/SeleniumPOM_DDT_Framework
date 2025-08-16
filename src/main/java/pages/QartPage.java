@@ -43,6 +43,8 @@ public class QartPage extends PageBase{
 	By deletElementButton = By.xpath("//a[@data-product-id='1']");
 	
 	By cartEmptyMessage = By.xpath("//p[@class='text-center']/b[text()='Cart is empty!']");
+	
+	By signup_loginButton = HomePage.signUpButton;
 
 
 
@@ -125,4 +127,20 @@ public class QartPage extends PageBase{
 		return getWebElemnt(cartEmptyMessage).getText();
 		
 	}
+	
+	
+public void navigateToLoginScreen(Duration time) {
+		
+		clickOnElement(signup_loginButton);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(LoginPage.loginAccountHeader));
+		
+	}
 }
+
+
+
+
+
+
+
