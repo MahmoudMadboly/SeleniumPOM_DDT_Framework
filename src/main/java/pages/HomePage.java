@@ -63,6 +63,11 @@ public class HomePage extends PageBase{
 	
 	By womenCategoryChoices = By.xpath("//ul/li/a");
 	
+	By recommendedItemsHeader = By.id("recommended-item-carousel");
+	
+	By addToCart_recommendedItemsHeader = By.xpath("//a[@class='btn btn-default add-to-cart' and @data-product-id='4']");
+	
+	By viewCartButton = AllProductsPage.viewCartButton;
 	
 
 
@@ -222,5 +227,33 @@ public class HomePage extends PageBase{
 			}
 		}
 	}
+	
+	
+	public void scrollToBottomOfPage() {
+		
+		browserUtils.scrollFromTopToBottom(driver);
+		
+	}
+	
+	
+	public boolean verifyRecommendedItemsVisible() {
+		
+		return getWebElemnt(recommendedItemsHeader).isDisplayed();
+		
+	}
+	
+	
+public void addRecommendedItemToCart() {
+		
+		clickOnElement(addToCart_recommendedItemsHeader);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

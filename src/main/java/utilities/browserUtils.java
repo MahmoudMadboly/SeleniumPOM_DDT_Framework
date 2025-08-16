@@ -33,4 +33,17 @@ public class browserUtils {
 	}
 	
 	
+	public static void scrollFromTopToBottom(WebDriver driver) {
+	   
+		js = (JavascriptExecutor) driver;
+
+	    // Scroll to top first (optional, to ensure starting from top)
+	    js.executeScript("window.scrollTo(0, 0);");
+
+	    // Get the height of the entire page
+	    long pageHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+	    // Scroll down to the bottom of the page
+	    js.executeScript("window.scrollTo(0, arguments[0]);", pageHeight);
+	}
 }

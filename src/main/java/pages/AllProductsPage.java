@@ -33,7 +33,7 @@ public class AllProductsPage extends PageBase{
 
 	By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
 
-	By viewCartButton = By.partialLinkText("View Cart");
+	static By viewCartButton = By.partialLinkText("View Cart");
 
 	By searchField = By.id("search_product");
 
