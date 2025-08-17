@@ -110,7 +110,25 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 			assertEquals(homePageObject.verifyUserLoggedIn(), 
 					ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
 
-			//start from step no. 8 "Add products to cart"
+			allProductObject = new AllProductsPage(driver);
+
+			allProductObject.scrollToFirstElement();
+
+			allProductObject.waitSomeTimeTillFirstProductsBeVisible(Duration.ofSeconds(time));
+
+			allProductObject.hoverOnFirstElement();
+
+			allProductObject.clickAddProductToCart_1(Duration.ofSeconds(time));
+			
+			allProductObject.clickViewCartButton(Duration.ofSeconds(time));
+			
+			
+			QartPageObject = new QartPage(driver);
+
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
+			
+			
+			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
 
 
 		}catch(Exception e) {

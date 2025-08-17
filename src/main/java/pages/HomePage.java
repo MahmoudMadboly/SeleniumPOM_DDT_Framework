@@ -248,6 +248,7 @@ public void addRecommendedItemToCart() {
 		clickOnElement(addToCart_recommendedItemsHeader);
 		
 	}
+
 	
 	
 	

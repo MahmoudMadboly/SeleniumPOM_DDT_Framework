@@ -36,7 +36,7 @@ public class RegisterTC extends TestBase{
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
 
-			homePageObject.navigateToSignUpScreen();
+			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
 
 			signUpObject = new RegisterUserPage(driver);
 
