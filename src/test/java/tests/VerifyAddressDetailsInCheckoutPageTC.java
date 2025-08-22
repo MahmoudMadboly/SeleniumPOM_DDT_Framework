@@ -33,7 +33,7 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 
 	@Test 
-	public void AddReviewOnProductScenario() {
+	public void VerifyAddressDetailsInCheckoutPageScenario() {
 
 		try {
 
