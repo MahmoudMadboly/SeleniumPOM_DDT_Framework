@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.File;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -22,28 +23,46 @@ public class browserUtils {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 
 	}
-	
-	
+
+
 	public static void scrollIntoElementByPixel(WebDriver driver , String pixel) {
 
 		js = (JavascriptExecutor) driver;
 
-		 js.executeScript("window.scrollBy(0, arguments[0]);", Integer.parseInt(pixel));
+		js.executeScript("window.scrollBy(0, arguments[0]);", Integer.parseInt(pixel));
 
 	}
-	
-	
+
+
 	public static void scrollFromTopToBottom(WebDriver driver) {
-	   
+
 		js = (JavascriptExecutor) driver;
 
-	    // Scroll to top first (optional, to ensure starting from top)
-	    js.executeScript("window.scrollTo(0, 0);");
+		// Scroll to top first (optional, to ensure starting from top)
+		js.executeScript("window.scrollTo(0, 0);");
 
-	    // Get the height of the entire page
-	    long pageHeight = (long) js.executeScript("return document.body.scrollHeight");
+		// Get the height of the entire page
+		long pageHeight = (long) js.executeScript("return document.body.scrollHeight");
 
-	    // Scroll down to the bottom of the page
-	    js.executeScript("window.scrollTo(0, arguments[0]);", pageHeight);
+		// Scroll down to the bottom of the page
+		js.executeScript("window.scrollTo(0, arguments[0]);", pageHeight);
+	}
+
+
+	public static boolean isFileDownloaded(String downloadPath , String fileName) {
+
+		File file = new File(downloadPath + "/" + fileName);
+
+		if(file.exists()) {
+
+			return true;
+
+		}else {
+
+			return false;
+
+		}
+
+
 	}
 }

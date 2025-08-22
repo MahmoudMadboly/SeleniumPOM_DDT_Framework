@@ -12,17 +12,23 @@ import config.ConfigReader;
 import pages.AllProductsPage;
 import pages.CheckoutPage;
 import pages.HomePage;
+import pages.PaymentPage;
 import pages.ProductDetailsPage;
 import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
+import utilities.browserUtils;
 
 public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
-	
+
 	HomePage homePageObject;
 	AllProductsPage allProductObject;
 	QartPage QartPageObject;
+	RegisterUserPage signUpObject;
+	SignUp_AccountInformationPage accountInfoObject;
+	CheckoutPage CheckoutPageObject;
+	PaymentPage PaymentPageObject;
 
 	int time = 10;
 
@@ -36,21 +42,144 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
-			
+
 			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
-			
+
 			QartPageObject = new QartPage(driver);
 
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
+
+			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+
+			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
+
+			signUpObject = new RegisterUserPage(driver);
+
+			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
+
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("registerWhileCheckout_accountMail"));
+
+			signUpObject.clickSignUp();
+
+			accountInfoObject = new SignUp_AccountInformationPage(driver);
+
+			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
+
+			assertTrue(accountInfoObject.verifyEnterAccountInfoHeaderVisible(), 
+					ConfigReader.getConfigValue("enterAccountInfoPageHeading"));
+
+			accountInfoObject.selectTitle();
+
+			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
+
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("day"));
+
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("month"));
+
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
+					ConfigReader.getConfigValue("year"));
+
+			accountInfoObject.checkNewsLetterOption();
+
+			accountInfoObject.checkSpecialOferOption();
+
+			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
+
+			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
+
+			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
+
+			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
+
+			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
+
+			accountInfoObject.selectAccountCountry("value", "India");
+
+			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
+
+			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
+
+			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
+
+			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
+
+			accountInfoObject.clickCreateAccountButton();
+
+			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
+
+			assertEquals(accountInfoObject.getSuccessMessageText(),
+					ConfigReader.getConfigValue("accountCreationSuccessMessage"));
+
+			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
+
+
+			assertTrue(homePageObject.verifyUserLoggedIn()
+					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
+					"It seems login with user name is not matched");
+			
+			homePageObject.addProductToCart(Duration.ofSeconds(time));
 			
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
 			
-			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
+			CheckoutPageObject = new CheckoutPage(driver);
 
-			//start from step 9
+			assertTrue(CheckoutPageObject.verifyAddressDetailsHeaderIsDiaplyed(),
+					"It seems the checkout screen did not displayed");
 
+			assertTrue(CheckoutPageObject.verifyDeliveryAddressTableIsDiaplyed(),
+					"It seems delivery address table is not displayed");
+
+			assertTrue(CheckoutPageObject.verifyBillingAddressTableIsDiaplyed(),
+					"It seems billing address table is not displayed");
+
+			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
+					"It seems revie your order table is not displayed");
+			
+			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
+
+			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
+			
+			PaymentPageObject = new PaymentPage(driver);
+
+			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
+
+			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("nameOnCard"));
+
+			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("cardNumber"));
+
+			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("CVC"));
+
+			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("monthOfExpiration"));
+
+			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("yearOfExpiration"));
+
+			PaymentPageObject.clickPayAndConfirmButton();
+			
+			assertEquals(PaymentPageObject.getplaceOrderSuccessMessageText(),
+					ConfigReader.getConfigValue("orderPlacedSuccessMessage"),
+					"It seems the place order success messgae is not matched");
+			
+			PaymentPageObject.waitTillOrdrPlacedHeaderToBeDisplayed(Duration.ofSeconds(time));
+			
+			PaymentPageObject.downloadInvoice();
+			
+			PaymentPageObject.verifyInvoiceDownloaded(ConfigReader.getConfigValue("downloadedFilePath"),
+					ConfigReader.getConfigValue("fileName"));
+			
+			PaymentPageObject.continueAfterPayment(Duration.ofSeconds(time));
+			
+			
+			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
+
+			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
+					ConfigReader.getConfigValue("accountDeltedHeader"),
+					"It seems the account deleted header text is not matched");
+			
+		
 
 		}catch(Exception e) {
 
@@ -62,5 +191,5 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 		}
 	}
-	
+
 }

@@ -1,5 +1,6 @@
 package base;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 
@@ -123,4 +124,6 @@ public class PageBase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		
 	}
+	
+	
 }

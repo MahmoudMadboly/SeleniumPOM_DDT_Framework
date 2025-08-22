@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
+import utilities.browserUtils;
 
 public class PaymentPage extends PageBase{
 
@@ -36,6 +37,10 @@ public class PaymentPage extends PageBase{
 	By deleteAccountButton = By.partialLinkText(" Delete Account");
 	
 	By accountDeletedHeader = By.xpath("//h2 [@data-qa = 'account-deleted']");
+	
+	By downloadInvoiceButton = By.linkText("Download Invoice");
+	
+	By continueAfterPayment = By.xpath("//a[@data-qa='continue-button' and text()='Continue']");
 	
 	
 	
@@ -108,6 +113,39 @@ public class PaymentPage extends PageBase{
 		return getWebElemnt(accountDeletedHeader).getText();
 
 	}
-
-
+	
+	public void waitTillOrdrPlacedHeaderToBeDisplayed(Duration time) {
+		
+		waitForElemnt(time, ExpectedConditions.elementToBeClickable(downloadInvoiceButton));
+		
+	}
+	
+	public void downloadInvoice() {
+		
+		clickOnElement(downloadInvoiceButton);
+		
+	}
+	
+	
+	public void verifyInvoiceDownloaded(String downloadPath , String fileName) {
+		
+		browserUtils.isFileDownloaded(downloadPath,fileName);
+		
+	}
+	
+	public void continueAfterPayment(Duration time) {
+		
+		clickOnElement(continueAfterPayment);
+		
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(HomePage.logedInAsUserName));
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
