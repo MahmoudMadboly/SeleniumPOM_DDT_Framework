@@ -55,7 +55,7 @@ public class HomePage extends PageBase{
 	
 	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
 	
-	static By logedInAsUserName = By.xpath("//i [text() = ' Logged in as ']");
+	static By logedInAsUserName = By.xpath("//a[contains(text(),'Logged in as')]");
 	
 	By category = By.xpath("//h2 [text() = 'Category']");
 	

@@ -32,6 +32,10 @@ public class CheckoutPage extends PageBase{
 
 	By placeOrderButton = By.xpath("//a [text() = 'Place Order']");
 
+	static By checkOutPopUpHeader = By.xpath("//li[@class='active' and text()='Checkout']");
+
+	By addressCountry = By.xpath("//li[@class='address_city address_state_name address_postcode']");
+
 
 	public boolean verifyAddressDetailsHeaderIsDiaplyed() {
 
@@ -75,35 +79,21 @@ public class CheckoutPage extends PageBase{
 
 	}
 
-	public String verifyDeliveryAddress(String accountAddress1 , String accountAddress2, String addressDetails , String counrtyName) {
+	
+	public boolean verifyDeliveryAddress(String text) {
 
 		List<WebElement> fullAddress = getWebElementList(yourDeliveryAddressTable);
 
-
 		for(WebElement address : fullAddress) {
 
-			String targetAddress = address.getText();
+			String targetAddress = address.getText().replaceAll("\\s+", " ").trim();
 
-			if(targetAddress.trim().equals(accountAddress1)      ||
-					targetAddress.trim().equals(accountAddress2) ||
-					targetAddress.trim().equals(accountAddress2) || 
-					targetAddress.trim().equals(addressDetails)  ||
-					targetAddress.trim().equals(counrtyName))
-			{
-
-return targetAddress;
+			if(targetAddress.contains(text)) {
+				
+				return true;
 
 			}
-		}
+		}return false;
 	}
-
-	public String getText() {
-
-		getWebElemnt(addressDetailsHeader).getText();
-
-	}
-
-
-
-
 }
+

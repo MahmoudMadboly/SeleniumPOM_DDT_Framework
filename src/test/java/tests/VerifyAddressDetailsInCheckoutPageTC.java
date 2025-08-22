@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 import base.TestBase;
 import config.ConfigReader;
 import pages.AllProductsPage;
+import pages.CheckoutPage;
 import pages.HomePage;
 import pages.ProductDetailsPage;
 import pages.QartPage;
@@ -25,12 +26,13 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 	QartPage QartPageObject;
 	RegisterUserPage signUpObject;
 	SignUp_AccountInformationPage accountInfoObject;
+	CheckoutPage CheckoutPageObject;
 
 
 	int time = 10;
 
 
-	@Test
+	@Test 
 	public void AddReviewOnProductScenario() {
 
 		try {
@@ -107,8 +109,10 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
 
-			assertEquals(homePageObject.verifyUserLoggedIn(), 
-					ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
+
+			assertTrue(homePageObject.verifyUserLoggedIn().contains(ConfigReader.getConfigValue("LoginSuccessMessage")), 
+					"It seems user did not loged in successfully");
+
 
 			allProductObject = new AllProductsPage(driver);
 
@@ -119,16 +123,45 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 			allProductObject.hoverOnFirstElement();
 
 			allProductObject.clickAddProductToCart_1(Duration.ofSeconds(time));
-			
+
 			allProductObject.clickViewCartButton(Duration.ofSeconds(time));
-			
-			
+
+
 			QartPageObject = new QartPage(driver);
 
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
-			
-			
+
+
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+
+			CheckoutPageObject = new CheckoutPage(driver);
+
+
+
+			//verify address 1
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountAddress1")),
+					"It seems address 1 is not matched");
+
+			//verify address 2
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountAddress2")), 
+					"It seems address 2 is not matched");
+
+
+			//verify address city, state name & postcode 
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
+
+					ConfigReader.getConfigValue("accountCity")
+
+					+ " " + ConfigReader.getConfigValue("accountState")
+					+ " " + ConfigReader.getConfigValue("accountZipCode")
+
+					), 
+					"It seems address city, state name & postcode are not matched");
+
+
+			//verify address country name 
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountCountry")), 
+					"It seems country name is not matched");
 
 
 		}catch(Exception e) {
@@ -137,7 +170,7 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during Add Review On Product Scenario! ");	
+			System.out.println("it seems some issues happened during verify address details in checkout page Scenario! ");	
 
 		}
 	}	

@@ -36,7 +36,7 @@ public class QartPage extends PageBase{
 
 	By proceedToCheckOutButton = By.xpath("//a [text() = 'Proceed To Checkout']");
 
-	By checkOutPopUpHeader = By.xpath("//h4 [text() = 'Checkout']");
+	//By checkOutPopUpHeader = By.xpath("//h4 [text() = 'Checkout']");
 
 	By registerOrLoginButton = By.partialLinkText("Register / Login");
 	
@@ -101,7 +101,7 @@ public class QartPage extends PageBase{
 
 		clickOnElement(proceedToCheckOutButton);
 
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(checkOutPopUpHeader));
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(CheckoutPage.checkOutPopUpHeader));
 
 	}
 
