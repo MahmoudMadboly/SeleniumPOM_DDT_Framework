@@ -187,7 +187,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during verify address details in checkout page Scenario! ");	
+			System.out.println("it seems some issues happened during Download Invoice After Purchase Order Scenario! ");	
 
 		}
 	}

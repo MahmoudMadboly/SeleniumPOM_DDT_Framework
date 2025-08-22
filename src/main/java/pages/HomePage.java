@@ -69,6 +69,8 @@ public class HomePage extends PageBase{
 	
 	By viewCartButton = AllProductsPage.viewCartButton;
 	
+	By arrowButton = By.id("scrollUp");
+	
 
 
 
@@ -162,6 +164,12 @@ public class HomePage extends PageBase{
 		browserUtils.scrollIntoElement(driver, getWebElemnt(subscriptionMail));
 
 	}
+	
+	public boolean verifySubscriptionFieldIsVisible() {
+		
+		return getWebElemnt(subscriptionMail).isDisplayed();
+		
+	}
 
 	public String getWebElementOfSubscriptionSuccessMessage() {
 
@@ -249,7 +257,18 @@ public void addRecommendedItemToCart() {
 		
 	}
 
+
+public void scrollUpUsingArrowButton(Duration time) {
 	
+	clickOnElement(arrowButton);
+	
+	waitForElemnt(time, ExpectedConditions.visibilityOfAllElementsLocatedBy(homePageHeader));
+	
+}
+
+
+
+
 	
 	
 	

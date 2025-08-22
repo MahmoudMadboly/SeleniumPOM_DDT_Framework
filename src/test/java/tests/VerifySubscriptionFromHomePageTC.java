@@ -32,7 +32,7 @@ public class VerifySubscriptionFromHomePageTC extends TestBase{
 					"Home page header is not visible.");
 
 
-			homePageObject.scrollToSubscribeField(ConfigReader.getConfigValue("pixel"));
+			homePageObject.scrollToSubscribeField();
 			
 			homePageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("subscriptionMailID"));
 				

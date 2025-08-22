@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-08-22T04:10:01 AST" name="Default suite" finished-at="2025-08-22T04:10:14 AST" duration-ms="12130">
+  <suite started-at="2025-08-22T17:35:48 AST" name="Default suite" finished-at="2025-08-22T17:35:54 AST" duration-ms="5805">
     <groups>
     </groups>
-    <test started-at="2025-08-22T04:10:01 AST" name="Default test" finished-at="2025-08-22T04:10:14 AST" duration-ms="12130">
-      <class name="tests.VerifyAddressDetailsInCheckoutPageTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.VerifyAddressDetailsInCheckoutPageTC@4afcd809]" started-at="2025-08-22T04:10:01 AST" name="openBrowser" finished-at="2025-08-22T04:10:06 AST" duration-ms="4763" status="PASS">
+    <test started-at="2025-08-22T17:35:48 AST" name="Default test" finished-at="2025-08-22T17:35:54 AST" duration-ms="5805">
+      <class name="tests.VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC@4afcd809]" started-at="2025-08-22T17:35:48 AST" name="openBrowser" finished-at="2025-08-22T17:35:54 AST" duration-ms="5749" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method signature="AddReviewOnProductScenario()[pri:0, instance:tests.VerifyAddressDetailsInCheckoutPageTC@4afcd809]" started-at="2025-08-22T04:10:06 AST" name="AddReviewOnProductScenario" finished-at="2025-08-22T04:10:14 AST" duration-ms="7346" status="PASS">
+        <test-method signature="verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario()[pri:0, instance:tests.VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC@4afcd809]" started-at="2025-08-22T17:35:54 AST" name="verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario" finished-at="2025-08-22T17:35:54 AST" duration-ms="40" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- AddReviewOnProductScenario -->
-      </class> <!-- tests.VerifyAddressDetailsInCheckoutPageTC -->
+        </test-method> <!-- verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario -->
+      </class> <!-- tests.VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
