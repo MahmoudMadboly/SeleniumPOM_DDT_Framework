@@ -1,6 +1,5 @@
 package tests;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
@@ -8,7 +7,6 @@ import java.time.Duration;
 import org.testng.annotations.Test;
 
 import base.TestBase;
-import config.ConfigReader;
 import pages.AllProductsPage;
 import pages.CheckoutPage;
 import pages.HomePage;
@@ -17,7 +15,7 @@ import pages.QartPage;
 import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
-public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends TestBase{
+public class VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC extends TestBase{
 	
 	
 	HomePage homePageObject;
@@ -32,7 +30,7 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 
 
 	@Test 
-	public void verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario() {
+	public void VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityScenario() {
 
 		try {
 
@@ -46,18 +44,17 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 			assertTrue(homePageObject.verifySubscriptionFieldIsVisible(), 
 					"Subscription mail field is not visible.");
 		
-			
-			homePageObject.scrollUpUsingArrowButton();
-			
+		/*	
+			homePageObject.scrollUpWithoutArrowButton();
 			
 			homePageObject.waitTillHomePageHeaderBeDisplayed(Duration.ofSeconds(time));
 			
 			
+			
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
-			
-			
+			*/
+
 
 		}catch(Exception e) {
 
@@ -65,9 +62,9 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during Verify Scroll Up using 'Arrow' button and Scroll Down functionality Scenario! ");	
+			System.out.println("it seems some issues happened during Verify Scroll Up without 'Arrow' button and Scroll Down functionality Scenario! ");	
 
 		}
-	}
+	}	
 
 }

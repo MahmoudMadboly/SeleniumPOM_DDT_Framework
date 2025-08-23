@@ -28,10 +28,10 @@ public class HomePage extends PageBase{
 	By productsCaseButton = By.linkText("/products");
 
 	static By signUpButton = By.partialLinkText("Signup");
-	
+
 	By qartButton = By.partialLinkText("Cart");
 
-	public static By homePageHeader = By.xpath("//h2 [text() = 'Full-Fledged practice website for Automation Engineers']");
+	public static By homePageHeader = By.xpath("//h2[text() = 'Full-Fledged practice website for Automation Engineers']");
 
 	By logOutButton = By.linkText(" Logout");
 
@@ -46,31 +46,33 @@ public class HomePage extends PageBase{
 	By subscriptionScuccessMessage = By.xpath("//div [@class = 'alert-success alert']");
 
 	By subscribeButton = By.id("subscribe");
-	
+
 	By viewProductButton = By.xpath("//a [text() = 'View Product']");
-	
+
 	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
-	
+
 	//By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
-	
+
 	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
-	
+
 	static By logedInAsUserName = By.xpath("//a[contains(text(),'Logged in as')]");
-	
+
 	By category = By.xpath("//h2 [text() = 'Category']");
-	
+
 	By womenCategory = By.partialLinkText("Women");
-	
+
 	By womenCategoryChoices = By.xpath("//ul/li/a");
-	
+
 	By recommendedItemsHeader = By.id("recommended-item-carousel");
-	
+
 	By addToCart_recommendedItemsHeader = By.xpath("//a[@class='btn btn-default add-to-cart' and @data-product-id='4']");
-	
+
 	By viewCartButton = AllProductsPage.viewCartButton;
-	
-	By arrowButton = By.id("scrollUp");
-	
+
+	//By arrowButton = By.id("scrollUp");
+
+	By arrowButton = By.xpath("//i [@class = 'fa fa-angle-up']");
+
 
 
 
@@ -88,7 +90,7 @@ public class HomePage extends PageBase{
 
 
 	}
-	
+
 	/*
 	public boolean verifytSuccessfulLoginHeaderVisible() {
 
@@ -101,7 +103,7 @@ public class HomePage extends PageBase{
 	public void navigateToSignUpScreen(Duration time) {
 
 		navigateToScreen(signUpButton);
-		
+
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(RegisterUserPage.signUpScreenHeader));
 
 	}
@@ -164,11 +166,11 @@ public class HomePage extends PageBase{
 		browserUtils.scrollIntoElement(driver, getWebElemnt(subscriptionMail));
 
 	}
-	
+
 	public boolean verifySubscriptionFieldIsVisible() {
-		
+
 		return getWebElemnt(subscriptionMail).isDisplayed();
-		
+
 	}
 
 	public String getWebElementOfSubscriptionSuccessMessage() {
@@ -176,104 +178,107 @@ public class HomePage extends PageBase{
 		return getWebElemnt(subscriptionScuccessMessage).getText();
 
 	}
-	
+
 	public void navigateToQartScreen(Duration time) {
 
 		navigateToScreen(qartButton);
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
 
 	}
-	
-	
+
+
 	public void clickOnViewProductButton(Duration time) {
 
 		clickOnElement(viewProductButton);
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.productCategory));	
 
 	}
-	
+
 	public void addProductToCart(Duration time) {
 
 		clickOnElement(addToCartButton);
 		waitForElemnt(time, ExpectedConditions.elementToBeClickable(continueShoppingButton));
 
 	}	
-	
+
 	public void clickOnContinueShoppingButton() {
 
 		clickOnElement(continueShoppingButton);
 
 	}
-	
+
 	public boolean verifyCategoryVisible() {
 
 		return super.getWebElemnt(category).isDisplayed();
 
 
 	}
-	
+
 	public void expandWomanCategory() {
 
 		clickOnElement(womenCategory);
 
 	}
-	
+
 	public void getAndLoopInsideWomanCategoryChoices(String womentargetChoice , Duration time) {
 
 		List<WebElement> choices = getWebElementList(womenCategoryChoices);
-		
+
 		for(WebElement choice : choices) {
-			
+
 			if(choice.getText().trim().equalsIgnoreCase(womentargetChoice)) {
-				
+
 				choice.click();
-				
+
 				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(WomenCategoryScreenPage.womenCategoryHeader));
-				
+
 				break;
-				
+
 			}
 		}
 	}
-	
-	
+
+
 	public void scrollToBottomOfPage() {
-		
+
 		browserUtils.scrollFromTopToBottom(driver);
-		
+
 	}
-	
-	
+
+
 	public boolean verifyRecommendedItemsVisible() {
-		
+
 		return getWebElemnt(recommendedItemsHeader).isDisplayed();
-		
+
 	}
-	
-	
-public void addRecommendedItemToCart() {
-		
+
+
+	public void addRecommendedItemToCart() {
+
 		clickOnElement(addToCart_recommendedItemsHeader);
+
+	}
+
+
+	public void scrollUpUsingArrowButton() {
+
+		clickOnElement(arrowButton);
+
+	}
+
+	public void scrollUpWithoutArrowButton() {
+
+		browserUtils.scrollup(driver);		
+
+	}
+	
+	public void waitTillHomePageHeaderBeDisplayed(Duration time) {
+		
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(homePageHeader));
 		
 	}
 
 
-public void scrollUpUsingArrowButton(Duration time) {
-	
-	clickOnElement(arrowButton);
-	
-	waitForElemnt(time, ExpectedConditions.visibilityOfAllElementsLocatedBy(homePageHeader));
-	
-}
 
 
-
-
-	
-	
-	
-	
-	
-	
-	
 }
