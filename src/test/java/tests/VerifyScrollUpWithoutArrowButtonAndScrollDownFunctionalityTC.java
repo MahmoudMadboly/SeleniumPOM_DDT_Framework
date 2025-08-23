@@ -28,8 +28,9 @@ public class VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC extend
 
 	int time = 10;
 
-
-	@Test 
+	
+	// checked & worked 
+	@Test(groups = {"regression"}) 
 	public void VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityScenario() {
 
 		try {
@@ -44,16 +45,13 @@ public class VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC extend
 			assertTrue(homePageObject.verifySubscriptionFieldIsVisible(), 
 					"Subscription mail field is not visible.");
 		
-		/*	
 			homePageObject.scrollUpWithoutArrowButton();
 			
 			homePageObject.waitTillHomePageHeaderBeDisplayed(Duration.ofSeconds(time));
 			
-			
-			
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			*/
+		
 
 
 		}catch(Exception e) {

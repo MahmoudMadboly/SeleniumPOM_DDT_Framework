@@ -44,7 +44,7 @@ public class WomenCategoryScreenPage extends PageBase{
 
 				choice.click();
 
-				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(menCategoryScreenPage.menCategoryHeader));
+				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(MenCategoryScreenPage.menCategoryHeader));
 
 				break;
 

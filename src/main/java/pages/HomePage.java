@@ -59,17 +59,19 @@ public class HomePage extends PageBase{
 
 	By category = By.xpath("//h2 [text() = 'Category']");
 
-	By womenCategory = By.partialLinkText("Women");
+	//By womenCategory = By.partialLinkText("Women");
+	
+	By womenCategory = By.xpath("//a[@href='#Women' and contains(normalize-space(.), 'Women')]");
 
-	By womenCategoryChoices = By.xpath("//ul/li/a");
+	//By womenCategoryChoices = By.xpath("//ul/li/a");
+	
+	By womenCategoryChoices = By.xpath("//div[@id='Women']//div[@class='panel-body']/ul/li/a");
 
 	By recommendedItemsHeader = By.id("recommended-item-carousel");
 
 	By addToCart_recommendedItemsHeader = By.xpath("//a[@class='btn btn-default add-to-cart' and @data-product-id='4']");
 
 	By viewCartButton = AllProductsPage.viewCartButton;
-
-	//By arrowButton = By.id("scrollUp");
 
 	By arrowButton = By.xpath("//i [@class = 'fa fa-angle-up']");
 
@@ -221,15 +223,22 @@ public class HomePage extends PageBase{
 	}
 
 	public void getAndLoopInsideWomanCategoryChoices(String womentargetChoice , Duration time) {
+		
 
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(womenCategoryChoices));
+		
+		
 		List<WebElement> choices = getWebElementList(womenCategoryChoices);
+		
 
 		for(WebElement choice : choices) {
+			
 
 			if(choice.getText().trim().equalsIgnoreCase(womentargetChoice)) {
+				
 
 				choice.click();
-
+				
 				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(WomenCategoryScreenPage.womenCategoryHeader));
 
 				break;
@@ -241,7 +250,7 @@ public class HomePage extends PageBase{
 
 	public void scrollToBottomOfPage() {
 
-		browserUtils.scrollFromTopToBottom(driver);
+		browserUtils.scrollDown(driver);
 
 	}
 
@@ -275,6 +284,19 @@ public class HomePage extends PageBase{
 	public void waitTillHomePageHeaderBeDisplayed(Duration time) {
 		
 		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(homePageHeader));
+		
+	}
+	
+	
+	public void getList() {
+		
+		 List<WebElement> lists = getWebElementList(womenCategoryChoices);
+		
+		for(WebElement list : lists) {
+			
+			System.out.println(list.getText());
+			
+		}
 		
 	}
 

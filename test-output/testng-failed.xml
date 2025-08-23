@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC">
+      <class name="tests.ViewCategoryProductsTC">
         <methods>
-          <include name="VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityScenario"/>
+          <include name="viewCategoryProductsScenario"/>
           <include name="openBrowser"/>
         </methods>
-      </class> <!-- tests.VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC -->
+      </class> <!-- tests.ViewCategoryProductsTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

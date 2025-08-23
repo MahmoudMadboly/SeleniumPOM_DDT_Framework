@@ -27,8 +27,8 @@ public class ViewCategoryProductsTC extends TestBase{
 
 	int time = 10;
 
-
-	@Test
+	//test case 18
+	@Test(groups = {"regression"}) 
 	public void viewCategoryProductsScenario() {
 
 		try {
@@ -40,25 +40,27 @@ public class ViewCategoryProductsTC extends TestBase{
 
 			assertTrue(homePageObject.verifyCategoryVisible(), 
 					"It seems category list is not visible.");
-			
-			
+
+
 			homePageObject.expandWomanCategory();
 			
+			homePageObject.getList();
+
 			homePageObject.getAndLoopInsideWomanCategoryChoices(
 					ConfigReader.getConfigValue("womancategoryListchoice") , Duration.ofSeconds(time));
-			
+
 			WomenCategoryObject = new WomenCategoryScreenPage(driver);
-			
+
 			WomenCategoryObject.verifytWomanPageHeaderVisible();
-			
+
 			WomenCategoryObject.getAndLoopInsideMenCategoryChoices(ConfigReader
 					.getConfigValue("womancategoryListchoice"), Duration.ofSeconds(time));
-			
+
 			menCategoryObject = new MenCategoryScreenPage(driver);
-			
+
 			menCategoryObject.verifytMenPageHeaderVisible();
-			
-			
+
+
 		}catch(Exception e) {
 
 			e.printStackTrace();
@@ -69,5 +71,4 @@ public class ViewCategoryProductsTC extends TestBase{
 
 		}
 	}
-	
 }

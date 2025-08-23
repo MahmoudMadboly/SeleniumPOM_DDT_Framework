@@ -20,9 +20,9 @@ public class VerifySubscriptionFromHomePageTC extends TestBase{
 	int time = 5;
 
 	
-
-	@Test
-	public void subscriptionFromHomePageScenario() {
+// chekced & worked
+	@Test(groups = {"regression"})
+	public void verifySubscriptionFromHomePageScenario() {
 
 		try {
 

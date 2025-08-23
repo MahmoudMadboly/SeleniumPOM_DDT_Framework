@@ -31,7 +31,8 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 	int time = 10;
 
 
-	@Test 
+	//Done
+	@Test(groups = {"regression"}) 
 	public void verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario() {
 
 		try {
