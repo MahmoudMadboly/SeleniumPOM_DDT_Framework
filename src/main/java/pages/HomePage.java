@@ -58,12 +58,8 @@ public class HomePage extends PageBase{
 	static By logedInAsUserName = By.xpath("//a[contains(text(),'Logged in as')]");
 
 	By category = By.xpath("//h2 [text() = 'Category']");
-
-	//By womenCategory = By.partialLinkText("Women");
 	
 	By womenCategory = By.xpath("//a[@href='#Women' and contains(normalize-space(.), 'Women')]");
-
-	//By womenCategoryChoices = By.xpath("//ul/li/a");
 	
 	By womenCategoryChoices = By.xpath("//div[@id='Women']//div[@class='panel-body']/ul/li/a");
 
@@ -287,7 +283,7 @@ public class HomePage extends PageBase{
 		
 	}
 	
-	
+	/*
 	public void getList() {
 		
 		 List<WebElement> lists = getWebElementList(womenCategoryChoices);
@@ -299,7 +295,7 @@ public class HomePage extends PageBase{
 		}
 		
 	}
-
+*/
 
 
 

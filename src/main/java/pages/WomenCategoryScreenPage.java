@@ -21,9 +21,9 @@ public class WomenCategoryScreenPage extends PageBase{
 
 	static By womenCategoryHeader = By.xpath("//h2 [contains(text(),'Women')]");
 
-	By menCategory = By.partialLinkText("Men");
+	By menCategory = By.xpath("//a[@href='#Men' and contains(normalize-space(.), 'Men')]");
 
-	By menCategoryChoices = By.xpath("//ul/li/a");
+	By menCategoryChoices = By.xpath("//div[@id='Men']//div[@class='panel-body']/ul/li/a");
 
 
 	public boolean verifytWomanPageHeaderVisible() {
@@ -32,13 +32,21 @@ public class WomenCategoryScreenPage extends PageBase{
 
 	}
 
+	public void expandWomanCategory() {
 
+		clickOnElement(menCategory);
+
+	}
 
 	public void getAndLoopInsideMenCategoryChoices(String menTargetChoice , Duration time) {
+		
+		waitForElemnt(time, ExpectedConditions.elementToBeClickable(menCategoryChoices));
 
 		List<WebElement> choices = getWebElementList(menCategoryChoices);
 
 		for(WebElement choice : choices) {
+			
+			System.out.println(choice.getText());
 
 			if(choice.getText().trim().equalsIgnoreCase(menTargetChoice)) {
 

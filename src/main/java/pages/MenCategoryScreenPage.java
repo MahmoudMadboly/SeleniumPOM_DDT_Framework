@@ -19,7 +19,7 @@ public class MenCategoryScreenPage extends PageBase{
 	}
 
 
-	static By menCategoryHeader = By.xpath("//h2 [contains(text(),'Men')]");
+	static By menCategoryHeader = By.xpath("//h2[contains(text(),'Men')]");
 
 
 
