@@ -27,13 +27,15 @@ public class AllProductsPage extends PageBase{
 
 	By viewSecondProduct = By.xpath("//div[@class='features_items']//a[@href='/product_details/2' and contains(text(), 'View Product')]");
 
-	By addToCartButton_1 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
+	//By addToCartButton_1 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
 	
-	By addToCartButton_2 = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][2]");
+	By addToCartButton_1 = By.xpath("//a[contains(text(),'Add to cart') and @data-product-id='1']");
+	
+	By addToCartButton_2 = By.xpath("//a[contains(text(),'Add to cart') and @data-product-id='2']");
 
 	By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
 
-	static By viewCartButton = By.partialLinkText("View Cart");
+	static By viewCartButton = By.linkText("View Cart");
 
 	By searchField = By.id("search_product");
 
@@ -134,7 +136,7 @@ public class AllProductsPage extends PageBase{
 	public void clickAddProductToCart_2(Duration time) {
 
 		clickOnElement(addToCartButton_2);
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
+		waitForElemnt(time, ExpectedConditions.elementToBeClickable(viewCartButton));
 
 	}	
 

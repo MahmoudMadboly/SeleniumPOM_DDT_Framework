@@ -26,7 +26,7 @@ public class QartPage extends PageBase{
 
 	By subscriptionButton = By.id("subscribe");
 
-	By cartTable = By.id("cart_info_table");
+	By cartTable = By.xpath("cart_info_table");
 
 	By tableRows = By.xpath("//table[@id='cart_info_table']//tbody/tr");
 
@@ -86,7 +86,7 @@ public class QartPage extends PageBase{
 
 	public int VerifyQartProducts() {
 
-		return getWebElementList(cartTable).size();
+		return getWebElementList(tableRows).size();
 
 	}
 

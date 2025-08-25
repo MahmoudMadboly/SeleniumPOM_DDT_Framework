@@ -23,9 +23,9 @@ public class AddProductInCartTC extends TestBase{
 	int time = 5;
 
 
-
-	@Test
-	public void subscriptionFromQartPageScenario() {
+	//done
+	@Test(groups = {"regression"})
+	public void AddProductInCartScenario() {
 
 		try {
 
@@ -49,18 +49,9 @@ public class AddProductInCartTC extends TestBase{
 
 			allProductObject.clickContinueShoppingButton();
 
-
-
-
-
 			allProductObject.scrollToSecondElement();
 
 			allProductObject.waitSomeTimeTillSecondProductsBeVisible(Duration.ofSeconds(time));
-
-
-
-
-
 
 			allProductObject.hoverOnSecondElement();
 
@@ -71,7 +62,7 @@ public class AddProductInCartTC extends TestBase{
 			QartPageObject = new QartPage(driver);
 
 			//verify the products added to the cart
-			assertEquals(QartPageObject.VerifyQartProducts(), 2);
+			assertEquals(QartPageObject.VerifyQartProducts(), ConfigReader.getConfigValue("tableSize"));
 
 
 

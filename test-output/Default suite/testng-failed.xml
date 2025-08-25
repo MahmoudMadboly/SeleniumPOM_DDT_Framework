@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="tests.ViewCategoryProductsTC">
+      <class name="tests.AddProductInCartTC">
         <methods>
-          <include name="viewCategoryProductsScenario"/>
+          <include name="subscriptionFromQartPageScenario"/>
           <include name="openBrowser"/>
         </methods>
-      </class> <!-- tests.ViewCategoryProductsTC -->
+      </class> <!-- tests.AddProductInCartTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
