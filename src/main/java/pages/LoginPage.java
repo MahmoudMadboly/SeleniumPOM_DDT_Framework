@@ -56,13 +56,24 @@ public class LoginPage extends PageBase{
 	}
 
 	//hit login button
-	public void clickLogin(Duration waitDuration) {
+	public void clickLogin() {
 
 		clickOnElement(loginButton);
+
+	}
+	
+public void waitInCaseLoginWithvalidCredentials(Duration waitDuration) {
 		
 		super.waitForElemnt(waitDuration, 
-				ExpectedConditions.presenceOfElementLocated(HomePage.logedInAsUserName));
-
+				ExpectedConditions.visibilityOfElementLocated(HomePage.logedInAsUserName));
+		
+	}
+	
+	public void waitInCaseLoginWithInvalidCredentials(Duration waitDuration) {
+		
+		super.waitForElemnt(waitDuration, 
+				ExpectedConditions.visibilityOfElementLocated(WrongLoginCredentialMessage));
+		
 	}
 	
 	

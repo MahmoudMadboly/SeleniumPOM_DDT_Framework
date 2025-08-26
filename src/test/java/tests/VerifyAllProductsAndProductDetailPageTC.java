@@ -14,17 +14,18 @@ import pages.HomePage;
 import pages.ProductDetailsPage;
 import pages.TestCasePage;
 
-public class AllProductsTC extends TestBase{
+public class VerifyAllProductsAndProductDetailPageTC extends TestBase{
 
 
 	HomePage homePageObject;
 	AllProductsPage allProductObject;
 	ProductDetailsPage ProductDetailsObject;
 
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
-	@Test
+	//TC 8
+	//Done
+	@Test(groups = {"regression"})
 	public void verifyAllProductsAndProductDetailPageScenario() {
 
 		try {
@@ -36,36 +37,36 @@ public class AllProductsTC extends TestBase{
 
 
 			homePageObject.navigateToAllProductsScreen(Duration.ofSeconds(time));
-			
+
 			allProductObject = new AllProductsPage(driver);
-			
+
 			assertTrue(allProductObject.verifyAllProductsHeaderVisible(), 
 					"All products page header is not visible.");
-			
-			
-			allProductObject.clickViewProduct();
-			
+
+
+			allProductObject.clickViewProduct(Duration.ofSeconds(time));
+
 			ProductDetailsObject = new ProductDetailsPage(driver);
-			
-		
+
+
 			assertTrue(ProductDetailsObject.verifyProductNameVisible(), 
 					"Product name is not visible.");
-			
+
 			assertTrue(ProductDetailsObject.verifyproductCategoryVisible(), 
 					"Product category is not visible.");
-			
+
 			assertTrue(ProductDetailsObject.verifyproductPriceVisible(), 
 					"Product price is not visible.");
-			
+
 			assertTrue(ProductDetailsObject.verifyproductAvailabilityVisible(), 
 					"Product availability is not visible.");
-			
+
 			assertTrue(ProductDetailsObject.verifyproductConditionVisible(), 
 					"Product conditions is not visible.");
-			
+
 			assertTrue(ProductDetailsObject.verifyproductBrandVisible(), 
 					"Product brand is not visible.");
-			
+
 
 		}catch(Exception e) {
 
@@ -73,7 +74,7 @@ public class AllProductsTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during verifying all product test case screen creation! ");	
+			System.out.println("it seems some issues happened during verifying All Products and product detail page scenario");	
 
 		}
 	}

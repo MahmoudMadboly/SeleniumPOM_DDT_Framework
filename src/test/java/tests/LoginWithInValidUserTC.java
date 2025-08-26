@@ -1,6 +1,5 @@
 package tests;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
@@ -13,16 +12,18 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.RegisterUserPage;
 
-public class LoginWithValidUserTC extends TestBase{
+public class LoginWithInValidUserTC extends TestBase{
+	
 	
 	HomePage homePageObject;
-	RegisterUserPage signUpObject;
+	RegisterTC signUpObject;
 	LoginPage loginPageObject;
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 	
-	
-	@Test
-	public void LoginWithValidUserCredentials() {
+	//TC 3
+	//Done
+	@Test(groups = {"regression"})
+	public void loginWithInValidUserCredentialsScenario() {
 		
 		
 		try {
@@ -41,19 +42,17 @@ public class LoginWithValidUserTC extends TestBase{
 			assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
 					ConfigReader.getConfigValue("logInScreenHeader"));
 			
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("inValidAccountMail"));
 			
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
-			
-			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("inValidePassword"));
 			
 			loginPageObject.clickLogin();
 			
-			loginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
+			loginPageObject.waitInCaseLoginWithInvalidCredentials(Duration.ofSeconds(time));
 			
-			assertEquals(homePageObject.verifyUserLoggedIn(), 
-					ConfigReader.getConfigValue("LoginSuccessMessage") + 
-					ConfigReader.getConfigValue("accountUserName"));
-				
+			assertTrue(loginPageObject.verifyWrongLoginCredentialMessageHeaderVisible(), 
+					ConfigReader.getConfigValue("WrongUserCredentialMessage"));
+			
 			
 			
 		}catch (Exception e) {
@@ -62,8 +61,8 @@ public class LoginWithValidUserTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during login with valid credentials Scenario! ");	
+			System.out.println("it seems some issues happened during login With InValid User Credentials Scenario! ");	
 
-		}
+		}		
 	}
-}
+}	

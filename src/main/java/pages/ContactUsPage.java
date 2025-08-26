@@ -1,9 +1,13 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import base.PageBase;
+import utilities.browserUtils;
 
 public class ContactUsPage extends PageBase{
 
@@ -28,6 +32,8 @@ public class ContactUsPage extends PageBase{
 	By contactfile = By.name("upload_file");
 
 	By contactSubmit = By.name("submit");
+	
+	By contactUsSuccessMessage = By.xpath("//div[text()='Success! Your details have been submitted successfully.']");
 
 	
 //enter contact name
@@ -62,15 +68,31 @@ public class ContactUsPage extends PageBase{
 	 public void uploadContactFile(String filePath) {
 
 		sendKeysToField(contactfile	, filePath);
+		
+		
 
 	}
 
-		
 	
 	//submit contact request
-	public void clickContactSubmit() {
+	public void clickContactSubmit(Duration time) {
 
 		clickOnElement(contactSubmit);
+		
+		waitForElemnt(time, ExpectedConditions.alertIsPresent());
 
+	}
+	
+	
+	public void acceptAlert() {
+		
+		browserUtils.acceptAlert(driver);
+		
+	}
+	
+	public String getSuccessMessageText() {
+		
+		return getWebElemnt(contactUsSuccessMessage).getText();
+		
 	}
 }

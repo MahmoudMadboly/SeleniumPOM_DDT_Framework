@@ -74,7 +74,7 @@ public class AllProductsPage extends PageBase{
 
 		clickOnElement(viewFirstProduct);
 		
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.writeYourReview));
+		waitForElemnt(time, ExpectedConditions.elementToBeClickable(ProductDetailsPage.addToCartButton));
 
 	}
 

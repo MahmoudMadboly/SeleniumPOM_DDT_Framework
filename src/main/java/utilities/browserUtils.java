@@ -3,6 +3,7 @@ package utilities;
 import java.io.File;
 import java.time.Duration;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class browserUtils {
 	int time = 5;
 	static JavascriptExecutor js;
 	static Actions action;
+	static Alert alert;
 
 	public static void scrollIntoElement(WebDriver driver , WebElement element) {
 
@@ -73,5 +75,12 @@ public class browserUtils {
 		}
 
 
+	}
+	
+	
+	public static void acceptAlert(WebDriver driver) {
+		
+		driver.switchTo().alert().accept();
+		
 	}
 }
