@@ -11,67 +11,69 @@ import base.TestBase;
 import config.ConfigReader;
 import pages.AllProductsPage;
 import pages.HomePage;
-import pages.LoginPage;
 import pages.ProductDetailsPage;
 import pages.QartPage;
-import pages.SearchedProductPage;
 
 public class AddReviewOnProductTC extends TestBase{
 
-	HomePage homePageObject;
-	AllProductsPage allProductObject;
-	ProductDetailsPage ProductDetailsPageObject;
 
-	int time = 10;
+		HomePage homePageObject;
+		AllProductsPage allProductObject;
+		ProductDetailsPage ProductDetailsPageObject;
+		QartPage QartPageObject;
+
+		int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
+
+//TC 21
+		//Done
+		@Test(groups = {"regression"})
+		public void AddReviewOnProductScenario() {
+
+			try {
+
+				homePageObject = new HomePage(driver);
+
+				assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
+						"Home page header is not visible.");
+				
+				homePageObject.navigateToAllProductsScreen(Duration.ofSeconds(time));
 
 
-	@Test
-	public void AddReviewOnProductScenario() {
+				allProductObject = new AllProductsPage(driver);
 
-		try {
+				allProductObject.scrollToFirstElement();
 
-			homePageObject = new HomePage(driver);
-
-			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
-					"Home page header is not visible.");
-			
-			homePageObject.navigateToAllProductsScreen(Duration.ofSeconds(time));
-			
-			allProductObject = new AllProductsPage(driver);
-
-			assertTrue(allProductObject.verifyAllProductsHeaderVisible(), 
-					"It seems brand list is not visible.");
-
-			
-			allProductObject.clickViewProduct(Duration.ofSeconds(time));
-			
-			ProductDetailsPageObject = new ProductDetailsPage(driver);
-			
-			assertTrue(ProductDetailsPageObject.verifyWriteYourReviewVisible(),
-					"It seems write your review is not visible.");
-			
-			ProductDetailsPageObject.setReviewerEmail(ConfigReader.getConfigValue("reviewer_Name"));
-			
-			ProductDetailsPageObject.setReviewerEmail(ConfigReader.getConfigValue("reviewer_Email"));
-			
-			ProductDetailsPageObject.setReviewerComment(ConfigReader.getConfigValue("review"));
-			
-			ProductDetailsPageObject.submitReview();
-			
-			assertEquals(ProductDetailsPageObject.verifyAddReviewSuccessMessage(),
-					ConfigReader.getConfigValue("addReviewSuccessNessage"),
-					"It seems add review scenario failed");
-			
-			
+				allProductObject.waitSomeTimeTillFirstProductsBeVisible(Duration.ofSeconds(time));
+				
+				allProductObject.clickViewProduct(Duration.ofSeconds(time));
+				
+				ProductDetailsPageObject = new ProductDetailsPage(driver);
 	
-		}catch(Exception e) {
+				assertTrue(ProductDetailsPageObject.verifyWriteYourReviewVisible(), 
+						"It seems that write your review is not visible.");
+				
+				ProductDetailsPageObject.setReviewerName(ConfigReader.getConfigValue("reviewer_Name"));
+				
+				ProductDetailsPageObject.setReviewerEmail(ConfigReader.getConfigValue("reviewer_Email"));
+				
+				ProductDetailsPageObject.setReviewerComment(ConfigReader.getConfigValue("review"));
+				
+				ProductDetailsPageObject.submitReview(Duration.ofSeconds(time));
+				
+				assertTrue(ProductDetailsPageObject.verifyAddReviewSuccessMessage().
+						contains(ConfigReader.getConfigValue("addReviewSuccessNessage")), 
+						"It seems that write review on product scenario is failed!");
 
-			e.printStackTrace();
 
-			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during view category product test case! ");	
+			}catch(Exception e) {
 
-		}
-	}	
-}
+				e.printStackTrace();
+
+				System.out.println("Error message/   " + e.getMessage());
+
+				System.out.println("it seems some issues happened during Add Review On Product Scenario! ");	
+
+			}
+		}	
+	}

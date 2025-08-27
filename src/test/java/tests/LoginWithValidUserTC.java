@@ -20,8 +20,9 @@ public class LoginWithValidUserTC extends TestBase{
 	LoginPage loginPageObject;
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 	
-	
-	@Test
+	//TC 2
+	//Done
+	@Test(groups = {"regression"})
 	public void LoginWithValidUserCredentials() {
 		
 		
@@ -50,9 +51,10 @@ public class LoginWithValidUserTC extends TestBase{
 			
 			loginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
 			
-			assertEquals(homePageObject.verifyUserLoggedIn(), 
+			assertEquals(homePageObject.verifyUserLoggedIn().trim(), 
 					ConfigReader.getConfigValue("LoginSuccessMessage") + 
-					ConfigReader.getConfigValue("accountUserName"));
+					ConfigReader.getConfigValue("accountUserName"),
+					"It seems there is an issue with the user credentials");
 				
 			
 			

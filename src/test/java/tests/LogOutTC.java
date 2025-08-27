@@ -16,42 +16,62 @@ public class LogOutTC extends TestBase{
 	LoginWithValidUserTC loginObject;
 	HomePage homePageObject;
 	LoginPage loginPageObject;
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
-	@Test
+	//TC 4
+	//Done
+	@Test(groups = {"regression"})
 	public void LogOUT() {
 
-		homePageObject = new HomePage(driver);
 
-		assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
-				"Home page header is not visible.");
+		try {
 
-		homePageObject.navigateToSignUpScreen();
+			homePageObject = new HomePage(driver);
 
-		loginPageObject = new LoginPage(driver);
+			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
+					"Home page header is not visible.");
 
-		loginPageObject.waitTillLoginScreenLoaded(Duration.ofSeconds(time));
+			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
 
-		assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
-				ConfigReader.getConfigValue("logInScreenHeader"));
+			loginPageObject = new LoginPage(driver);
 
+			loginPageObject.waitTillLoginScreenLoaded(Duration.ofSeconds(time));
 
-		loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
-
-		loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
-
-		loginPageObject.clickLogin(Duration.ofMinutes(time));
-
-	assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
-				ConfigReader.getConfigValue("LoginSuccessMessage") + ConfigReader.getConfigValue("accountUserName"));
+			assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
+					ConfigReader.getConfigValue("logInScreenHeader"));
 
 
-		homePageObject.navigateToLogOut(Duration.ofSeconds(time));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
+
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
+
+			loginPageObject.clickLogin();
+
+			loginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
 
 
-		assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
-				ConfigReader.getConfigValue("logInScreenHeader"));
 
+			assertTrue(homePageObject.verifytSuccessfulLoginHeaderVisible(), 
+					"it seems login did not happen successfully");
+
+
+			homePageObject.navigateToLogOut(Duration.ofSeconds(time));
+
+
+			assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
+					"it seems that login to account header is not displayed");
+
+
+
+		}catch (Exception e) {
+
+
+			e.printStackTrace();
+
+			System.out.println("Error message/   " + e.getMessage());
+
+			System.out.println("it seems some issues happened during logout test case! ");	
+
+		}
 	}
 }

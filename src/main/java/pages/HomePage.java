@@ -33,7 +33,7 @@ public class HomePage extends PageBase{
 
 	public static By homePageHeader = By.xpath("//h2[text() = 'Full-Fledged practice website for Automation Engineers']");
 
-	By logOutButton = By.linkText(" Logout");
+	By logOutButton = By.xpath("//a[@href='/logout' and normalize-space()='Logout']");
 
 	By contactUsButton = By.partialLinkText("Contact us");
 
@@ -50,8 +50,6 @@ public class HomePage extends PageBase{
 	By viewProductButton = By.xpath("//a [text() = 'View Product']");
 
 	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
-
-	//By continueShoppingButton = By.xpath("//button [text() = 'Continue Shopping']");
 
 	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
 
@@ -89,13 +87,13 @@ public class HomePage extends PageBase{
 
 	}
 
-	/*
+	
 	public boolean verifytSuccessfulLoginHeaderVisible() {
 
-		return super.getWebElemnt(SuccessfulLoginHeader).isDisplayed();
+		return super.getWebElemnt(logedInAsUserName).isDisplayed();
 
 
-	}*/
+	}
 
 
 	public void navigateToSignUpScreen(Duration time) {

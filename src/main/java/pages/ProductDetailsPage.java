@@ -35,16 +35,16 @@ public class ProductDetailsPage extends PageBase{
 
 	By viewCartButton = By.linkText("View Cart");
 
-	static By writeYourReview = By.partialLinkText("Write Your Review");
+	static By writeYourReview = By.xpath("//a[@href='#reviews' and text()='Write Your Review']");
 
 	By name = By.id("name");
 
 	By email = By.id("email");
 
 	By myReview = By.id("review");
-	
+
 	By submitReview = By.id("button-review");
-	
+
 	By addReviewSuccessMessage = By.xpath("//span [text() = 'Thank you for your review.']");
 
 
@@ -155,16 +155,18 @@ public class ProductDetailsPage extends PageBase{
 
 	}
 
-	public void submitReview() {
+	public void submitReview(Duration time) {
 
-clickOnElement(submitReview);
+		clickOnElement(submitReview);
+
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(addReviewSuccessMessage));
 
 	}
-	
+
 	public String verifyAddReviewSuccessMessage() {
-		
+
 		return getWebElemnt(addReviewSuccessMessage).getText();
-		
+
 	}
 }
 
