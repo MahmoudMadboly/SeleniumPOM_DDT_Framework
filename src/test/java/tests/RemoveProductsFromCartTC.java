@@ -27,10 +27,11 @@ public class RemoveProductsFromCartTC extends TestBase{
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
-	@Test
+//TC 17
+	//Done
+	@Test(groups = {"regression"})
 	public void removeProductsFromCartScenario() {
 
 		try {
@@ -52,8 +53,9 @@ public class RemoveProductsFromCartTC extends TestBase{
 
 			QartPageObject.removeElementFromCart(Duration.ofSeconds(time));
 
-			assertTrue(QartPageObject.verifyCartEmpty().contains(ConfigReader.getConfigValue("cartEmptyMessage")),
-					"It seems cart empty message is not matched");
+			assertTrue(QartPageObject.verifyCartEmpty().
+					contains(ConfigReader.getConfigValue("cartEmptyMessage")),
+					"It seems that cart is not empty");
 
 
 		}catch(Exception e) {
@@ -62,7 +64,7 @@ public class RemoveProductsFromCartTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during remove a product test case! ");	
+			System.out.println("it seems some issues happened during remove a product from cart test case! ");	
 
 		}
 	}

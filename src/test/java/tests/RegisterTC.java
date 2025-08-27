@@ -23,16 +23,18 @@ public class RegisterTC extends TestBase{
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
 	SignUp_AccountInformationPage accountInfoObject;
-	int time = 7;	
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));	
 
 
-	@Test
+	//TC 1
+	//Done
+	@Test(groups = {"regression"})
 	public void signUp() throws InterruptedException{
-		
+
 		try {
-	
+
 			homePageObject = new HomePage(driver);
-			
+
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
 
@@ -41,8 +43,9 @@ public class RegisterTC extends TestBase{
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.waitTillSignUpScreenLoaded(Duration.ofSeconds(time));
-			
-			assertTrue(signUpObject.verifySignUpPageHeaderVisible(), ConfigReader.getConfigValue("signUpPageHeading"));
+
+			assertTrue(signUpObject.verifySignUpPageHeaderVisible(),
+					"It seems that SignUp Page Header is not displayed");
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
 
@@ -53,9 +56,9 @@ public class RegisterTC extends TestBase{
 			accountInfoObject = new SignUp_AccountInformationPage(driver);
 
 			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
-			
+
 			assertTrue(accountInfoObject.verifyEnterAccountInfoHeaderVisible(), 
-					ConfigReader.getConfigValue("enterAccountInfoPageHeading"));
+					"It seems that Enter Account Info Header is not displayed");
 
 			accountInfoObject.selectTitle();
 
@@ -95,20 +98,22 @@ public class RegisterTC extends TestBase{
 			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
 
 			accountInfoObject.clickCreateAccountButton();
-			
+
 			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
 
-			assertEquals(accountInfoObject.getSuccessMessageText(), ConfigReader.getConfigValue("accountCreationSuccessMessage"));
+			assertEquals(accountInfoObject.getSuccessMessageText(),
+					ConfigReader.getConfigValue("accountCreationSuccessMessage"),
+					"It seems that a new account creation is failed");
 
-			
+
 		}catch(Exception e) {
-			
+
 			e.printStackTrace();
-			
+
 			System.out.println("Error message/   " + e.getMessage());
-			
-			System.out.println("it seems some issues happened during account creation! ");
-			
+
+			System.out.println("it seems some issues happened during account creation scenario! ");
+
 		}
 	}
 }

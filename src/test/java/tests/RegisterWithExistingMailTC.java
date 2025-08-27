@@ -20,11 +20,13 @@ public class RegisterWithExistingMailTC extends TestBase{
 	HomePage homePageObject;
 	RegisterUserPage signUpObject;
 	SignUp_AccountInformationPage accountInfoObject;
-	int time = 7;	
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));	
 
-
-	@Test
-	public void signUp() throws InterruptedException{
+//TC 5
+	//Done
+	
+	@Test(groups = {"regression"})
+	public void registerWithExistingMailScenario() throws InterruptedException{
 
 		try {
 
@@ -33,13 +35,14 @@ public class RegisterWithExistingMailTC extends TestBase{
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
 
-			homePageObject.navigateToSignUpScreen();
+			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
 
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.waitTillSignUpScreenLoaded(Duration.ofSeconds(time));
 
-			assertTrue(signUpObject.verifySignUpPageHeaderVisible(), ConfigReader.getConfigValue("signUpPageHeading"));
+			assertTrue(signUpObject.verifySignUpPageHeaderVisible(),
+					"It seems that SignUp Page Header is not visible");
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
 
@@ -50,7 +53,9 @@ public class RegisterWithExistingMailTC extends TestBase{
 			//add wait logic 
 			signUpObject.waitDublicationMessage(Duration.ofSeconds(time));
 
-			assertEquals(signUpObject.getMailDublicationMessageText(), ConfigReader.getConfigValue("emailDublicationMessage"));
+			assertEquals(signUpObject.getMailDublicationMessageText(), 
+					ConfigReader.getConfigValue("emailDublicationMessage"),
+					"It seems that Register With Existing Mail is failed");
 
 
 		}catch(Exception e) {
@@ -59,7 +64,7 @@ public class RegisterWithExistingMailTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during account creation! ");
+			System.out.println("it seems some issues happened during Register With Existing Mail scenario");
 
 		}
 	}
