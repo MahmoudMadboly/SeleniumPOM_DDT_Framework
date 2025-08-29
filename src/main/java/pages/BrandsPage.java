@@ -23,7 +23,7 @@ public class BrandsPage extends PageBase{
 
 	static By brandHeader = By.xpath("//h2[contains(text(),'Brand -')]");
 
-	By brandProductList = By.xpath("//div [class = 'features_items']");
+	By brandProductList = By.xpath("//div[@class='features_items']//div[@class='col-sm-4']");
 
 	By brandList = AllProductsPage.brandsCategoryChoices;
 
@@ -47,7 +47,7 @@ public class BrandsPage extends PageBase{
 
 		for(WebElement brand : brandChoices) {
 
-			if(brand.getText().trim().equalsIgnoreCase(targetedBrand)) {
+			if(brand.getText().replaceAll("\\(\\d+\\)", "").trim().equalsIgnoreCase(targetedBrand)) {
 
 				brand.click();
 				

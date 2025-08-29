@@ -41,14 +41,20 @@ public class AllProductsPage extends PageBase{
 
 	By searchFieldButton = By.id("submit_search");
 
-	By brandsSectionHeader = By.xpath("//h2 [text() = 'Brands']");
+	//By brandsSectionHeader = By.xpath("//h2 [text() = 'Brands']");
+	
+	By brandsSectionHeader = By.xpath("//div[@class='brands_products']//h2[text()='Brands']");
 	
 	static By brandsCategoryChoices = By.xpath("//div[@class='brands_products']//ul/li/a");
 	
 	
+	/*
 	
+public String getText() {
 	
-
+	return getWebElemnt(brandsSectionHeader).getText();
+	
+}*/
 
 	public void enterSearchCriteria(String searchCriteria) {
 
@@ -156,7 +162,7 @@ public class AllProductsPage extends PageBase{
 	
 	public boolean verifyBrandsVisible() {
 
-		return super.getWebElemnt(brandsSectionHeader).isDisplayed();
+		return getWebElemnt(brandsSectionHeader).isDisplayed();
 
 	}
 	
@@ -166,15 +172,13 @@ public class AllProductsPage extends PageBase{
 	
 		for(WebElement choice : choices) {
 			
-			System.out.println("Mahmoud" + choice.getText());
+			System.out.println("Mahmoud" + choice.getText().replaceAll("\\(\\d+\\)", "").trim());
 			
-			if(choice.getText().trim().equalsIgnoreCase(brandTargetChoice)) {
+			if(choice.getText().replaceAll("\\(\\d+\\)", "").trim().equalsIgnoreCase(brandTargetChoice)) {
 				
 				browserUtils.scrollIntoElement(driver, choice);
 				
 				clickUsingJavaScript(choice);
-				
-			//	choice.click();
 				
 				waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(BrandsPage.brandHeader));
 				

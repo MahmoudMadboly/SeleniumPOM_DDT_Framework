@@ -30,7 +30,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 
 	@Test 
@@ -45,16 +45,17 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
 
-			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
+			homePageObject.clickOnViewQartButton(Duration.ofSeconds(time));
 
 			QartPageObject = new QartPage(driver);
 
-			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(), 
+					"It seems that cart screen did not diaplyed");
 
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
-
-			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
-
+			QartPageObject.clickOnproceedToCheckOutButtonWithoutRegisterOrLogin(Duration.ofSeconds(time));
+			
+			QartPageObject.clickRegisterOrLoginButton(Duration.ofSeconds(time));
+			
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
@@ -121,7 +122,24 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
 					"It seems login with user name is not matched");
 			
-			homePageObject.addProductToCart(Duration.ofSeconds(time));
+			
+			
+			
+			
+			
+			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
+			
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(), 
+					"It seems that cart screen did not diaplyed");
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
 			
@@ -137,7 +155,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 					"It seems billing address table is not displayed");
 
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
-					"It seems revie your order table is not displayed");
+					"It seems review your order table is not displayed");
 			
 			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
 

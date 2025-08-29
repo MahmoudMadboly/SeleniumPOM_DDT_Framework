@@ -17,26 +17,30 @@ public class VerifyTestCasesTC extends TestBase{
 	HomePage homePageObject;
 	TestCasePage TestCasePageObject;
 
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
-	@Test
+	//TC 7
+	//Done
+	@Test(groups = {"regression"})
 	public void verifyTestCasesScreenScenario() {
 
 		try {
 
 			homePageObject = new HomePage(driver);
-			
+
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.navigateToTestCasesScreen(Duration.ofSeconds(time));
-			
+
 			TestCasePageObject = new TestCasePage(driver);
-			
-			TestCasePageObject.verifyTestCasesHeaderVisible();
-			
-			
+
+			assertTrue(TestCasePageObject.verifyTestCasesHeaderVisible(), 
+					"It seems that test case screen is not displayed!");
+
+
+
+
 
 		}catch(Exception e) {
 

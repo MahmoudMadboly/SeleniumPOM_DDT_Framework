@@ -24,9 +24,9 @@ public class CheckoutPage extends PageBase{
 
 	By yourDeliveryAddressTable = By.id("address_delivery");
 
-	By yourBillingAddressTable = By.id("Your billing address");
+	By yourBillingAddressTable = By.id("address_invoice");
 
-	By reviewYourOrder = By.id("Review Your Order");
+	By reviewYourOrder = By.xpath("//h2[@class = 'heading' and text() = 'Review Your Order']");
 
 	By textArea = By.xpath("//textarea [@name = 'message']");
 

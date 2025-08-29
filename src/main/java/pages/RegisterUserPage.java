@@ -27,7 +27,7 @@ public class RegisterUserPage extends PageBase{
 
 	By name = By.name("name");
 
-	By email = By.xpath("//input[@data-qa='signup-email']");
+	By signUpMail = By.xpath("//input[@data-qa='signup-email']");
 
 	By signUpButton = By.xpath("//button [text() = 'Signup']");
 
@@ -72,7 +72,7 @@ public class RegisterUserPage extends PageBase{
 	//enter user mail to signup
 	public void enterEmailAdress(String userMail) {
 
-		sendKeysToField(email, userMail);
+		sendKeysToField(signUpMail, userMail);
 
 	}
 

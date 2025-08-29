@@ -23,8 +23,10 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 	int time = 10;
 
 
-
-	@Test
+//TC 13
+	//Done
+	
+	@Test(groups = {"regression"})
 	public void VerifyProductQuantityInCartScenario() {
 
 		try {
@@ -70,7 +72,7 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during verifying add product in cart test case! ");	
+			System.out.println("it seems some issues happened during verifying Product Quantity In Cart test case! ");	
 
 		}
 	}

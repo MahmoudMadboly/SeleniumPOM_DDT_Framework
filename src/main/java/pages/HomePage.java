@@ -189,6 +189,14 @@ public class HomePage extends PageBase{
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(ProductDetailsPage.productCategory));	
 
 	}
+	
+	public void clickOnViewQartButton(Duration time) {
+
+		clickOnElement(viewCartButton);
+		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));	
+
+	}
+
 
 	public void addProductToCart(Duration time) {
 

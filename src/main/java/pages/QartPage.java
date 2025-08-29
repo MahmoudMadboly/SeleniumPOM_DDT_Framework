@@ -38,7 +38,7 @@ public class QartPage extends PageBase{
 
 	//By checkOutPopUpHeader = By.xpath("//h4 [text() = 'Checkout']");
 
-	By registerOrLoginButton = By.partialLinkText("Register / Login");
+	By registerOrLoginButton = By.xpath("//p[@class='text-center']/a/u[text()='Register / Login']");
 	
 	By deletElementButton = By.xpath("//a[@data-product-id='1']");
 	
@@ -46,6 +46,7 @@ public class QartPage extends PageBase{
 	
 	By signup_loginButton = HomePage.signUpButton;
 
+	By checkOutPopUpHeader = By.xpath("//h4[@class = 'modal-title w-100' and text() = 'Checkout']") ;
 
 
 	public void scrollToFooter(String pixel) {
@@ -63,7 +64,7 @@ public class QartPage extends PageBase{
 	public void clickOnSubscribeButton(Duration time) {
 
 		clickOnElement(subscriptionButton);
-		WaitUtuls.waitExplicily(driver, time, ExpectedConditions.visibilityOfAllElementsLocatedBy(subscriptionScuccessMessage));
+		WaitUtuls.waitExplicily(driver, time, ExpectedConditions.visibilityOfElementLocated(subscriptionScuccessMessage));
 
 	}
 
@@ -96,7 +97,7 @@ public class QartPage extends PageBase{
 		return getWebElemnt(productQuantityInTable).getText();
 
 	}
-
+	
 	public void clickOnproceedToCheckOutButton(Duration time) {
 
 		clickOnElement(proceedToCheckOutButton);
@@ -104,12 +105,23 @@ public class QartPage extends PageBase{
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(CheckoutPage.checkOutPopUpHeader));
 
 	}
+	
+
+	public void clickOnproceedToCheckOutButtonWithoutRegisterOrLogin(Duration time) {
+
+		clickOnElement(proceedToCheckOutButton);
+
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(this.checkOutPopUpHeader));
+
+	}
+
+	
 
 	public void clickRegisterOrLoginButton(Duration time) {
 
 		clickOnElement(registerOrLoginButton);
 
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(RegisterUserPage.signUpScreenHeader));
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(RegisterUserPage.signUpScreenHeader));
 
 	}
 

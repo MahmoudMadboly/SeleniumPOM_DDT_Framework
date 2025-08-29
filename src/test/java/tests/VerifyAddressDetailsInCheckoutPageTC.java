@@ -29,10 +29,11 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 	CheckoutPage CheckoutPageObject;
 
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
-	@Test 
+	//TC 23
+	//Done
+	@Test (groups = {"regression"})
 	public void VerifyAddressDetailsInCheckoutPageScenario() {
 
 		try {
@@ -48,7 +49,7 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 			signUpObject = new RegisterUserPage(driver);
 
 			assertTrue(signUpObject.verifySignUpPageHeaderVisible(),
-					ConfigReader.getConfigValue("signUpPageHeading"));
+					"It seems that SignUp Page Header is not Visible");
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
 
@@ -61,7 +62,7 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 			accountInfoObject.waitTillAccountInfoLoaded(Duration.ofSeconds(time));
 
 			assertTrue(accountInfoObject.verifyEnterAccountInfoHeaderVisible(), 
-					ConfigReader.getConfigValue("enterAccountInfoPageHeading"));
+					"It seems that Enter Account Info Headeris not Visible");
 
 			accountInfoObject.selectTitle();
 
@@ -104,13 +105,16 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			accountInfoObject.waitTillSuccessMessageAppear(Duration.ofSeconds(time));
 
-			assertEquals(accountInfoObject.getSuccessMessageText(), ConfigReader.getConfigValue("accountCreationSuccessMessage"));
+			assertEquals(accountInfoObject.getSuccessMessageText(), 
+					ConfigReader.getConfigValue("accountCreationSuccessMessage"),
+					"It seems that account creation is failed");
 
 
 			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
 
 
-			assertTrue(homePageObject.verifyUserLoggedIn().contains(ConfigReader.getConfigValue("LoginSuccessMessage")), 
+			assertTrue(homePageObject.verifyUserLoggedIn()
+					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")), 
 					"It seems user did not loged in successfully");
 
 
@@ -129,7 +133,8 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			QartPageObject = new QartPage(driver);
 
-			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(),
+					"It seems that Shopping Cart Header is not visible");
 
 
 			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
@@ -139,11 +144,13 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 
 			//verify address 1
-			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountAddress1")),
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
+					ConfigReader.getConfigValue("accountAddress1")),
 					"It seems address 1 is not matched");
 
 			//verify address 2
-			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountAddress2")), 
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
+					ConfigReader.getConfigValue("accountAddress2")), 
 					"It seems address 2 is not matched");
 
 
@@ -160,7 +167,8 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 
 			//verify address country name 
-			assertTrue(CheckoutPageObject.verifyDeliveryAddress(ConfigReader.getConfigValue("accountCountry")), 
+			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
+					ConfigReader.getConfigValue("accountCountry")), 
 					"It seems country name is not matched");
 
 
