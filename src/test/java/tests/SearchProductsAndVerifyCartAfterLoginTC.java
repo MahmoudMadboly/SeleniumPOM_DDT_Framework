@@ -26,9 +26,10 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 	QartPage QartPageObject;
 	LoginPage loginPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 
+	//TC 20
 	@Test
 	public void SearchProductsAndVerifyCartAfterLoginScenario() {
 
@@ -46,7 +47,7 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 			assertTrue(allProductObject.verifyBrandsVisible(), 
 					"It seems brand list is not visible.");
 
-			allProductObject.enterSearchedProductName(ConfigReader.getConfigValue("SearchedProductName"));
+			allProductObject.enterSearchedProductName(ConfigReader.getConfigValue("Searched_Product_Name"));
 
 			allProductObject.clickOnSearchButton();
 
@@ -57,7 +58,7 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 
 			
 			assertTrue(SearchedProductObject.getWebElementOfSearchedProductName()
-					.contains(ConfigReader.getConfigValue("SearchedProductName")), 
+					.contains(ConfigReader.getConfigValue("Searched_Product_Name")), 
 					"Searched product header is not visible.");
 			
 			SearchedProductPageObject = new SearchedProductPage(driver);
@@ -80,15 +81,15 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 			loginPageObject = new LoginPage(driver);
 			
 			
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLoginaccountMail"));
 			
-			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLogin_accountPass"));
 			
-			loginPageObject.clickLogin(Duration.ofMinutes(time));
+			loginPageObject.clickLogin();
 			
 			assertEquals(homePageObject.verifyUserLoggedIn(), 
 					ConfigReader.getConfigValue("LoginSuccessMessage") +
-					ConfigReader.getConfigValue("accountUserName"));
+					ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLogin_accountUserName"));
 			
 			
 			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));

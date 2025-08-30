@@ -52,11 +52,11 @@ public class AddReviewOnProductTC extends TestBase{
 				assertTrue(ProductDetailsPageObject.verifyWriteYourReviewVisible(), 
 						"It seems that write your review is not visible.");
 				
-				ProductDetailsPageObject.setReviewerName(ConfigReader.getConfigValue("reviewer_Name"));
+				ProductDetailsPageObject.setReviewerName(ConfigReader.getConfigValue("addReviewOnProduct_reviewer_Name"));
 				
-				ProductDetailsPageObject.setReviewerEmail(ConfigReader.getConfigValue("reviewer_Email"));
+				ProductDetailsPageObject.setReviewerEmail(ConfigReader.getConfigValue("addReviewOnProduct_reviewerEmail"));
 				
-				ProductDetailsPageObject.setReviewerComment(ConfigReader.getConfigValue("review"));
+				ProductDetailsPageObject.setReviewerComment(ConfigReader.getConfigValue("addReviewOnProduct_review"));
 				
 				ProductDetailsPageObject.submitReview(Duration.ofSeconds(time));
 				

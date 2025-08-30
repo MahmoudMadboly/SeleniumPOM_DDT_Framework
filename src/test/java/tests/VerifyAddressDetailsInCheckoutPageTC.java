@@ -28,7 +28,6 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 	SignUp_AccountInformationPage accountInfoObject;
 	CheckoutPage CheckoutPageObject;
 
-
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//TC 23
@@ -51,9 +50,9 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 			assertTrue(signUpObject.verifySignUpPageHeaderVisible(),
 					"It seems that SignUp Page Header is not Visible");
 
-			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
+			signUpObject.enterUserName(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_AccountUserName"));
 
-			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("accountMail"));
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountMail"));
 
 			signUpObject.clickSignUp();
 
@@ -66,40 +65,40 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			accountInfoObject.selectTitle();
 
-			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
+			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountPass"));
 
-			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("day"));
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_day"));
 
-			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("month"));
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_month"));
 
-			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("year"));
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_year"));
 
 			accountInfoObject.checkNewsLetterOption();
 
 			accountInfoObject.checkSpecialOferOption();
 
-			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
+			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountFirstName"));
 
-			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
+			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountlastName"));
 
-			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
+			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountCompany"));
 
-			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
+			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountAddress1"));
 
-			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
+			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("value", "India");
+			accountInfoObject.selectAccountCountry("verifyAddressDetailsInCheckoutPage_menuSelectionType", "verifyAddressDetailsInCheckoutPage_accountCountry");
 
-			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
+			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountState"));
 
-			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
+			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountCity"));
 
-			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
+			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountZipCode"));
 
-			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
+			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountMobNO"));
 
 			accountInfoObject.clickCreateAccountButton();
 
@@ -145,22 +144,22 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			//verify address 1
 			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
-					ConfigReader.getConfigValue("accountAddress1")),
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountAddress1")),
 					"It seems address 1 is not matched");
 
 			//verify address 2
 			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
-					ConfigReader.getConfigValue("accountAddress2")), 
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountAddress2")), 
 					"It seems address 2 is not matched");
 
 
 			//verify address city, state name & postcode 
 			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
 
-					ConfigReader.getConfigValue("accountCity")
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountCity")
 
-					+ " " + ConfigReader.getConfigValue("accountState")
-					+ " " + ConfigReader.getConfigValue("accountZipCode")
+					+ " " + ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountState")
+					+ " " + ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountZipCode")
 
 					), 
 					"It seems address city, state name & postcode are not matched");
@@ -168,7 +167,7 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			//verify address country name 
 			assertTrue(CheckoutPageObject.verifyDeliveryAddress(
-					ConfigReader.getConfigValue("accountCountry")), 
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountCountry")), 
 					"It seems country name is not matched");
 
 

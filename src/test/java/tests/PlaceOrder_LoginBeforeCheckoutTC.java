@@ -27,7 +27,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//TC 16
 
@@ -43,11 +43,11 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 
 			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
 
-			LoginPageObject.enterUserMail(ConfigReader.getConfigValue("validUserName"));
+			LoginPageObject.enterUserMail(ConfigReader.getConfigValue("loginBeforeCheckout_accountUserName"));
 
-			LoginPageObject.enterAccountPass(ConfigReader.getConfigValue("validPassword"));
+			LoginPageObject.enterAccountPass(ConfigReader.getConfigValue("loginBeforeCheckout_accountPass"));
 
-			LoginPageObject.clickLogin(Duration.ofSeconds(time));
+			LoginPageObject.clickLogin();
 
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
 
@@ -77,7 +77,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems revie your order table is not displayed");
 
-			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
+			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("loginBeforeCheckout_commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
 
@@ -85,15 +85,15 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
 
-			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("nameOnCard"));
+			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("loginBeforeCheckout_nameOnCard"));
 
-			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("cardNumber"));
+			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("loginBeforeCheckout_cardNumber"));
 
-			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("CVC"));
+			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("loginBeforeCheckout_CVC"));
 
-			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("monthOfExpiration"));
+			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("loginBeforeCheckout_monthOfExpiration"));
 
-			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("yearOfExpiration"));
+			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("loginBeforeCheckout_yearOfExpiration"));
 
 			PaymentPageObject.clickPayAndConfirmButton();
 

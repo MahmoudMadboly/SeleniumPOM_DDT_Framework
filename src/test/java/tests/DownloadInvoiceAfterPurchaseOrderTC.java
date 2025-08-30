@@ -58,9 +58,9 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 			
 			signUpObject = new RegisterUserPage(driver);
 
-			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
+			signUpObject.enterUserName(ConfigReader.getConfigValue("DownloadInvoice_accountUserName"));
 
-			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("registerWhileCheckout_accountMail"));
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("DownloadInvoice_accountMail"));
 
 			signUpObject.clickSignUp();
 
@@ -75,38 +75,39 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
 
-			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("day"));
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("DownloadInvoice_menuSelectionType"), 
+					ConfigReader.getConfigValue("DownloadInvoice_day"));
 
-			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("month"));
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("DownloadInvoice_menuSelectionType"), 
+					ConfigReader.getConfigValue("DownloadInvoice_month"));
 
-			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("year"));
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("DownloadInvoice_menuSelectionType"), 
+					ConfigReader.getConfigValue("DownloadInvoice_year"));
 
 			accountInfoObject.checkNewsLetterOption();
 
 			accountInfoObject.checkSpecialOferOption();
 
-			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
+			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("DownloadInvoice_accountFirstName"));
 
-			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
+			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("DownloadInvoice_accountlastName"));
 
-			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
+			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("DownloadInvoice_accountCompany"));
 
-			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
+			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("DownloadInvoice_accountAddress1"));
 
-			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
+			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("DownloadInvoice_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("value", "India");
+			accountInfoObject.selectAccountCountry(
+					"DownloadInvoice_menuSelectionType", "DownloadInvoice_AccountCountry");
 
-			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
+			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("DownloadInvoice_accountState"));
 
-			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
+			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("DownloadInvoice_accountCity"));
 
-			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
+			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("DownloadInvoice_accountZipCode"));
 
-			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
+			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("DownloadInvoice_accountMobNO"));
 
 			accountInfoObject.clickCreateAccountButton();
 
@@ -122,21 +123,13 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
 					"It seems login with user name is not matched");
 			
-			
-			
-			
+		
 			
 			
 			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
 			
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(), 
 					"It seems that cart screen did not diaplyed");
-			
-			
-			
-			
-			
-			
 			
 			
 			
@@ -157,7 +150,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems review your order table is not displayed");
 			
-			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
+			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("DownloadInvoice_commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
 			
@@ -165,15 +158,15 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
 
-			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("nameOnCard"));
+			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("DownloadInvoice_nameOnCard"));
 
-			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("cardNumber"));
+			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("DownloadInvoice_cardNumber"));
 
-			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("CVC"));
+			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("DownloadInvoice_CVC"));
 
-			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("monthOfExpiration"));
+			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("DownloadInvoice_monthOfExpiration"));
 
-			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("yearOfExpiration"));
+			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("DownloadInvoice_yearOfExpiration"));
 
 			PaymentPageObject.clickPayAndConfirmButton();
 			

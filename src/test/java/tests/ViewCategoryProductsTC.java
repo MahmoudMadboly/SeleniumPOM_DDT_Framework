@@ -25,7 +25,7 @@ public class ViewCategoryProductsTC extends TestBase{
 	WomenCategoryScreenPage WomenCategoryObject;
 	MenCategoryScreenPage menCategoryObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//test case 18
 	@Test(groups = {"regression"}) 
