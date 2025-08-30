@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class browserUtils {
 
-
+	static WebDriver driver;
 	int time = 5;
 	static JavascriptExecutor js;
 	static Actions action;
@@ -49,7 +49,7 @@ public class browserUtils {
 		// Scroll down to the bottom of the page
 		js.executeScript("window.scrollTo(0, arguments[0]);", pageHeight);
 	}
-	
+
 	public static void scrollup(WebDriver driver) {
 
 		js = (JavascriptExecutor) driver;
@@ -76,11 +76,11 @@ public class browserUtils {
 
 
 	}
-	
-	
+
+
 	public static void acceptAlert(WebDriver driver) {
-		
+
 		driver.switchTo().alert().accept();
-		
+
 	}
 }

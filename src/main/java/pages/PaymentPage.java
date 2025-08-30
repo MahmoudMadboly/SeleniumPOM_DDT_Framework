@@ -18,7 +18,7 @@ public class PaymentPage extends PageBase{
 	}
 
 
-	static By paymentHeader = By.xpath("//h2 [text() = 'Payment']");
+	static By paymentHeader = By.xpath("//h2[text() ='Payment']");
 
 	By nameOnCard = By.name("name_on_card");
 
@@ -32,11 +32,11 @@ public class PaymentPage extends PageBase{
 
 	By payAndConfirmOrderButton = By.id("submit");
 	
-	By orderPlaced_SuccessMessage = By.xpath("//div [@class = 'alert-success alert']");
+	By orderPlaced_SuccessMessage = By.xpath("//div[@class ='alert-success alert']");
 	
-	By deleteAccountButton = By.partialLinkText(" Delete Account");
+	By deleteAccountButton = By.partialLinkText("Delete Account");
 	
-	By accountDeletedHeader = By.xpath("//h2 [@data-qa = 'account-deleted']");
+	By accountDeletedHeader = By.xpath("//h2[@data-qa ='account-deleted']");
 	
 	By downloadInvoiceButton = By.linkText("Download Invoice");
 	
@@ -94,7 +94,7 @@ public class PaymentPage extends PageBase{
 
 	public String getplaceOrderSuccessMessageText() {
 
-		return getWebElemnt(orderPlaced_SuccessMessage).getText();
+		return getWebElemnt(orderPlaced_SuccessMessage).getText().trim();
 
 	}
 	
@@ -103,7 +103,7 @@ public class PaymentPage extends PageBase{
 
 		clickOnElement(deleteAccountButton);
 		
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(accountDeletedHeader));
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(accountDeletedHeader));
 
 	}
 
@@ -137,7 +137,7 @@ public class PaymentPage extends PageBase{
 		
 		clickOnElement(continueAfterPayment);
 		
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(HomePage.logedInAsUserName));
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(HomePage.logedInAsUserName));
 		
 	}
 	
