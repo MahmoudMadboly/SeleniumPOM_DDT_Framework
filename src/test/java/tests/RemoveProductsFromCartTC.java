@@ -29,7 +29,7 @@ public class RemoveProductsFromCartTC extends TestBase{
 
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-//TC 17
+	//TC 17
 	//Done
 	@Test(groups = {"regression"})
 	public void removeProductsFromCartScenario() {

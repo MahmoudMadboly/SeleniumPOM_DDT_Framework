@@ -15,17 +15,17 @@ import pages.ProductDetailsPage;
 import pages.QartPage;
 
 public class VerifyProductQuantityInCartTC extends TestBase{
-	
-	
+
+
 	HomePage homePageObject;
 	ProductDetailsPage ProductDetailsObject;
 	QartPage QartPageObject; 
 	int time = 10;
 
 
-//TC 13
+	//TC 13
 	//Done
-	
+
 	@Test(groups = {"regression"})
 	public void VerifyProductQuantityInCartScenario() {
 
@@ -35,37 +35,37 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
-			
+
+
 			homePageObject.clickOnViewProductButton(Duration.ofSeconds(time));
-			
+
 			ProductDetailsObject = new ProductDetailsPage(driver);
-			
+
 
 			assertTrue(ProductDetailsObject.verifyproductPriceVisible(), 
 					"Product price is not visible.");
-			
-			
+
+
 			ProductDetailsObject.clearQuantityField();
-			
+
 			ProductDetailsObject.setProductQuantity(
 					ConfigReader.getConfigValue("productQuantity"));
-			
-			
+
+
 			ProductDetailsObject.clickOnAddToCartButton();
-			
+
 			ProductDetailsObject.clickOnViewCartButton(Duration.ofSeconds(time));
-			
-			
+
+
 			QartPageObject = new QartPage(driver);
-			
-			
+
+
 			assertEquals(QartPageObject.getActualProductQuantity(), 
 					ConfigReader.getConfigValue("productQuantity"),
 					"It seems product quantity doesn not match the right quantity");
-			
-			
-		
+
+
+
 		}catch(Exception e) {
 
 			e.printStackTrace();

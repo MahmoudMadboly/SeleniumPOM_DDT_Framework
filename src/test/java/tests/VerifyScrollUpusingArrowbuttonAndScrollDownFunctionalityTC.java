@@ -18,8 +18,8 @@ import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
 public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends TestBase{
-	
-	
+
+
 	HomePage homePageObject;
 	AllProductsPage allProductObject;
 	QartPage QartPageObject;
@@ -28,9 +28,9 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
+	//TC 25
 	//Done
 	@Test(groups = {"regression"}) 
 	public void verifyScrollUpusingArrowbuttonAndScrollDownFunctionalityScenario() {
@@ -41,24 +41,24 @@ public class VerifyScrollUpusingArrowbuttonAndScrollDownFunctionalityTC extends 
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.scrollToSubscribeField();
-			
+
 			assertTrue(homePageObject.verifySubscriptionFieldIsVisible(), 
 					"Subscription mail field is not visible.");
-		
-			
+
+
 			homePageObject.scrollUpUsingArrowButton();
-			
-			
+
+
 			homePageObject.waitTillHomePageHeaderBeDisplayed(Duration.ofSeconds(time));
-			
-			
+
+
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
-			
-			
+
+
+
 
 		}catch(Exception e) {
 

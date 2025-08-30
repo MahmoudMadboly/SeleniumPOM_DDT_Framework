@@ -48,7 +48,8 @@ public class ViewAndCartBrandProductsTC extends TestBase{
 			brandPageObject = new BrandsPage(driver);
 
 
-			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen().contains(ConfigReader.getConfigValue("firstBrandName")), 
+			assertTrue(brandPageObject.verifyNaviagtionToBrandScreen()
+					.contains(ConfigReader.getConfigValue("firstBrandName")), 
 					"It seems navigation to polo brand screen failed");
 
 			assertTrue(brandPageObject.verifyBrandListSize() > 0, 

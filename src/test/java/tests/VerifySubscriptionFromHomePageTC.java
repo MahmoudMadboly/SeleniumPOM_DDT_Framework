@@ -15,12 +15,12 @@ import pages.SearchedProductPage;
 
 public class VerifySubscriptionFromHomePageTC extends TestBase{
 
-	
+
 	HomePage homePageObject;
 	int time = 5;
 
-	
-// chekced & worked
+	//TC 10
+	// Done
 	@Test(groups = {"regression"})
 	public void verifySubscriptionFromHomePageScenario() {
 
@@ -33,15 +33,15 @@ public class VerifySubscriptionFromHomePageTC extends TestBase{
 
 
 			homePageObject.scrollToSubscribeField();
-			
+
 			homePageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("subscriptionMailID"));
-				
+
 			homePageObject.clickOnSubscribeButton();
 
 			assertEquals(homePageObject.getWebElementOfSubscriptionSuccessMessage(), 
 					ConfigReader.getConfigValue("subscriptionSuccessfulMessage"));
-			
-			
+
+
 		}catch(Exception e) {
 
 			e.printStackTrace();

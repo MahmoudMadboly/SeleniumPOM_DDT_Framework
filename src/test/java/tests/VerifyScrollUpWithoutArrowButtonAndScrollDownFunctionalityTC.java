@@ -7,6 +7,8 @@ import java.time.Duration;
 import org.testng.annotations.Test;
 
 import base.TestBase;
+import config.ConfigReader;
+import io.opentelemetry.api.internal.ConfigUtil;
 import pages.AllProductsPage;
 import pages.CheckoutPage;
 import pages.HomePage;
@@ -26,10 +28,10 @@ public class VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityTC extend
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-	
-	// checked & worked 
+	//TC26
+	// Done
 	@Test(groups = {"regression"}) 
 	public void VerifyScrollUpWithoutArrowButtonAndScrollDownFunctionalityScenario() {
 
