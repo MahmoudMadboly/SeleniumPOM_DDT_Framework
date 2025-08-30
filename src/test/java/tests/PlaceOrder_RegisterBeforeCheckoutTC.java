@@ -25,9 +25,9 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
+//TC = 15
 	@Test
 	public void PlaceOrder_RegisterBeforeCheckoutScenario() {
 
@@ -42,9 +42,9 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			
 			signUpObject = new RegisterUserPage(driver);
 
-			signUpObject.enterUserName(ConfigReader.getConfigValue("registerWhileCheckout_accountUserName"));
+			signUpObject.enterUserName(ConfigReader.getConfigValue("registerbeforeCheckout_accountUserName"));
 
-			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("registerWhileCheckout_accountMail"));
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("registerbeforeCheckout_accountMail"));
 
 			signUpObject.clickSignUp();
 
@@ -58,40 +58,41 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			accountInfoObject.selectTitle();
 
-			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("accountPass"));
+			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("registerbeforeCheckout_accountPass"));
 
-			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("day"));
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("registerbeforeCheckout_menuSelectionType"), 
+					ConfigReader.getConfigValue("registerbeforeCheckout__day"));
 
-			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("month"));
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("registerbeforeCheckout_menuSelectionType"), 
+					ConfigReader.getConfigValue("registerbeforeCheckout_month"));
 
-			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("menuSelectionType"), 
-					ConfigReader.getConfigValue("year"));
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("registerbeforeCheckout_menuSelectionType"), 
+					ConfigReader.getConfigValue("registerbeforeCheckout_year"));
 
 			accountInfoObject.checkNewsLetterOption();
 
 			accountInfoObject.checkSpecialOferOption();
 
-			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("accountFirstName"));
+			accountInfoObject.enterAccountFirstName(ConfigReader.getConfigValue("registerbeforeCheckout_accountFirstName"));
 
-			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("accountlastName"));
+			accountInfoObject.enterAccountLastName(ConfigReader.getConfigValue("registerbeforeCheckout_accountlastName"));
 
-			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("accountCompany"));
+			accountInfoObject.enterAccountCompany(ConfigReader.getConfigValue("registerbeforeCheckout_accountCompany"));
 
-			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("accountAddress1"));
+			accountInfoObject.enterAccountAdress1(ConfigReader.getConfigValue("registerbeforeCheckout_accountAddress1"));
 
-			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("accountAddress2"));
+			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("registerbeforeCheckout_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("value", "India");
+			accountInfoObject.selectAccountCountry("registerbeforeCheckout_menuSelectionType",
+					"registerbeforeCheckout_accountCountry");
 
-			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("accountState"));
+			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("registerbeforeCheckout_accountState"));
 
-			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("accountCity"));
+			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("registerbeforeCheckout_accountCity"));
 
-			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("accountZipCode"));
+			accountInfoObject.enterAccountZipCode(ConfigReader.getConfigValue("registerbeforeCheckout_accountZipCode"));
 
-			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("accountMobNO"));
+			accountInfoObject.enterAccountMobileNumber(ConfigReader.getConfigValue("registerbeforeCheckout_accountMobNO"));
 
 			accountInfoObject.clickCreateAccountButton();
 
@@ -135,7 +136,8 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems revie your order table is not displayed");
 			
-			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader.getConfigValue("commentAboutOrder"));
+			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader
+					.getConfigValue("registerbeforeCheckout_commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
 			
@@ -143,15 +145,15 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
 
-			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("nameOnCard"));
+			PaymentPageObject.enterNameOnCard(ConfigReader.getConfigValue("registerbeforeCheckout_nameOnCard"));
 
-			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("cardNumber"));
+			PaymentPageObject.enterCardNumber(ConfigReader.getConfigValue("registerbeforeCheckout_cardNumber"));
 
-			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("CVC"));
+			PaymentPageObject.enterCVC(ConfigReader.getConfigValue("registerbeforeCheckout_CVC"));
 
-			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("monthOfExpiration"));
+			PaymentPageObject.enterExpirationMonth(ConfigReader.getConfigValue("registerbeforeCheckout_monthOfExpiration"));
 
-			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("yearOfExpiration"));
+			PaymentPageObject.enterExpirationYear(ConfigReader.getConfigValue("registerbeforeCheckout_yearOfExpiration"));
 
 			PaymentPageObject.clickPayAndConfirmButton();
 

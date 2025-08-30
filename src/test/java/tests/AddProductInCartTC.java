@@ -20,7 +20,7 @@ public class AddProductInCartTC extends TestBase{
 	HomePage homePageObject;
 	AllProductsPage allProductObject;
 	QartPage QartPageObject;
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 //TC 12
 	//done

@@ -20,7 +20,7 @@ public class VerifyProductQuantityInCartTC extends TestBase{
 	HomePage homePageObject;
 	ProductDetailsPage ProductDetailsObject;
 	QartPage QartPageObject; 
-	int time = 10;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 
 	//TC 13
