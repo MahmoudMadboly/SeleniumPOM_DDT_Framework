@@ -42,9 +42,9 @@ public class LoginWithInValidUserTC extends TestBase{
 			assertTrue(loginPageObject.verifyLoginToAccountHeaderVisible(), 
 					ConfigReader.getConfigValue("logInScreenHeader"));
 			
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("inValidAccountMail"));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("login_inValidAccountMail"));
 			
-			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("inValidePassword"));
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("login_inValidePassword"));
 			
 			loginPageObject.clickLogin();
 			

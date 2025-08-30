@@ -43,9 +43,9 @@ public class LoginWithValidUserTC extends TestBase{
 					ConfigReader.getConfigValue("logInScreenHeader"));
 			
 			
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("login_validUserName"));
 			
-			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("login_validPassword"));
 			
 			loginPageObject.clickLogin();
 			

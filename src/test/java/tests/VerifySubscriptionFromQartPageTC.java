@@ -19,7 +19,7 @@ public class VerifySubscriptionFromQartPageTC extends TestBase{
 
 	HomePage homePageObject;
 	QartPage QartPageObject; 
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));;
 
 
 	//TC 11
@@ -46,12 +46,12 @@ public class VerifySubscriptionFromQartPageTC extends TestBase{
 			QartPageObject.scrollToFooter(ConfigReader.getConfigValue("pixel"));
 
 
-			QartPageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("subscriptionMailID"));
+			QartPageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("cartPage_subscriptionMailID"));
 
 			QartPageObject.clickOnSubscribeButton(Duration.ofSeconds(time));
 
 			assertEquals(QartPageObject.getWebElementOfSubscriptionSuccessMessage(), 
-					ConfigReader.getConfigValue("subscriptionSuccessfulMessage"),
+					ConfigReader.getConfigValue("cartPage_subscriptionSuccessfulMessage"),
 					"It seems that subscription from cart page is failed");
 
 

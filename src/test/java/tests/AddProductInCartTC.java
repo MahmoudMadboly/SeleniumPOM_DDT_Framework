@@ -22,7 +22,7 @@ public class AddProductInCartTC extends TestBase{
 	QartPage QartPageObject;
 	int time = 5;
 
-
+//TC 12
 	//done
 	@Test(groups = {"regression"})
 	public void AddProductInCartScenario() {

@@ -32,7 +32,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-
+//TC 24
 	@Test 
 	public void downloadInvoiceAfterPurchaseOrderScenario() {
 

@@ -17,7 +17,7 @@ public class VerifySubscriptionFromHomePageTC extends TestBase{
 
 
 	HomePage homePageObject;
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//TC 10
 	// Done
@@ -34,12 +34,12 @@ public class VerifySubscriptionFromHomePageTC extends TestBase{
 
 			homePageObject.scrollToSubscribeField();
 
-			homePageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("subscriptionMailID"));
+			homePageObject.enteSubscriptionMailID(ConfigReader.getConfigValue("homePage_subscriptionMailID"));
 
 			homePageObject.clickOnSubscribeButton();
 
 			assertEquals(homePageObject.getWebElementOfSubscriptionSuccessMessage(), 
-					ConfigReader.getConfigValue("subscriptionSuccessfulMessage"));
+					ConfigReader.getConfigValue("homePage_subscriptionSuccessfulMessage"));
 
 
 		}catch(Exception e) {

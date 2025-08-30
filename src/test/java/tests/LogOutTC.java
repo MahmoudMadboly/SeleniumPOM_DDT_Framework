@@ -41,9 +41,9 @@ public class LogOutTC extends TestBase{
 					ConfigReader.getConfigValue("logInScreenHeader"));
 
 
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("accountMail"));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("LogOutUser_validUserName"));
 
-			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("accountPass"));
+			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("LogOutUser_validPassword"));
 
 			loginPageObject.clickLogin();
 

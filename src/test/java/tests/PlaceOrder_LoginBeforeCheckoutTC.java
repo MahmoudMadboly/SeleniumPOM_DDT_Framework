@@ -29,6 +29,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 
 	int time = 10;
 
+	//TC 16
 
 	@Test
 	public void PlaceOrder_LoginBeforeCheckoutScenario() {

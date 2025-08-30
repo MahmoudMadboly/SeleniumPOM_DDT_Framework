@@ -44,9 +44,9 @@ public class RegisterWithExistingMailTC extends TestBase{
 			assertTrue(signUpObject.verifySignUpPageHeaderVisible(),
 					"It seems that SignUp Page Header is not visible");
 
-			signUpObject.enterUserName(ConfigReader.getConfigValue("accountUserName"));
+			signUpObject.enterUserName(ConfigReader.getConfigValue("existingAccountUserName"));
 
-			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("accountMail"));
+			signUpObject.enterEmailAdress(ConfigReader.getConfigValue("existingAccountMail"));
 
 			signUpObject.clickSignUp();
 
