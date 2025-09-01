@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import base.TestBase;
 import config.ConfigReader;
+import pages.AllProductsPage;
 import pages.CheckoutPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -26,6 +27,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 	SignUp_AccountInformationPage accountInfoObject;
 	CheckoutPage CheckoutPageObject;
 	PaymentPage PaymentPageObject;
+	AllProductsPage allProductObject;
 
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
@@ -42,12 +44,18 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 					"Home page header is not visible.");
 
 			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
+			
+			LoginPageObject = new LoginPage(driver);
 
 			LoginPageObject.enterUserMail(ConfigReader.getConfigValue("loginBeforeCheckout_accountUserName"));
 
 			LoginPageObject.enterAccountPass(ConfigReader.getConfigValue("loginBeforeCheckout_accountPass"));
 
 			LoginPageObject.clickLogin();
+			
+			
+			
+			allProductObject = new AllProductsPage(driver);
 
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
 

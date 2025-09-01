@@ -67,13 +67,16 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			accountInfoObject.setAccountPassword(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountPass"));
 
-			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+			accountInfoObject.selectDayOfBirth(ConfigReader.getConfigValue(
+					"verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
 					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_day"));
 
-			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+			accountInfoObject.selectMonthOfBirth(ConfigReader.getConfigValue(
+					"verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
 					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_month"));
 
-			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
+			accountInfoObject.selectYearOfBirth(ConfigReader.getConfigValue(
+					"verifyAddressDetailsInCheckoutPage_menuSelectionType"), 
 					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_year"));
 
 			accountInfoObject.checkNewsLetterOption();
@@ -90,7 +93,8 @@ public class VerifyAddressDetailsInCheckoutPageTC extends TestBase{
 
 			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("verifyAddressDetailsInCheckoutPage_menuSelectionType", "verifyAddressDetailsInCheckoutPage_accountCountry");
+			accountInfoObject.selectAccountCountry(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_menuSelectionType"),
+					ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountCountry"));
 
 			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("verifyAddressDetailsInCheckoutPage_accountState"));
 

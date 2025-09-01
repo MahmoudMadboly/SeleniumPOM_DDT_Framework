@@ -49,7 +49,9 @@ public class HomePage extends PageBase{
 
 	By viewProductButton = By.xpath("//a [text() = 'View Product']");
 
-	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(text(), 'Add to cart')][1]");
+//	By addToCartButton = By.xpath("//a[@class='btn btn-default add-to-cart' and contains(normalize-space(.), 'Add to cart')][1]");
+	
+	By addToCartButton = By.xpath("(//a[contains(normalize-space(.), 'Add to cart')])[1]");	
 
 	By continueShoppingButton = By.xpath("//button [@class = 'btn btn-success close-modal btn-block']");
 

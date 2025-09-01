@@ -20,7 +20,7 @@ public class SearchProductTC extends TestBase{
 	HomePage homePageObject;
 	AllProductsPage allProductObject;
 	SearchedProductPage SearchedProductObject;
-	int time = 5;
+	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	
 
