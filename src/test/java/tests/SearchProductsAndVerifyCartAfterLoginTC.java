@@ -30,7 +30,8 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 
 
 	//TC 20
-	@Test
+	//Done
+	@Test(groups = {"regression"})
 	public void SearchProductsAndVerifyCartAfterLoginScenario() {
 
 		try {
@@ -61,9 +62,11 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 					.contains(ConfigReader.getConfigValue("Searched_Product_Name")), 
 					"Searched product header is not visible.");
 			
+			QartPageObject = new QartPage(driver);
+			
 			SearchedProductPageObject = new SearchedProductPage(driver);
 			
-			SearchedProductPageObject.addProductToCart();
+			SearchedProductPageObject.addProductToCart(Duration.ofSeconds(time));
 			
 			SearchedProductPageObject.navigateToCartScreen(Duration.ofSeconds(time));
 			
@@ -71,7 +74,6 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 					"It seems that Qart screen is not visible.");
 			
 			
-			QartPageObject = new QartPage(driver);
 			
 			assertTrue(QartPageObject.VerifyQartProducts() > 0, 
 					"It seems that there is no products in the cart");
@@ -81,14 +83,16 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 			loginPageObject = new LoginPage(driver);
 			
 			
-			loginPageObject.enterUserMail(ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLoginaccountMail"));
+			loginPageObject.enterUserMail(ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLogin_AccountMail"));
 			
 			loginPageObject.enterAccountPass(ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLogin_accountPass"));
 			
 			loginPageObject.clickLogin();
 			
+			loginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
+			
 			assertEquals(homePageObject.verifyUserLoggedIn(), 
-					ConfigReader.getConfigValue("LoginSuccessMessage") +
+					ConfigReader.getConfigValue("Login_SuccessMessage") +
 					ConfigReader.getConfigValue("SearchProductsandVerifyCartAfterLogin_accountUserName"));
 			
 			
@@ -107,7 +111,7 @@ public class SearchProductsAndVerifyCartAfterLoginTC extends TestBase{
 
 			System.out.println("Error message/   " + e.getMessage());
 
-			System.out.println("it seems some issues happened during view category product test case! ");	
+			System.out.println("it seems some issues happened during Search Products And Verify Cart After Login test case! ");	
 
 		}
 	}

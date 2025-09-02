@@ -22,9 +22,11 @@ public class SearchProductTC extends TestBase{
 	SearchedProductPage SearchedProductObject;
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-	
 
-	@Test
+	//TC 9
+	//Done
+
+	@Test(groups = {"regression"})
 	public void SearchedProductScenario() {
 
 		try {
@@ -36,27 +38,27 @@ public class SearchProductTC extends TestBase{
 
 
 			homePageObject.navigateToAllProductsScreen(Duration.ofSeconds(time));
-			
+
 			allProductObject = new AllProductsPage(driver);
-			
+
 			assertTrue(allProductObject.verifyAllProductsHeaderVisible(), 
 					"All products page header is not visible.");
-			
-			
+
+
 			allProductObject.enterSearchedProductName(ConfigReader.getConfigValue("SearchedProductName"));
-			
+
 			allProductObject.clickOnSearchButton();
-			
-			
+
+
 			SearchedProductObject = new SearchedProductPage(driver);
-			
+
 			assertTrue(SearchedProductObject.verifysearchedProductHeaderVisible(), 
 					"Searched product header is not visible.");
-			
+
 			assertTrue(SearchedProductObject.getWebElementOfSearchedProductName()
 					.contains(ConfigReader.getConfigValue("SearchedProductName")), 
 					"Searched product header is not visible.");
-				
+
 
 		}catch(Exception e) {
 
@@ -68,5 +70,5 @@ public class SearchProductTC extends TestBase{
 
 		}
 	}
-	
+
 }

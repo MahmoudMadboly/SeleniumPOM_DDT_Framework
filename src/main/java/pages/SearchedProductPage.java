@@ -20,9 +20,9 @@ public class SearchedProductPage extends PageBase{
 	
 	By searchedProductName =  By.xpath("//div[@class='productinfo text-center']/p");
 	
-	By addToCartButton =  ProductDetailsPage.addToCartButton;
+	By addToCartButton =  By.xpath("//a[@data-product-id='1']");
 	
-	By viewCartButton =  By.partialLinkText("View Cart");
+	By viewCartButton =  By.linkText("View Cart");
 	
 	
 	                  
@@ -41,9 +41,11 @@ public class SearchedProductPage extends PageBase{
 		
 	}
 	
-	public void addProductToCart() {
+	public void addProductToCart(Duration time) {
 		
-	clickOnElement(addToCartButton);	
+	clickOnElement(addToCartButton);
+	
+	waitForElemnt(time, ExpectedConditions.elementToBeClickable(viewCartButton));
 		
 	}	
 	
@@ -53,7 +55,7 @@ public class SearchedProductPage extends PageBase{
 		
 		clickOnElement(viewCartButton);
 		
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(QartPage.shoppingCartHeader));
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(QartPage.shoppingCartHeader));
 		
 	}
 }

@@ -84,7 +84,7 @@ public class HomePage extends PageBase{
 
 	public String verifyUserLoggedIn() {
 
-		return super.getWebElemnt(logedInAsUserName).getText();
+		return super.getWebElemnt(logedInAsUserName).getText().trim();
 
 
 	}
@@ -200,9 +200,19 @@ public class HomePage extends PageBase{
 	}
 
 
+	
+	public void moveToElement() {
+		
+		hoverOnElement(getWebElemnt(addToCartButton));
+		
+	}
+	
+	
 	public void addProductToCart(Duration time) {
 
-		clickOnElement(addToCartButton);
+	//	clickOnElement(addToCartButton);
+		clickUsingJavaScript(getWebElemnt(addToCartButton));
+		
 		waitForElemnt(time, ExpectedConditions.elementToBeClickable(continueShoppingButton));
 
 	}	

@@ -31,8 +31,8 @@ public class WomenCategoryScreenPage extends PageBase{
 		return super.getWebElemnt(womenCategoryHeader).isDisplayed();
 
 	}
-
-	public void expandWomanCategory() {
+	
+	public void expandMenCategory() {
 
 		clickOnElement(menCategory);
 

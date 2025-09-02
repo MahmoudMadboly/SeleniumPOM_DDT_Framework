@@ -135,6 +135,7 @@ public String getText() {
 	public void clickAddProductToCart_1(Duration time) {
 
 		clickOnElement(addToCartButton_1);
+		
 		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(continueShoppingButton));
 
 	}	

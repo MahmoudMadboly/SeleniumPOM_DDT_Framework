@@ -102,7 +102,7 @@ public class QartPage extends PageBase{
 
 		clickOnElement(proceedToCheckOutButton);
 
-		waitForElemnt(time, ExpectedConditions.presenceOfElementLocated(CheckoutPage.checkOutPopUpHeader));
+		waitForElemnt(time, ExpectedConditions.visibilityOfElementLocated(CheckoutPage.checkOutPopUpHeader));
 
 	}
 	

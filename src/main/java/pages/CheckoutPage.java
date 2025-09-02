@@ -32,7 +32,9 @@ public class CheckoutPage extends PageBase{
 
 	By placeOrderButton = By.xpath("//a [text() = 'Place Order']");
 
-	static By checkOutPopUpHeader = By.xpath("//li[@class='active' and text()='Checkout']");
+	//static By checkOutPopUpHeader = By.xpath("//li[@class='active' and text()='Checkout']");
+	
+	static By checkOutPopUpHeader = By.xpath("//h4[@class='modal-title w-100' and text()='Checkout']");
 
 	By addressCountry = By.xpath("//li[@class='address_city address_state_name address_postcode']");
 

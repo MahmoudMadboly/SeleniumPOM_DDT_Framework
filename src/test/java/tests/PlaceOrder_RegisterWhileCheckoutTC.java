@@ -98,9 +98,10 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("registerWhileCheckout_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("registerWhileCheckout_menuSelectionType",
-					"registerWhileCheckout_accountCountry");
-
+			accountInfoObject.selectAccountCountry(ConfigReader.getConfigValue("registerWhileCheckout_menuSelectionType"),
+					ConfigReader.getConfigValue("registerWhileCheckout_accountCountry"));
+			
+			
 			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("registerWhileCheckout_accountState"));
 
 			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("registerWhileCheckout_accountCity"));

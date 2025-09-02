@@ -53,11 +53,29 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 
 			LoginPageObject.clickLogin();
 			
+			LoginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
 			
+			homePageObject.moveToElement();
+			
+			homePageObject.addProductToCart(Duration.ofSeconds(time));
+			
+		
 			
 			allProductObject = new AllProductsPage(driver);
+			
+			allProductObject.scrollToFirstElement();
 
-			homePageObject.addProductToCart(Duration.ofSeconds(time));
+			allProductObject.waitSomeTimeTillFirstProductsBeVisible(Duration.ofSeconds(time));
+
+			allProductObject.hoverOnFirstElement();
+
+			allProductObject.clickAddProductToCart_1(Duration.ofSeconds(time));
+
+			
+			
+			
+
+			//homePageObject.addProductToCart(Duration.ofSeconds(time));
 
 			homePageObject.clickOnContinueShoppingButton();
 

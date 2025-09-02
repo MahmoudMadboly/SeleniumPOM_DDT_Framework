@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-01T16:20:52 AST" name="Default suite" finished-at="2025-09-01T16:20:58 AST" duration-ms="5540">
+  <suite started-at="2025-09-02T15:00:21 AST" name="Default suite" finished-at="2025-09-02T15:00:53 AST" duration-ms="31619">
     <groups>
     </groups>
-    <test started-at="2025-09-01T16:20:52 AST" name="Default test" finished-at="2025-09-01T16:20:58 AST" duration-ms="5540">
-      <class name="tests.PlaceOrder_LoginBeforeCheckoutTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.PlaceOrder_LoginBeforeCheckoutTC@4afcd809]" started-at="2025-09-01T16:20:52 AST" name="openBrowser" finished-at="2025-09-01T16:20:57 AST" duration-ms="4833" status="PASS">
+    <test started-at="2025-09-02T15:00:21 AST" name="Default test" finished-at="2025-09-02T15:00:53 AST" duration-ms="31619">
+      <class name="tests.PlaceOrder_RegisterWhileCheckoutTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.PlaceOrder_RegisterWhileCheckoutTC@4afcd809]" started-at="2025-09-02T15:00:21 AST" name="openBrowser" finished-at="2025-09-02T15:00:42 AST" duration-ms="20427" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method signature="PlaceOrder_LoginBeforeCheckoutScenario()[pri:0, instance:tests.PlaceOrder_LoginBeforeCheckoutTC@4afcd809]" started-at="2025-09-01T16:20:57 AST" name="PlaceOrder_LoginBeforeCheckoutScenario" finished-at="2025-09-01T16:20:58 AST" duration-ms="687" status="PASS">
+        <test-method signature="PlaceOrder_RegisterWhileCheckoutScenario()[pri:0, instance:tests.PlaceOrder_RegisterWhileCheckoutTC@4afcd809]" started-at="2025-09-02T15:00:42 AST" name="PlaceOrder_RegisterWhileCheckoutScenario" finished-at="2025-09-02T15:00:53 AST" duration-ms="11173" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- PlaceOrder_LoginBeforeCheckoutScenario -->
-      </class> <!-- tests.PlaceOrder_LoginBeforeCheckoutTC -->
+        </test-method> <!-- PlaceOrder_RegisterWhileCheckoutScenario -->
+      </class> <!-- tests.PlaceOrder_RegisterWhileCheckoutTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

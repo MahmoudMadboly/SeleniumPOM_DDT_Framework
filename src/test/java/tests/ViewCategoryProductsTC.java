@@ -43,8 +43,6 @@ public class ViewCategoryProductsTC extends TestBase{
 
 
 			homePageObject.expandWomanCategory();
-			
-		//	homePageObject.getList();
 
 			homePageObject.getAndLoopInsideWomanCategoryChoices(
 					ConfigReader.getConfigValue("womancategoryListchoice") , Duration.ofSeconds(time));
@@ -52,6 +50,8 @@ public class ViewCategoryProductsTC extends TestBase{
 			WomenCategoryObject = new WomenCategoryScreenPage(driver);
 
 			WomenCategoryObject.verifytWomanPageHeaderVisible();
+			
+			WomenCategoryObject.expandMenCategory();
 
 			WomenCategoryObject.getAndLoopInsideMenCategoryChoices(ConfigReader
 					.getConfigValue("mencategoryListchoice"), Duration.ofSeconds(time));
