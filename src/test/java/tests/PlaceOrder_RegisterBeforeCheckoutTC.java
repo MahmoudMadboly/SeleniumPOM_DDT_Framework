@@ -17,7 +17,7 @@ import pages.RegisterUserPage;
 import pages.SignUp_AccountInformationPage;
 
 public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
-	
+
 	HomePage homePageObject;
 	QartPage QartPageObject;
 	RegisterUserPage signUpObject;
@@ -27,8 +27,9 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
-//TC = 15
-	@Test
+	//TC = 15
+	//Done
+	@Test(groups = {"regression"})
 	public void PlaceOrder_RegisterBeforeCheckoutScenario() {
 
 		try {
@@ -37,9 +38,9 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			assertTrue(homePageObject.verifytHomePageHeaderVisible(), 
 					"Home page header is not visible.");
-			
+
 			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
-			
+
 			signUpObject = new RegisterUserPage(driver);
 
 			signUpObject.enterUserName(ConfigReader.getConfigValue("registerbeforeCheckout_accountUserName"));
@@ -102,13 +103,13 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 					ConfigReader.getConfigValue("accountCreationSuccessMessage"));
 
 			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
-			
+
 
 			assertTrue(homePageObject.verifyUserLoggedIn()
-					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
+					.contains(ConfigReader.getConfigValue("Login_SuccessMessage")),
 					"It seems login with user name is not matched");
-			
-		
+
+
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
 
 			homePageObject.clickOnContinueShoppingButton();
@@ -118,7 +119,7 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			QartPageObject = new QartPage(driver);
 
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
-			
+
 
 			QartPageObject.clickOnproceedToCheckOutButtonWithoutRegisterOrLogin(Duration.ofSeconds(time));
 
@@ -135,12 +136,12 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			assertTrue(CheckoutPageObject.verifyreviewYourOrderTableIsDiaplyed(),
 					"It seems revie your order table is not displayed");
-			
+
 			CheckoutPageObject.addCommentAboutTheOrder(ConfigReader
 					.getConfigValue("registerbeforeCheckout_commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
-			
+
 			PaymentPageObject = new PaymentPage(driver);
 
 			PaymentPageObject.verifyPaymentHeaderIsDiaplyed();
@@ -160,14 +161,14 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			assertEquals(PaymentPageObject.getplaceOrderSuccessMessageText(),
 					ConfigReader.getConfigValue("orderPlacedSuccessMessage"),
 					"It seems the place order success messgae is not matched");
-			
+
 			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
 
 			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
-					ConfigReader.getConfigValue("accountDeltedHeader"),
+					ConfigReader.getConfigValue("accountDELETED_RegisterBeforecheckout"),
 					"It seems the account deleted header text is not matched");
-			
-			
+
+
 
 		}catch(Exception e) {
 

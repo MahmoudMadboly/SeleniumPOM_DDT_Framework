@@ -32,8 +32,8 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//TC 16
-
-	@Test
+	//Done
+	@Test(groups = {"regression"})
 	public void PlaceOrder_LoginBeforeCheckoutScenario() {
 
 		try {
@@ -44,7 +44,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 					"Home page header is not visible.");
 
 			homePageObject.navigateToSignUpScreen(Duration.ofSeconds(time));
-			
+
 			LoginPageObject = new LoginPage(driver);
 
 			LoginPageObject.enterUserMail(ConfigReader.getConfigValue("loginBeforeCheckout_accountUserName"));
@@ -52,30 +52,15 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 			LoginPageObject.enterAccountPass(ConfigReader.getConfigValue("loginBeforeCheckout_accountPass"));
 
 			LoginPageObject.clickLogin();
-			
+
 			LoginPageObject.waitInCaseLoginWithvalidCredentials(Duration.ofSeconds(time));
-			
+
 			homePageObject.moveToElement();
-			
+
 			homePageObject.addProductToCart(Duration.ofSeconds(time));
-			
-		
-			
-			allProductObject = new AllProductsPage(driver);
-			
-			allProductObject.scrollToFirstElement();
 
-			allProductObject.waitSomeTimeTillFirstProductsBeVisible(Duration.ofSeconds(time));
 
-			allProductObject.hoverOnFirstElement();
-
-			allProductObject.clickAddProductToCart_1(Duration.ofSeconds(time));
-
-			
-			
-			
-
-			//homePageObject.addProductToCart(Duration.ofSeconds(time));
+			homePageObject.addProductToCart(Duration.ofSeconds(time));
 
 			homePageObject.clickOnContinueShoppingButton();
 
@@ -86,7 +71,7 @@ public class PlaceOrder_LoginBeforeCheckoutTC extends TestBase{
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
 
 
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+			QartPageObject.clickOnproceedToCheckOutButton_RegisterBeforeCheckout(Duration.ofSeconds(time));
 
 
 			CheckoutPageObject = new CheckoutPage(driver);

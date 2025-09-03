@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-03T04:30:04 AST" name="Default suite" finished-at="2025-09-03T04:30:12 AST" duration-ms="8133">
+  <suite started-at="2025-09-03T05:24:32 AST" name="Default suite" finished-at="2025-09-03T05:25:07 AST" duration-ms="35191">
     <groups>
     </groups>
-    <test started-at="2025-09-03T04:30:04 AST" name="Default test" finished-at="2025-09-03T04:30:12 AST" duration-ms="8133">
-      <class name="tests.PlaceOrder_RegisterBeforeCheckoutTC">
-        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.PlaceOrder_RegisterBeforeCheckoutTC@4afcd809]" started-at="2025-09-03T04:30:04 AST" name="openBrowser" finished-at="2025-09-03T04:30:08 AST" duration-ms="4088" status="PASS">
+    <test started-at="2025-09-03T05:24:32 AST" name="Default test" finished-at="2025-09-03T05:25:07 AST" duration-ms="35191">
+      <class name="tests.DownloadInvoiceAfterPurchaseOrderTC">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:tests.DownloadInvoiceAfterPurchaseOrderTC@4afcd809]" started-at="2025-09-03T05:24:32 AST" name="openBrowser" finished-at="2025-09-03T05:24:37 AST" duration-ms="5338" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openBrowser -->
-        <test-method signature="PlaceOrder_RegisterBeforeCheckoutScenario()[pri:0, instance:tests.PlaceOrder_RegisterBeforeCheckoutTC@4afcd809]" started-at="2025-09-03T04:30:08 AST" name="PlaceOrder_RegisterBeforeCheckoutScenario" finished-at="2025-09-03T04:30:12 AST" duration-ms="4021" status="PASS">
+        <test-method signature="downloadInvoiceAfterPurchaseOrderScenario()[pri:0, instance:tests.DownloadInvoiceAfterPurchaseOrderTC@4afcd809]" started-at="2025-09-03T05:24:37 AST" name="downloadInvoiceAfterPurchaseOrderScenario" finished-at="2025-09-03T05:25:07 AST" duration-ms="29835" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- PlaceOrder_RegisterBeforeCheckoutScenario -->
-      </class> <!-- tests.PlaceOrder_RegisterBeforeCheckoutTC -->
+        </test-method> <!-- downloadInvoiceAfterPurchaseOrderScenario -->
+      </class> <!-- tests.DownloadInvoiceAfterPurchaseOrderTC -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -98,8 +98,8 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("DownloadInvoice_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry(
-					"DownloadInvoice_menuSelectionType", "DownloadInvoice_AccountCountry");
+			accountInfoObject.selectAccountCountry(ConfigReader.getConfigValue(
+					"DownloadInvoice_menuSelectionType"), ConfigReader.getConfigValue("DownloadInvoice_AccountCountry"));
 
 			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("DownloadInvoice_accountState"));
 
@@ -120,7 +120,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 
 
 			assertTrue(homePageObject.verifyUserLoggedIn()
-					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
+					.contains(ConfigReader.getConfigValue("Login_SuccessMessage")),
 					"It seems login with user name is not matched");
 			
 		
@@ -134,7 +134,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 			
 			
 			
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+			QartPageObject.clickOnproceedToCheckOutButton_RegisterBeforeCheckout(Duration.ofSeconds(time));
 			
 			CheckoutPageObject = new CheckoutPage(driver);
 
@@ -187,7 +187,7 @@ public class DownloadInvoiceAfterPurchaseOrderTC extends TestBase{
 			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
 
 			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
-					ConfigReader.getConfigValue("accountDeltedHeader"),
+					ConfigReader.getConfigValue("accountDELETED_DownloadInvoiceAfterPurchaseOrder"),
 					"It seems the account deleted header text is not matched");
 			
 		
