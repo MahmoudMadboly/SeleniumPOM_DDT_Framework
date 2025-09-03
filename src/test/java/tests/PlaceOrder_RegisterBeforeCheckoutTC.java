@@ -83,8 +83,8 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 
 			accountInfoObject.enterAccountAdress2(ConfigReader.getConfigValue("registerbeforeCheckout_accountAddress2"));
 
-			accountInfoObject.selectAccountCountry("registerbeforeCheckout_menuSelectionType",
-					"registerbeforeCheckout_accountCountry");
+			accountInfoObject.selectAccountCountry(ConfigReader.getConfigValue("registerbeforeCheckout_menuSelectionType"),
+					ConfigReader.getConfigValue("registerbeforeCheckout_accountCountry"));
 
 			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("registerbeforeCheckout_accountState"));
 
@@ -120,7 +120,7 @@ public class PlaceOrder_RegisterBeforeCheckoutTC extends TestBase{
 			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
 			
 
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+			QartPageObject.clickOnproceedToCheckOutButtonWithoutRegisterOrLogin(Duration.ofSeconds(time));
 
 			CheckoutPageObject = new CheckoutPage(driver);
 

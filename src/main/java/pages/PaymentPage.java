@@ -100,6 +100,8 @@ public class PaymentPage extends PageBase{
 	
 	
 	public void deleteAccount(Duration time) {
+		
+		hoverOnElement(getWebElemnt(deleteAccountButton));
 
 		clickOnElement(deleteAccountButton);
 		

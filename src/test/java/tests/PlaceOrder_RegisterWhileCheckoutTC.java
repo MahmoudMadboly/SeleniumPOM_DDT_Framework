@@ -30,8 +30,8 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 	int time = Integer.parseInt(ConfigReader.getConfigValue("globalWaitTime"));
 
 	//TC 14
-
-	@Test
+	//Done
+	@Test(groups = {"regression"})
 	public void PlaceOrder_RegisterWhileCheckoutScenario() {
 
 		try {
@@ -49,10 +49,14 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			QartPageObject = new QartPage(driver);
 
-			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible());
+			assertTrue(QartPageObject.verifyShoppingCartHeaderVisible(),
+					"It seems that shopping geader is not displayed");
 
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
-			
+			QartPageObject.clickOnproceedToCheckOutButtonWithoutRegisterOrLogin(Duration.ofSeconds(time));
+
+
+
+
 			QartPageObject.clickRegisterOrLoginButton(Duration.ofSeconds(time));
 
 			signUpObject = new RegisterUserPage(driver);
@@ -100,8 +104,8 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			accountInfoObject.selectAccountCountry(ConfigReader.getConfigValue("registerWhileCheckout_menuSelectionType"),
 					ConfigReader.getConfigValue("registerWhileCheckout_accountCountry"));
-			
-			
+
+
 			accountInfoObject.enterAccountstate(ConfigReader.getConfigValue("registerWhileCheckout_accountState"));
 
 			accountInfoObject.enterAccountCity(ConfigReader.getConfigValue("registerWhileCheckout_accountCity"));
@@ -117,18 +121,18 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 			assertEquals(accountInfoObject.getSuccessMessageText(),
 					ConfigReader.getConfigValue("accountCreationSuccessMessage"));
 
-			
+
 			accountInfoObject.clickOnContinueButton(Duration.ofSeconds(time));
 
 			assertTrue(homePageObject.verifyUserLoggedIn()
-					.contains(ConfigReader.getConfigValue("LoginSuccessMessage")),
+					.contains(ConfigReader.getConfigValue("Login_SuccessMessage")),
 					"It seems login with user name is not matched");
-			
+
 
 			homePageObject.navigateToQartScreen(Duration.ofSeconds(time));
 
 
-			QartPageObject.clickOnproceedToCheckOutButton(Duration.ofSeconds(time));
+			QartPageObject.clickOnproceedToCheckOutButton_RegisterBeforeCheckout(Duration.ofSeconds(time));
 
 			CheckoutPageObject = new CheckoutPage(driver);
 
@@ -149,7 +153,7 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 					.getConfigValue("registerWhileCheckout_commentAboutOrder"));
 
 			CheckoutPageObject.clickOnPlaceOrderButton(Duration.ofSeconds(time));
-			
+
 			PaymentPageObject = new PaymentPage(driver);
 
 
@@ -169,10 +173,10 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 
 			PaymentPageObject.clickPayAndConfirmButton();
 
-			
-			
-			
-			
+
+
+
+
 			assertEquals(PaymentPageObject.getplaceOrderSuccessMessageText(),
 					ConfigReader.getConfigValue("orderPlacedSuccessMessage"),
 					"It seems the place order success messgae is not matched");
@@ -181,7 +185,7 @@ public class PlaceOrder_RegisterWhileCheckoutTC extends TestBase{
 			PaymentPageObject.deleteAccount(Duration.ofSeconds(time));
 
 			assertEquals(PaymentPageObject.getAccountDeletedHeaderText(), 
-					ConfigReader.getConfigValue("accountDeltedHeader"),
+					ConfigReader.getConfigValue("accountDELETED_RegisterWhilecheckout"),
 					"It seems the account deleted header text is not matched");
 
 

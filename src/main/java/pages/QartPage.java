@@ -47,6 +47,8 @@ public class QartPage extends PageBase{
 	By signup_loginButton = HomePage.signUpButton;
 
 	By checkOutPopUpHeader = By.xpath("//h4[@class = 'modal-title w-100' and text() = 'Checkout']") ;
+	
+	By placeOrderButon = By.xpath("//a[text()='Place Order']") ;
 
 
 	public void scrollToFooter(String pixel) {
@@ -98,7 +100,7 @@ public class QartPage extends PageBase{
 
 	}
 	
-	public void clickOnproceedToCheckOutButton(Duration time) {
+	public void clickOnproceedToCheckOutButton_RegisterBeforeCheckout(Duration time) {
 
 		clickOnElement(proceedToCheckOutButton);
 
