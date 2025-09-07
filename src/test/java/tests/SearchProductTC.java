@@ -5,16 +5,18 @@ import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.TestBase;
 import config.ConfigReader;
+import listnener.Testlistner;
 import pages.AllProductsPage;
 import pages.HomePage;
 import pages.ProductDetailsPage;
 import pages.SearchedProductPage;
 
-
+@Listeners(Testlistner.class)
 public class SearchProductTC extends TestBase{
 
 	HomePage homePageObject;
@@ -70,5 +72,4 @@ public class SearchProductTC extends TestBase{
 
 		}
 	}
-
 }

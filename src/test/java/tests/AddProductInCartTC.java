@@ -67,8 +67,7 @@ public class AddProductInCartTC extends TestBase{
 			QartPageObject = new QartPage(driver);
 
 			//verify the products added to the cart
-			assertEquals(QartPageObject.VerifyQartProducts(), ConfigReader.getConfigValue("tableSize"));
-
+			assertEquals(QartPageObject.VerifyQartProducts(), Integer.parseInt(ConfigReader.getConfigValue("tableSize")));
 
 
 
