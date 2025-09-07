@@ -13,9 +13,9 @@ public class ExtentReportManger {
 		
 		if(extentReport == null) {
 			
-			String reportPath = "/Users/mahmoudmadboly/Automation/SeleniumPOM_DDT_Framework/SeleniumPOMDDTProject/test-output/HtmlReport/ExtentReport.html";
+			//Create an HTML reporter
 			
-			//String reportPath = System.getProperty("user.dir") + "test-output/HtmlReport/ExtentReport.html";
+			String reportPath = ConfigReader.getConfigValue("extentReportPath");
 
 			ExtentSparkReporter sparkReport = new ExtentSparkReporter(reportPath);
 			
@@ -23,13 +23,22 @@ public class ExtentReportManger {
 			
 			sparkReport.config().setDocumentTitle(ConfigReader.getConfigValue("documentTitle"));
 			
+			
+			
+			//Create ExtentReports and attach the reporter
+			
 			extentReport = new ExtentReports();
 			
 			extentReport.attachReporter(sparkReport);
 			
-			extentReport.setSystemInfo(ConfigReader.getConfigValue("executerTitle"), ConfigReader.getConfigValue("executerName"));
 			
-			extentReport.setSystemInfo(ConfigReader.getConfigValue("SystemInfo_environment"), ConfigReader.getConfigValue("environment"));	
+			// Add system info
+			
+			extentReport.setSystemInfo(ConfigReader.getConfigValue("executerTitle"), 
+					ConfigReader.getConfigValue("executerName"));
+			
+			extentReport.setSystemInfo(ConfigReader.getConfigValue("SystemInfo_environment"),
+					ConfigReader.getConfigValue("environment"));	
 			
 		}
 		

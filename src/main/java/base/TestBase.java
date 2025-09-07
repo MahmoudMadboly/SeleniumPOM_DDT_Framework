@@ -8,27 +8,39 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+
+import com.aventstack.extentreports.ExtentReports;
 
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
+import utilities.ExtentReportManger;
 import utilities.WaitUtuls;
 
 public class TestBase {
 
 	int time = 10;
 
-	protected WebDriver driver;
+	protected static WebDriver driver;
 
 	String browserName = ConfigReader.getConfigValue("browser_Name");
 
-	String portalEndPoint = ConfigReader.getConfigValue("baseURL");;
+	String portalEndPoint = ConfigReader.getConfigValue("baseURL");
+
+
+	public static WebDriver getDriver() {
+
+		return driver;		
+
+	}
 
 
 
-	@BeforeTest
+	@BeforeMethod
 	//open the required browser & get the portal url
 	public void openBrowser() {
 
@@ -70,17 +82,18 @@ public class TestBase {
 
 		driver.manage().window().maximize();
 
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 		driver.get(portalEndPoint);
 
 		WaitUtuls.waitExplicily(driver, Duration.ofSeconds(time),
 				ExpectedConditions.presenceOfElementLocated(HomePage.homePageHeader));
 
-
 	}
 
 
 
-	//@AfterTest
+	@AfterMethod
 	//close the browser
 	public void closeBrowser() {
 
@@ -94,3 +107,8 @@ public class TestBase {
 		}
 	}
 }
+
+
+
+
+

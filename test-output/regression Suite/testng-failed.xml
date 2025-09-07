@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [regression Suite]">
+  <test thread-count="5" name="regression Tests(failed)">
+    <groups>
+      <run>
+        <include name="regression"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="tests.VerifyAddressDetailsInCheckoutPageTC">
+        <methods>
+          <include name="VerifyAddressDetailsInCheckoutPageScenario"/>
+        </methods>
+      </class> <!-- tests.VerifyAddressDetailsInCheckoutPageTC -->
+    </classes>
+  </test> <!-- regression Tests(failed) -->
+</suite> <!-- Failed suite [regression Suite] -->

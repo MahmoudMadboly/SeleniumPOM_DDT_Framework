@@ -27,17 +27,31 @@ public class PageBase {
 		this.driver = driver;
 
 	} 
+	
+	
+	
+	//return a single element
+		public WebElement getWebElemnt(By element) {
+
+			return driver.findElement(element);
+
+		}
+
 
 	public void clickOnElement(By element) {
 
-		driver.findElement(element).click();
+		getWebElemnt(element).click();
+		
+		//driver.findElement(element).click();
 
 	}
 
 
 	public void sendKeysToField(By element , String text) {
 
-		driver.findElement(element).sendKeys(text);
+		getWebElemnt(element).sendKeys(text);
+		
+		//driver.findElement(element).sendKeys(text);
 
 	}	
 
@@ -80,13 +94,7 @@ public class PageBase {
 	}
 
 
-	//return a single element
-	public WebElement getWebElemnt(By element) {
-
-		return driver.findElement(element);
-
-	}
-
+	
 
 	//return list of elements
 	public List<WebElement> getWebElementList(By element) {

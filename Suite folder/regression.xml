@@ -1,5 +1,10 @@
 
 <suite name="regression Suite">
+
+ <listeners>
+        <listener class-name="listnener.Testlistner"/>
+    </listeners>
+
     <test name="regression Tests">
         <groups>
             <run>

@@ -5,15 +5,19 @@ import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import base.TestBase;
 import config.ConfigReader;
+import listnener.Testlistner;
 import pages.AllProductsPage;
 import pages.HomePage;
 import pages.QartPage;
 import utilities.browserUtils;
 
+
+@Listeners(Testlistner.class)
 public class AddProductInCartTC extends TestBase{
 
 
@@ -24,6 +28,7 @@ public class AddProductInCartTC extends TestBase{
 
 //TC 12
 	//done
+	
 	@Test(groups = {"regression"})
 	public void AddProductInCartScenario() {
 
